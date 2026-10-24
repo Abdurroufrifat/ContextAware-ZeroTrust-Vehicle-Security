@@ -1,0 +1,12 @@
+{
+  "research\\vehicle_command_scene_learning\\PROTOCOL.json": "b559c309929c1f4173a4c2d745d8805bf3472c51e5bb8f369a8054fadddd8619",
+  "research\\vehicle_command_scene_learning\\command_scene_core.py": "be8555a9a635fa161fb6cf701de6f20e1ac95d78b31f42d6ed9021a4ffc5d092",
+  "research\\vehicle_command_scene_learning\\command_scene_guard.py": "785b07238163943288af110869ceb96f7441f8e342159a9ef7b7d2c1654e4f32",
+  "research\\vehicle_command_scene_learning\\train_models.py": "cb92c618beff84d9d100a346c75f79e20445ca6476d5792712f973733bd2fc12",
+  "research\\vehicle_command_scene_learning\\model_selection.json": "f9b74964ceb80c57d3f5e073ebf5e431533ac469de494f713927f47850c6670a",
+  "research\\vehicle_command_scene_learning\\models\\forest.joblib": "0a4f1f623fa5b3ab1eb46640edef2da8188da012fe1b6b935b5c2eecc7c5edba",
+  "research\\vehicle_command_scene_learning\\models\\mlp_19.joblib": "18204978a13c8f689aff8bad04ffd91c184565583b20b129fb4a9c5538aae7e3",
+  "research\\vehicle_command_scene_learning\\models\\mlp_31.joblib": "30c2cd843f26152bd8987a5702e9d771097f3dc49e1a7f9c6cf2a1b379b8bda0",
+  "research\\vehicle_command_scene_learning\\models\\mlp_7.joblib": "512e73f7dfdc5000f6d7f6894e35978661f9cb95359c2f2112d9fa0a0dc9edf7",
+  "research\\vehicle_command_scene_learning\\models\\ridge.joblib": "31c49c1442ecb56d5c91c7f143f4a8f5d3039ae1e6c1d51f73a58a93df4c1dd5"
+}

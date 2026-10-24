@@ -1,0 +1,25 @@
+{
+ "version":1,
+ "scope":"Prospective offline temporal-policy experiment on long continuous blocks. No production witness enablement, vehicle control or physical authentication claim.",
+ "recordings":{
+  "fit":{"route":"Urban01/2023-11-23-15-38-43-Day","centers":[0.2,0.5,0.8]},
+  "calibration":{"route":"Urban01/2023-11-23-18-24-14-Night","centers":[0.2,0.5,0.8]},
+  "evaluation_urban03":{"route":"Urban03/2023-11-03-09-42-41-Day","centers":[0.2,0.5,0.8]},
+  "evaluation_urban04":{"route":"Urban04/2023-11-01-12-16-16-Day","centers":[0.2,0.5,0.8]}
+ },
+ "block_duration_ns":90000000000,
+ "selection":"Exact 90s intervals around each predeclared duration center, using all overlapping source chunks and 1s preceding radar history. No measurement-based selection or replacement.",
+ "radar_model":"Unchanged signed_median_balanced model from the preceding consolidated evaluation; coefficients never refitted",
+ "centering":"Nominal fit-drive median of ((GNSS-associated speed+OBD speed)/2 - radar prediction), grouped by trusted radar-prediction bins [0,1),[1,5),[5,10),[10,infinity); global fit median fallback for empty bins. Attacked channels cannot select the bin.",
+ "cusum":{"allowance_mps":0.1,"time_integration":"Two-sided positive/negative integrated centered residual, dt seconds; reset integration across >100ms gaps while permissions remain quarantined","threshold":"1.10 * maximum nominal calibration-block CUSUM, plus 1e-6; one fixed calibration calculation, no search"},
+ "hard_alarm":"Base GNSS/OBD inconsistency >1m/s or physical discrepancy exceeding max(2.5m/s,1.10*maximum nominal calibration discrepancy)",
+ "soft_warning":"Any fresh GNSS/OBD-to-radar discrepancy >1m/s denies that endpoint but does not itself become a confirmed persistent alarm. Original production alarm semantics are unchanged; this is a new research comparator.",
+ "admission_recovery":"Start unadmitted; at least five fresh matching independent-witness endpoints spanning >=1s without a >100ms gap, followed by a new fresh endpoint. Confirmed alarm is retained until that physical-evidence recovery completes. Neural quietness alone cannot recover. Reset temporal statistic only when a fresh physical recovery epoch is built, not at a file/chunk boundary.",
+ "policies":["gnss_obd_consistency","radar_stateless","radar_retained_alert","radar_recovery_after_1s_fresh_contiguous_clean","confirmed_cusum_recovery"],
+ "attacks":["startup_common_bias_7","delayed_common_step_7","common_ramp_075","wheel_only_step_7","slow_common_ramp_005","radar_aware_offset_095"],
+ "attack_timing":"Startup at first scored endpoint; delayed attacks at 40% of block scored time; all removed at 80%. Ramps grow at 0.75 or 0.05m/s/s. Radar-aware attacker sets both compromised channel claims to max(0,radar_prediction+0.95m/s), with access to the frozen predictor.",
+ "primary_gates":{"normal_denial_fraction_max":0.05,"normal_gate":"Both each held-out recording and each held-out 90s block, after radar-history prefix; also report prefix-inclusive and all missing-data costs separately","ramp_gate":"On identical prospective held-out blocks, combined fast/slow ramp grants with injected shift >=1m/s must be <=50% of the original one-second-recovery comparator count; if comparator has zero, require zero","step_gate":"Zero granted attacked endpoints for +7m/s startup and common-step cases","all_cases":"Retain radar-aware attacker results and all failures; no tuning after evaluation"},
+ "scoring":"All raw radar endpoints within the fixed blocks after the 1s prefix; missing OBD/GNSS/invalid evidence deny and remain in the denominator. Prefix endpoints are reported separately as denied warmup. Replay fragments are 90s continuous blocks, not entire trips.",
+ "freeze":"Fit centering and calibrate thresholds before acquiring selected measurement payloads from either new evaluation drive. Verify code/model/parameter locks. Old Urban02 evaluation is not used for fitting or calibration.",
+ "limits":["Empirical radar error is not a formal physical error bound","Configured radar units and live authenticated channel remain unverified","Nominal OBD/GNSS-associated channels are not independent ground truth","Sub-bound radar-aware attacks may be observationally indistinguishable; report them rather than declaring all attacks solved","Existing neural failed comparisons and earlier results remain unchanged"]
+}

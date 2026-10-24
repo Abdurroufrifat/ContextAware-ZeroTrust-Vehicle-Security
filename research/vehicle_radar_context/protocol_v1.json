@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "records": [
+    "07_turning",
+    "04_crossTraffic",
+    "14_countryRoad"
+  ],
+  "development_only": true,
+  "previous_can_results_preserved": true,
+  "driver_tree_sha": "2468bf4533b6539455669dffe64905918990ec91",
+  "decoding": {
+    "transport_crc16": "CCITT-FALSE",
+    "max_fragment_span_ms": 10,
+    "target_versions": [
+      "1.0",
+      "2.1"
+    ],
+    "max_targets": 110,
+    "validate_against_processed_values": true
+  },
+  "estimator": {
+    "type": "multi-radar planar rigid-body static-scene RANSAC",
+    "independent_of": [
+      "CAN",
+      "INS"
+    ],
+    "state": [
+      "rear_axis_vx",
+      "rear_axis_vy",
+      "yaw_rate"
+    ],
+    "residual_threshold_mps": 0.25,
+    "hypotheses": 256,
+    "minimum_detections": 30,
+    "minimum_sensors": 3,
+    "minimum_inlier_fraction": 0.5,
+    "maximum_matrix_condition": 1000,
+    "max_speed_mps": 60,
+    "max_abs_yaw_radps": 2,
+    "seed": 20261021
+  },
+  "timing_tracks": [
+    "raw_header_association",
+    "processed_corrected_time"
+  ],
+  "max_evidence_age_us": 100000,
+  "acquisition_age_certified": false,
+  "raw_header_semantics": "Ethernet packet timestamp, as documented by publisher for raw parsing. Does not certify true acquisition age.",
+  "corrected_track": "Use the corresponding original processed header; derive no clock offset from INS or prediction errors.",
+  "policy_variants": [
+    "existing_context_learned",
+    "existing_context_no_ood",
+    "radar_agreement",
+    "context_no_ood_plus_radar"
+  ],
+  "agreement_threshold_mps": 1,
+  "evaluation": "Same 283 chronological development queries per case from preserved CAN experiment; all 12 original cases; no additional parameter fitting to INS",
+  "reference": "Only offline INS reference already attached to independently verified CAN experiment events",
+  "physical_witness_enabled": false,
+  "promotion_allowed": false,
+  "production_policy_changed": false
+}

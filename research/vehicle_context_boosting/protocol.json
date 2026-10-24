@@ -1,0 +1,66 @@
+{
+  "scope": "one fixed classical context baseline; no parameter/seed search",
+  "fit_routes": [
+    "Urban01/2023-11-23-15-38-43-Day",
+    "Urban03/2023-11-03-09-42-41-Day",
+    "Urban04/2023-11-01-12-16-16-Day",
+    "Urban03/2023-11-23-19-12-16-Night",
+    "Urban04/2023-11-23-19-36-42-Night"
+  ],
+  "model": {
+    "loss": "absolute_error",
+    "learning_rate": 0.05,
+    "max_iter": 200,
+    "max_leaf_nodes": 15,
+    "max_depth": 4,
+    "min_samples_leaf": 40,
+    "l2_regularization": 1.0,
+    "max_features": 1.0,
+    "max_bins": 255,
+    "categorical_features": null,
+    "early_stopping": false,
+    "random_state": 20261019
+  },
+  "feature_windows_ticks": [
+    5,
+    11,
+    21,
+    41,
+    81,
+    128
+  ],
+  "augmentation": "one fixed masked copy using prior augment and seed20261019; half day-derived weight on each copy",
+  "fit_target": "y minus unchanged original day-derived affine anchor",
+  "quality": "prior night TCN/CNN quality AND new estimator-to-same-CNN disagreement<=1m/s; no revived rejections",
+  "evaluation": "same full inspected night recording,20Hz,100msTTL,latest raw,no fallback; all same six95%/0.5m/s/zero>2m/s gates",
+  "primary": "context_boosting",
+  "gates": {
+    "request_usable_fraction_each_segment_and_overall_min": 0.95,
+    "request_reference_coverage_each_segment_and_overall_min": 0.95,
+    "request_accepted_p95_each_segment_and_overall_max_mps": 0.5,
+    "accepted_request_errors_above2_max": 0,
+    "previous_supported90s_block_retention_min": 0.95,
+    "previous_supported90s_block_accepted_p95_max_mps": 0.5
+  },
+  "input_sha256": {
+    "../vehicle_radar_multidrive/prepared/fit/data.npz": "ddf393a60ab845b045fd26e4a03218eb3eb36e4d5d4e40971cd5ef1735124d68",
+    "../vehicle_radar_multidrive/inputs/fit/windows.json": "b69947aec58a11cf81d1ca0420bb5a0ac0fee3d5b1395ec8220bb165cee9dc1a",
+    "../vehicle_radar_multidrive/classical_models.json": "663ca779a2a7c94d19c5eca7bdf085b620813e2ea6a74d1de0002ae556a826db",
+    "../vehicle_radar_multidrive/prepared/calibration/index.json": "b9aba0fb81ac2aa8d3e38e8e397a39b4d14923af70f29de71e024d2add2b14f8",
+    "../vehicle_night_training/night_fit.npz": "98e7664234a22dd2b64688f8e25721fe58fdd542ee6a8e65147cdb7242131d59",
+    "../vehicle_night_training/night_index.json": "4b1224121adaa470c0e85ef4715033290c8b0021898aed856ae4a0741dadd6ed",
+    "../vehicle_night_training/predictions.npz": "3c7fa65f86eb1ff680cd3c600a548468e6b9c9b8a50c41622db2aeae6ee1deda",
+    "../vehicle_night_training/decisions.npz": "8d6c585ffff8e87e675457d951e5d4f59e1b9fa20f55a97284d14741a70ed0b6",
+    "../vehicle_night_training/model_lock.json": "5b64c2d1a1818ea11dac1e8b75da549a9db3ff731fe7552a791e4ca9d8908051",
+    "../vehicle_night_training/night_core.py": "9d499a64356ff2dd4f8869e577f9dd0c7fcdc09afed46089a2c30854cf60cc88",
+    "../vehicle_masked_history/masked_core.py": "220f03c0605c00fc4caee14d4a10ce9825d780216cc0be0455f3440a38b9e24a",
+    "../vehicle_masked_history/score_masked.py": "a6054365a86bb04d15aabb9d26390f7095c486f922cd1662fe834d06da9d3adf",
+    "../vehicle_masked_history/prepared.npz": "743b8be43a54f97963525cde67e1bc8bee598a43ffeef76c7b5e0528932aeed5",
+    "../vehicle_masked_history/frame_index.json": "95dccff40807e1382a4ed93f828e5f2ad1fc80b649babd3853fa0c00e4122103",
+    "../vehicle_continuous_radar/reference_targets.json": "d372d7572d574a6f1718da4b4e274bcc33077923eb035308db7207240cbaa6b9",
+    "../vehicle_availability_audit/request_reference.json": "7624bd1de84f3efa29129b7792a9b485fe4753f68ebef683ce93fb39ef0d545c",
+    "../vehicle_availability_audit/availability_core.py": "2a161d5266e20419eae2a078de695e509a50cb4c5d99b28787e677a4fdc2b31c"
+  },
+  "reserved_final_opened": false,
+  "witness_enabled": false
+}

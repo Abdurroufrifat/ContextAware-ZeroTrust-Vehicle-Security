@@ -1,0 +1,75 @@
+{
+  "scope": "fixed fit-only night coverage comparison; same development recording; no final payload access",
+  "fit_routes": [
+    "Urban03/2023-11-23-19-12-16-Night",
+    "Urban04/2023-11-23-19-36-42-Night"
+  ],
+  "publisher_sha256": {
+    "Urban03/2023-11-23-19-12-16-Night": {
+      "radars.bag": "c82193ab3333aa5fda1f56b7c3b626b13291eba52b9b6947e3cde172972773a9",
+      "reference.bag": "2cb396086bc3d3e17a94b06ba6c04df006fb09bcdfd7233f84b809d3b885d2b2"
+    },
+    "Urban04/2023-11-23-19-36-42-Night": {
+      "radars.bag": "b5fc7afb2831669fc419c438afb78cc9b69cb6c528185353dc0ba8345d6a2f0e",
+      "reference.bag": "b682fa141040436d7f3afd992fad8818e084cca0b902bb55f27128d03db78244"
+    }
+  },
+  "windows": {
+    "fractions": [
+      0.2,
+      0.5,
+      0.8
+    ],
+    "duration_ns": 90000000000,
+    "replacement_allowed": false
+  },
+  "training": {
+    "conditions": [
+      "day_only",
+      "day_plus_night"
+    ],
+    "epochs": 5,
+    "seeds": [
+      141,
+      142,
+      143
+    ],
+    "batch_size": 128,
+    "steps_per_epoch": "ceil(expanded_samples/128) identical for both; fill full batches by cycling seeded permutations",
+    "initialization": "same prior masked_training checkpoint per kind and seed",
+    "optimizers": "TCN AdamW lr.001 decay.0001 Huber.2; CNN RAdam lr.001 decay.00001 MSE",
+    "weights": "same old day-fit speed-bin inverse frequencies for both conditions",
+    "masking": "same prior feature masking function and seed+100000; anchor unchanged",
+    "selection": "all3 final epochs equally averaged; primary day_plus_night; no result-based retries"
+  },
+  "evaluation": "unchanged full Urban01 night; exact prior fixed20Hz requests;100msTTL;latest raw;TCN-CNN<=1m/s; same old gates",
+  "gates": {
+    "request_usable_fraction_each_segment_and_overall_min": 0.95,
+    "request_reference_coverage_each_segment_and_overall_min": 0.95,
+    "request_accepted_p95_each_segment_and_overall_max_mps": 0.5,
+    "accepted_request_errors_above2_max": 0,
+    "previous_supported90s_block_retention_min": 0.95,
+    "previous_supported90s_block_accepted_p95_max_mps": 0.5
+  },
+  "reserved_final_opened": false,
+  "witness_enabled": false,
+  "input_sha256": {
+    "../vehicle_radar_multidrive/prepared/fit/data.npz": "ddf393a60ab845b045fd26e4a03218eb3eb36e4d5d4e40971cd5ef1735124d68",
+    "../vehicle_radar_multidrive/classical_models.json": "663ca779a2a7c94d19c5eca7bdf085b620813e2ea6a74d1de0002ae556a826db",
+    "../vehicle_masked_history/masked_core.py": "220f03c0605c00fc4caee14d4a10ce9825d780216cc0be0455f3440a38b9e24a",
+    "../vehicle_masked_history/models_torch.py": "f383023fc7c06256da95bdb5a299f6ada683959fdfd922e0cc61836b701ce998",
+    "../vehicle_masked_history/score_masked.py": "a6054365a86bb04d15aabb9d26390f7095c486f922cd1662fe834d06da9d3adf",
+    "../vehicle_masked_history/prepared.npz": "743b8be43a54f97963525cde67e1bc8bee598a43ffeef76c7b5e0528932aeed5",
+    "../vehicle_masked_history/frame_index.json": "95dccff40807e1382a4ed93f828e5f2ad1fc80b649babd3853fa0c00e4122103",
+    "../vehicle_masked_history/results.json": "1859779b4b14e45bd691c7f5d7d475de1219e217da1b184c773f17473b23f550",
+    "../vehicle_availability_audit/request_reference.json": "7624bd1de84f3efa29129b7792a9b485fe4753f68ebef683ce93fb39ef0d545c",
+    "../vehicle_availability_audit/availability_core.py": "2a161d5266e20419eae2a078de695e509a50cb4c5d99b28787e677a4fdc2b31c",
+    "../vehicle_reference_check/source_attribution/checksums.txt": "a49a3fdc4dc37f668e53bb535b938983317c0de5a867b6893d7fc191e5b23695",
+    "../vehicle_masked_history/models/masked_training/causal_residual_tcn_141.json": "85e9ea9e6f714583e328c6b77771ac51bdfbe27a278efecda7c249ab43e9bfba",
+    "../vehicle_masked_history/models/masked_training/causal_residual_tcn_142.json": "286da9bc6a1baf7cb7a38871257332ad141d2a0533f761bf55a8c636b9ef525a",
+    "../vehicle_masked_history/models/masked_training/causal_residual_tcn_143.json": "c2985049ff98be7446f551c1b0f2ef0eede23e8b537ca0b1bc144f854661062c",
+    "../vehicle_masked_history/models/masked_training/masked_cnn_4ch_141.json": "caf218ccbee13f15bc5c89feb9b18eccca7fe7e8de6de501d742d3da7e5ff8cb",
+    "../vehicle_masked_history/models/masked_training/masked_cnn_4ch_142.json": "14078c6686bff47283a8cdecbb606da05e6de70402e6065a210b180b80e23959",
+    "../vehicle_masked_history/models/masked_training/masked_cnn_4ch_143.json": "d479f19ce52733fa89b70a5b9e2ab48ab8ce224023f03f10f2f76c3dac8c4dce"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "analysis_lock_sha256": "8a6965866bb5d48cf82a7248c060547703b1fa08f4fd1f4491d3475dcccf785c",
+  "models_sha256": {
+    "models/clean_control/causal_residual_tcn_141.json": "18e6407d1614bbff667aa97068643b2d646e5179366e6c7d5d84bf9d0e85200b",
+    "models/clean_control/causal_residual_tcn_142.json": "75ecc8adedee238dec3c1ae5198038a3feba77edbb5ac6719cb0de7b7d1cee4f",
+    "models/clean_control/causal_residual_tcn_143.json": "71464ea947494d5ef06e6e8bbaba270b5d9aa65ed547ac6ef0c84377db1e6307",
+    "models/clean_control/masked_cnn_4ch_141.json": "a228aaa055a26ec01099aaa13dc2a8f024f3f04b0d1ed7933774f44a662a8c08",
+    "models/clean_control/masked_cnn_4ch_142.json": "ce0bb7facc7d93c4ed404d49d844b0c50c22ff992b3f122eaa57aeb2d8d84f4a",
+    "models/clean_control/masked_cnn_4ch_143.json": "90d3cdb1cb3607883625e434a037a95deb098c82428bbe0e51f1f57c70f2f98d",
+    "models/masked_training/causal_residual_tcn_141.json": "85e9ea9e6f714583e328c6b77771ac51bdfbe27a278efecda7c249ab43e9bfba",
+    "models/masked_training/causal_residual_tcn_142.json": "286da9bc6a1baf7cb7a38871257332ad141d2a0533f761bf55a8c636b9ef525a",
+    "models/masked_training/causal_residual_tcn_143.json": "c2985049ff98be7446f551c1b0f2ef0eede23e8b537ca0b1bc144f854661062c",
+    "models/masked_training/masked_cnn_4ch_141.json": "caf218ccbee13f15bc5c89feb9b18eccca7fe7e8de6de501d742d3da7e5ff8cb",
+    "models/masked_training/masked_cnn_4ch_142.json": "14078c6686bff47283a8cdecbb606da05e6de70402e6065a210b180b80e23959",
+    "models/masked_training/masked_cnn_4ch_143.json": "d479f19ce52733fa89b70a5b9e2ab48ab8ce224023f03f10f2f76c3dac8c4dce"
+  },
+  "training_trace_sha256": "2ec1847631ea245bcb8a7373e8a04bb5b73e2fb52128484aadb356b093f84a96",
+  "primary": "masked_training",
+  "selection": "All three final-epoch seeds equally averaged; no result-based checkpoint or condition selection"
+}

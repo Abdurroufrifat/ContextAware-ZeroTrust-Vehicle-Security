@@ -1,0 +1,53 @@
+{
+  "scope": "Reconstruction of the previously executed fixed offline fault experiment after workspace maintenance; outcomes were already known. Retrospective replay, not new preregistration.",
+  "cases": [
+    "nominal",
+    "dropout",
+    "stale_header",
+    "future_header",
+    "accel_bias",
+    "gyro_bias",
+    "frozen_values"
+  ],
+  "methods": [
+    "radar_only",
+    "radar_imu_parent",
+    "nonlinear7"
+  ],
+  "interval": "[first+floor(2*duration/5),first+floor(3*duration/5)), selected from clocks only",
+  "faults": {
+    "nominal": "unchanged",
+    "dropout": "remove messages arriving in interval",
+    "stale_header": "header minus150ms, arrivals unchanged",
+    "future_header": "header plus150ms, arrivals unchanged",
+    "accel_bias": "sensor-frame acceleration x plus0.5m/s2, norms recomputed",
+    "gyro_bias": "gyro z plus0.1rad/s, norms recomputed",
+    "frozen_values": "last pre-interval vectors repeated, original fresh bag/header clocks retained"
+  },
+  "source_rules": "Latest arrival,128tick magnitude and11tick signed mean context at50ms;100ms bag/header freshness and request binding; original source eligibility and inclusive1mps peer guard. Radar-only ignores IMU.",
+  "population": "40690raw endpoints,40678ready,37340requests; all three models, all cases, before/during/after/overall and300ssegments, accepted+ungated errors",
+  "new_training": false,
+  "threshold_changes": false,
+  "reserved_final_opened": false,
+  "production_policy_changed": false,
+  "promotion_allowed": false,
+  "reference_independence_established": false,
+  "input_sha256": {
+    "vehicle_nonlinear_correction/nonlinear_core.py": "19431ae7e1443da18ef8865d67f35d612ef78e3545f3394e600cfc55bf9998e4",
+    "vehicle_nonlinear_correction/models/all_fit/nonlinear7.json": "d57ac46bac7a1b6745a5c64e8910f1941fdbbc768472b4e90cee93a044edb547",
+    "vehicle_nonlinear_correction/development_replay.npz": "7080051e54f6b711ab26bb2df9ee2086c695428031c1da8349baa925fa396b0a",
+    "vehicle_multisource_imu/imu_core.py": "4cc4a6f089cf93b75c2f2ad192271bfe18d56cede1f0564698afaed199b711c1",
+    "vehicle_multisource_imu/models/all_fit/radar_imu.json": "9710b4746946852e68a37b146ef61aa87e85f6b27ee859e28f921981d8dcd2cb",
+    "vehicle_multisource_imu/feature_cache.npz": "d813de294eb06306d76aec3ab8ead2e37cf19fbfcf226a86198900c105a0a966",
+    "vehicle_multisource_imu/development_replay.npz": "2f565dc8a7349ee55ecc21e442a594c35ceae4103e2f90329df27ba10ce316fc",
+    "vehicle_signed_axis_correction/feature_cache.npz": "463b89b43332e8e39e2de778d8c1cce260e244e399b249f15d4361829f0743cf",
+    "vehicle_masked_history/prepared.npz": "743b8be43a54f97963525cde67e1bc8bee598a43ffeef76c7b5e0528932aeed5",
+    "vehicle_masked_history/frame_index.json": "95dccff40807e1382a4ed93f828e5f2ad1fc80b649babd3853fa0c00e4122103",
+    "vehicle_night_training/predictions.npz": "3c7fa65f86eb1ff680cd3c600a548468e6b9c9b8a50c41622db2aeae6ee1deda",
+    "vehicle_night_training/decisions.npz": "8d6c585ffff8e87e675457d951e5d4f59e1b9fa20f55a97284d14741a70ed0b6",
+    "vehicle_remaining_failure_audit/row_diagnostics.npz": "a8a5e65e86c17aa8339ff030c1f487ed073b65b56c7671788e585cc15fc96950",
+    "vehicle_availability_audit/request_reference.json": "7624bd1de84f3efa29129b7792a9b485fe4753f68ebef683ce93fb39ef0d545c",
+    "vehicle_context_boosting/context_core.py": "4eda0558f8c34329fd913a52c1a7f54878002c189d33ed251dcdfe8ca40b0da1",
+    "vehicle_livox_collection/runtime_export/Urban01_night.npz": "e29051430304b4aa9f805c33e7854b60820361e16ca3cad03b3610cbde093d41"
+  }
+}

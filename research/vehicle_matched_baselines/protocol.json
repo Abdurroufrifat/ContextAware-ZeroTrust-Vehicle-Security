@@ -1,0 +1,53 @@
+{
+  "scope": "Retrospective comparison; HGB held results already inspected; fixed configurations, no tuning, no promotion",
+  "groups": [
+    "Urban01",
+    "Urban03",
+    "Urban04"
+  ],
+  "routes": [
+    "Urban01/2023-11-23-15-38-43-Day",
+    "Urban03/2023-11-03-09-42-41-Day",
+    "Urban04/2023-11-01-12-16-16-Day",
+    "Urban03/2023-11-23-19-12-16-Night",
+    "Urban04/2023-11-23-19-36-42-Night"
+  ],
+  "baselines": [
+    "affine_median_matched",
+    "ridge_context",
+    "huber_context"
+  ],
+  "ridge": {
+    "alpha": 1.0,
+    "fit_intercept": true,
+    "solver": "svd"
+  },
+  "huber": {
+    "epsilon": 1.35,
+    "alpha": 0.0001,
+    "max_iter": 500,
+    "tol": 1e-06,
+    "fit_intercept": true,
+    "warm_start": false
+  },
+  "training": "Exact parent fold original+masked feature/target/weight hashes must match; weighted train-only scaling",
+  "variance_floor": 1e-12,
+  "scoring": "All27178 supported original rows once/model; no quality filter; all3 groups,5 recordings,15 windows",
+  "p95_diagnostic_limit_mps": 0.5,
+  "all_nine_models_frozen_before_new_held_scoring": true,
+  "optimizer_failure_rule": "Retain final iteration model and all warnings without refit/tuning; do not call unconverged model a converged result",
+  "reserved_final_opened": false,
+  "urban01_night_development_labels_used": false,
+  "input_sha256": {
+    "../vehicle_route_validation/protocol.json": "bf6db89b09e331db57dd70f20d88be8c87db2035ac03bada28283686092e681a",
+    "../vehicle_route_validation/analysis_lock.json": "67aa10e980b8c84afd3c9d98628c766a877d85882e52d272fe7d6c3d541eded5",
+    "../vehicle_route_validation/model_lock.json": "378be33b2b4b0edb5666b8d9ab5ad6e5bacbe454d90235ae02155022471d12fd",
+    "../vehicle_route_validation/training_trace.json": "3cababf8276d00c95d7fb9c62f9c081485e3e3233e05e0f290074e543be5184b",
+    "../vehicle_route_validation/membership.json": "2a4d8db446486cc6be0b1ce73fdf657f76e9d8b9bfaaa2a704af50a99471c65f",
+    "../vehicle_route_validation/support_costs.json": "39b7cf4bda03493e9b6c73a7a4c2b1bf1a19f21e9de64e506235d83b132e8863",
+    "../vehicle_route_validation/oof_predictions.npz": "6bf2bd6797972aed326ca989ad7cd6914fa2cc712f08744d5f4c57683ae608d1",
+    "../vehicle_route_validation/results.json": "5a6679b70fcf6ff01d68a22252fe001249f59ce8cc8c608de40c9ca9d156b366",
+    "../vehicle_route_validation/route_core.py": "f2bfc37781a8cc7f9630a8fe0a334fb9fdfa54e06501d43df6ab490cf840464b",
+    "../vehicle_route_validation/score_routes.py": "e650a3c0a09f465170f95c22569ac2e72ad7e9c4d8234406df5c9b9bfb21aa7a"
+  }
+}

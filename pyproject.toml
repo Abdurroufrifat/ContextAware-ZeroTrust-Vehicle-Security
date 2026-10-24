@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "co-act-cps"
+version = "0.1.0"
+description = "Contestable and co-adaptive generative AI for human-CPS incident diagnosis"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+license = {text = "MIT"}
+authors = [{name = "Abdur Rouf"}]
+dependencies = [
+  "joblib>=1.3,<2",
+  "numpy>=1.26,<3",
+  "pandas>=2.1,<3",
+  "PyYAML>=6,<7",
+  "scikit-learn>=1.3,<2",
+  "torch>=2.2,<3",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8,<9",
+  "ruff>=0.6,<1",
+]
+app = [
+  "streamlit>=1.37,<2",
+]
+llm = [
+  "accelerate>=0.33,<2",
+  "bitsandbytes>=0.43,<1",
+  "datasets>=2.20,<5",
+  "peft>=0.12,<1",
+  "sentencepiece>=0.2,<1",
+  "transformers>=4.51,<6",
+]
+
+[project.scripts]
+coact-cps = "coact_cps.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

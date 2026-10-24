@@ -1,0 +1,19 @@
+{
+  "analysis_lock_sha256": "67aa10e980b8c84afd3c9d98628c766a877d85882e52d272fe7d6c3d541eded5",
+  "files_sha256": {
+    "folds/Urban01/calibration.json": "0ad41a4147452bf3810943c4782b42d869305f7ddc50fc3bb54d2f3c5b42e8cb",
+    "folds/Urban01/model.json": "28508e6b8cb0d8b084047e467457bf70341b7ae451a9e3413c7d5a8cd62a3d69",
+    "folds/Urban01/fit_export.npz": "c84adfbbfd70f7cd37d1140faf45ec3349ba027a29b4cec90d421522f12edddb",
+    "folds/Urban03/calibration.json": "d9aabf9668bc1a1cedfdd3d3fa2bdd40c71206117384dc13e3755eeec111d01b",
+    "folds/Urban03/model.json": "8063211d5ed006e8b812f387e49c8342bde7c3f6e530fd2f803c8508b18c37ef",
+    "folds/Urban03/fit_export.npz": "52d181217eca2f4991fddcec1dd93f0ec441fadbfb9464827950a59d3061d9de",
+    "folds/Urban04/calibration.json": "bc673f6171c23ac6eab7adfc96a36950c55b72828a576cd1d283271f6d1d73f9",
+    "folds/Urban04/model.json": "8682f2e80c7cba0c8928f3c15f4daf1200df42366d084f823a284f211f51386a",
+    "folds/Urban04/fit_export.npz": "18dd2bbbd7ade341656527ecdf8121f783f6b772fea0e90c5d8b14cf6a349543"
+  },
+  "training_trace_sha256": "3cababf8276d00c95d7fb9c62f9c081485e3e3233e05e0f290074e543be5184b",
+  "membership_sha256": "2a4d8db446486cc6be0b1ce73fdf657f76e9d8b9bfaaa2a704af50a99471c65f",
+  "support_costs_sha256": "39b7cf4bda03493e9b6c73a7a4c2b1bf1a19f21e9de64e506235d83b132e8863",
+  "held_scores_created": false,
+  "all_fold_models_locked_before_scoring": true
+}

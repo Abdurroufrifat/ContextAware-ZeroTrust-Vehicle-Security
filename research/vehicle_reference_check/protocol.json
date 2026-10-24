@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "scope": "Frozen offline reference qualification and label audit on twelve previously selected 90-second blocks, not a fresh security evaluation or policy improvement. No predictor fitting, threshold search, clock offset fitting or live reference use.",
+  "recordings": {
+    "fit": {
+      "route": "Urban01/2023-11-23-15-38-43-Day",
+      "reference_bag_publisher_sha256": "f5a4bb87351e8488732dfa338d54c196eda610973d68d2f33e4ce6a5a81f080e",
+      "input_sha256": {
+        "stream.json": "11e736a2df75bff11d7d40d811acb713da8b7240a10072017bfa88aaaa2a0909",
+        "windows.json": "29ee4abac366b6a0e76ab27bbfae7c007c9270a7ee43c269f4914bd0a02d7c74"
+      }
+    },
+    "calibration": {
+      "route": "Urban01/2023-11-23-18-24-14-Night",
+      "reference_bag_publisher_sha256": "78beed33a83e42cbe639f7c8af984c6c4c9283d79e511622000a69c930cdac08",
+      "input_sha256": {
+        "stream.json": "cac49952e0874ba46656af16c5d0da6b63ecbbfc3df2f82c548891076362594a",
+        "windows.json": "4897f77bd2ef6ea53fd022b917d14c56617525337c20c92aaec232fdbaa144da"
+      }
+    },
+    "evaluation_urban03": {
+      "route": "Urban03/2023-11-03-09-42-41-Day",
+      "reference_bag_publisher_sha256": "5725b93bebf2fa1a89ee4202b8bd4c671519d40aeef2d90a34e6fda34950d479",
+      "input_sha256": {
+        "stream.json": "ee5dad0a0b51481b9a9602e88c4bd64a3270deb0c13c86ff71c7398eecaf903b",
+        "windows.json": "b39f7cf5399b8108812acb1b84084dced3c1680901da848bbdc4e89062ce94b7"
+      }
+    },
+    "evaluation_urban04": {
+      "route": "Urban04/2023-11-01-12-16-16-Day",
+      "reference_bag_publisher_sha256": "383d996c8215325b15dbb201db162df015716d0137959fda05a38cd91088a385",
+      "input_sha256": {
+        "stream.json": "f3c540ce100db882d7fa43e22d2850890d2a7811ff8984db56ebfcb6773a1d17",
+        "windows.json": "96c26d99eb41819138376093686f1ecf4464768fb783c8715f4d97dd58d7e913"
+      }
+    }
+  },
+  "primary_reference": "Horizontal speed hypot(north_velocity,east_velocity) in m/s, from INSPVA; three-dimensional magnitude retained only as a secondary grade-sensitivity diagnostic. This is not body-frame longitudinal velocity.",
+  "matching": "Latest INSPVA header timestamp <= radar scoring endpoint; maximum age 100ms; strictly ordered unique headers per topic; no interpolation, future samples or timestamp-offset optimization. Bag timestamp preserved as an offline writer diagnostic, not evidence of live availability.",
+  "quality": "Only status INS_SOLUTION_GOOD (3) with finite velocities and nonnegative integer timestamps is usable. No post-result substitution of other statuses. All existing endpoints remain in the denominator; unmatched/invalid reference and missing channels reported separately.",
+  "uncertainty": "INSPVAX latest header <= endpoint, max age 1.5s; report component standard deviations and status separately. Standard deviations and empirical quantiles are not worst-case error bounds; never use them to qualify a live witness.",
+  "primary_diagnostic_targets": {
+    "reference_match_fraction_min": 0.95,
+    "radar_reference_p95_disagreement_mps_max": 0.5,
+    "applies_to": "Every existing recording and 90-second block; diagnostic only, not proof of a uniform bound or journal readiness."
+  },
+  "metrics": [
+    "matched count/coverage",
+    "bias/MAE/RMSE/P95/max radar vs offline reference",
+    "OBD and GNSS-associated disagreements vs same offline reference",
+    "reference status/time/GPS/uncertainty quality",
+    "speed-bin context by offline reference only for audit, never policy input"
+  ],
+  "reference_lineage": "Dataset authors describe post-processed Novatel PwrPak7-E1 GNSS + KVH1750 IMU. GNSS ancestry overlaps a compromised channel; offline processing is noncausal. It cannot establish attack-independent online authenticity or a formal worst-case bound.",
+  "source_integrity": "Download entire reference.bag for each role, verify captured publisher SHA256, retain whole bags for independent offline hash/replay. This verification is only for the four reference bags, not for earlier partial radar/OBD/GNSS downloads.",
+  "qualification": "A live witness requires independently supported raw/configured units, geometry, threat-independent lineage, authenticated provenance, trusted live time/freshness, physical uniform error and acceleration bounds. Missing or empirical-only bounds fail closed. Existing production witness remains disabled.",
+  "timing_bound": "Conditional ideal model only: B=epsilon+a_max*age_s; speed hypotheses for shifts delta require delta>2B to be disjoint. Necessary condition under this scalar observation interface, not a measured or complete system guarantee.",
+  "forbidden": [
+    "Refitting predictors from newly opened reference labels",
+    "Tuning timing offsets from comparison errors",
+    "Calling reused recordings new held-out evidence",
+    "Promoting P95, observed maximum, sigma or 3sigma to a uniform bound",
+    "Opening blocked Urban02 night evaluation",
+    "Modifying production certificate or session gate",
+    "Manuscript or GitHub push"
+  ]
+}

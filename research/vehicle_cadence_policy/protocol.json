@@ -1,0 +1,76 @@
+{
+  "version": 2,
+  "scope": "Single development-derived cadence correction; unchanged radar predictor, separate timestamp freshness checks; previous studies preserved. No production witness or vehicle control.",
+  "recordings": {
+    "fit": {
+      "route": "Urban01/2023-11-23-15-38-43-Day",
+      "centers": [
+        0.2,
+        0.5,
+        0.8
+      ]
+    },
+    "calibration": {
+      "route": "Urban01/2023-11-23-18-24-14-Night",
+      "centers": [
+        0.2,
+        0.5,
+        0.8
+      ]
+    },
+    "evaluation_urban02_night": {
+      "route": "Urban02/2023-11-23-17-53-52-Night",
+      "centers": [
+        0.2,
+        0.5,
+        0.8
+      ]
+    }
+  },
+  "block_duration_ns": 90000000000,
+  "selection": "Exact 90s intervals around each predeclared duration center, using all overlapping source chunks and 1s preceding radar history. No measurement-based selection or replacement.",
+  "radar_model": "Unchanged signed_median_balanced model from the preceding consolidated evaluation; coefficients never refitted",
+  "centering": "Nominal fit-drive median of ((GNSS-associated speed+OBD speed)/2 - radar prediction), grouped by trusted radar-prediction bins [0,1),[1,5),[5,10),[10,infinity); global fit median fallback for empty bins. Attacked channels cannot select the bin.",
+  "cusum": {
+    "allowance_mps": 0.1,
+    "time_integration": "Integrate actual dt through the derived continuity deadline; a larger gap quarantines and resets the integration. Recompute the same fixed calibration maximum rule with the corrected cadence; no grid search.",
+    "threshold": "1.10 * maximum nominal calibration-block CUSUM, plus 1e-6; one fixed calibration calculation, no search"
+  },
+  "hard_alarm": "Base GNSS/OBD inconsistency >1m/s or physical discrepancy exceeding max(2.5m/s,1.10*maximum nominal calibration discrepancy)",
+  "soft_warning": "Any fresh GNSS/OBD-to-radar discrepancy >1m/s denies that endpoint but does not itself become a confirmed persistent alarm. Original production alarm semantics are unchanged; this is a new research comparator.",
+  "admission_recovery": "Start unadmitted; at least five fresh matching independent-witness endpoints spanning >=1s without a gap exceeding the development-derived deadline gap, followed by a new fresh endpoint. Confirmed alarm is retained until that physical-evidence recovery completes. Neural quietness alone cannot recover. Reset temporal statistic only when a fresh physical recovery epoch is built, not at a file/chunk boundary.",
+  "policies": [
+    "gnss_obd_consistency",
+    "radar_stateless",
+    "radar_retained_alert",
+    "radar_recovery_after_1s_fresh_contiguous_clean",
+    "confirmed_cusum_recovery",
+    "cadence_cusum_recovery"
+  ],
+  "attacks": [
+    "startup_common_bias_7",
+    "delayed_common_step_7",
+    "common_ramp_075",
+    "wheel_only_step_7",
+    "slow_common_ramp_005",
+    "radar_aware_offset_095"
+  ],
+  "attack_timing": "Startup at first scored endpoint; delayed attacks at 40% of block scored time; all removed at 80%. Ramps grow at 0.75 or 0.05m/s/s. Radar-aware attacker sets both compromised channel claims to max(0,radar_prediction+0.95m/s), with access to the frozen predictor.",
+  "primary_gates": {
+    "development_gate": "Before fresh evaluation, every fit/calibration block must have normal denial <=5%; zero +7m/s startup/common-step grants; combined fast/slow ramp grants with absolute injected shift >=1m/s must not exceed the previous temporal comparator on the same development blocks. If any gate fails, stop without opening new evaluation measurements. Do not tune after the gate.",
+    "evaluation_normal": "Every held-out recording and block normal denial <=5%, after the reported prefix. Prefix-inclusive and missing-data costs remain reported.",
+    "evaluation_security": "Zero startup/common-step attack grants; combined harmful ramp grants no more than the previous temporal policy; separately retain the earlier 50% reduction target against original one-second recovery, which remains required for the broader project claim.",
+    "all_cases": "Report all six attacks and every failure, including radar-aware offsets; no tuning after evaluation."
+  },
+  "scoring": "All raw radar endpoints within the fixed blocks after the 1s prefix; missing OBD/GNSS/invalid evidence deny and remain in the denominator. Prefix endpoints are reported separately as denied warmup. Replay fragments are 90s continuous blocks, not entire trips.",
+  "freeze": "Freeze code, protocol, development hashes and calibrated parameters before selected Urban02 night measurement payloads. Metadata may be checked first. If development viability fails, do not collect a new evaluation.",
+  "limits": [
+    "Empirical radar error is not a formal physical error bound",
+    "Configured radar units and live authenticated channel remain unverified",
+    "Nominal OBD/GNSS-associated channels are not independent ground truth",
+    "Sub-bound radar-aware attacks may be observationally indistinguishable; report them rather than declaring all attacks solved",
+    "Existing neural failed comparisons and earlier results remain unchanged"
+  ],
+  "cadence_rule": "Recovery and CUSUM continuity share one deadline: ceil(1.10*max positive within-block development radar gap /10ms)*10ms, clipped to [100ms,300ms]. Only fit and calibration streams can determine it; labels do not select the deadline. Current endpoint quality, GNSS/OBD 100ms freshness, radar header delivery 250ms, one-second actual recovery span, five distinct endpoints and an extra fresh endpoint remain required. No grants are emitted between recorded endpoints; tolerance of an inter-endpoint gap does not refresh old data.",
+  "development_reuse": "These expanded Urban01 blocks are existing development evidence. Previously evaluated Urban02 day, Urban03 and Urban04 recordings are excluded from new fitting, calibration, development selection and fresh evaluation. Prior failures motivated this correction; only Urban02 night is prospective here."
+}

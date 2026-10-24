@@ -1,0 +1,52 @@
+{
+  "scope": "Retrospective five-fitting-recording raw trace replay; no data/model/offset selection",
+  "routes": [
+    "Urban01/2023-11-23-15-38-43-Day",
+    "Urban03/2023-11-03-09-42-41-Day",
+    "Urban04/2023-11-01-12-16-16-Day",
+    "Urban03/2023-11-23-19-12-16-Night",
+    "Urban04/2023-11-23-19-36-42-Night"
+  ],
+  "reference_max_age_ns": 100000000,
+  "reference_age_boundaries_ns": [
+    20000000,
+    50000000
+  ],
+  "radar_max_delivery_ns": 250000000,
+  "radar_history_freshness_ns": 300000000,
+  "history_ticks": 128,
+  "tick_ns": 50000000,
+  "cancellation_numeric_tolerance_raw": 1e-06,
+  "no_offset_search": true,
+  "proxy_is_not_a_bound_or_correction": true,
+  "no_new_model": true,
+  "reserved_final_opened": false,
+  "input_sha256": {
+    "../vehicle_failure_diagnosis/diagnosis_core.py": "663d13fbac22d5c0817c9c21cea0dfde0dab23b1f13d547eb082a5f13c2cbdcf",
+    "../vehicle_failure_diagnosis/results.json": "822ac3d109769312c5edd3d8bfd2e2190be7e01ef6391960acb3faf84af69fc4",
+    "../vehicle_route_validation/membership.json": "2a4d8db446486cc6be0b1ce73fdf657f76e9d8b9bfaaa2a704af50a99471c65f",
+    "../vehicle_matched_baselines/oof_predictions.npz": "3bb863c99e8f8f0eb7c62ebfd330625b7e07f595d4240e0839e93bf1b437ffb6",
+    "../vehicle_reference_check/core_io.py": "177af29071f67bf6f2ce5c1ac7b77ed1a6b44e9c0f5caae254870a6c002cbe4f",
+    "../vehicle_reference_check/reference_core.py": "0ef14309c5da382bae57af721eb80165801bb2fc60e7f7e0cc4bd31e4e11a0da",
+    "../vehicle_reference_check/protocol.json": "650f85aad8f7e3d0ec965bf7d2cc191b5e1fdfb96b9e0919a2741ba0494f2bc2",
+    "../vehicle_reference_check/reference_bags/fit.bag": "f5a4bb87351e8488732dfa338d54c196eda610973d68d2f33e4ce6a5a81f080e",
+    "../vehicle_reference_check/reference_bags/evaluation_urban03.bag": "5725b93bebf2fa1a89ee4202b8bd4c671519d40aeef2d90a34e6fda34950d479",
+    "../vehicle_reference_check/reference_bags/evaluation_urban04.bag": "383d996c8215325b15dbb201db162df015716d0137959fda05a38cd91088a385",
+    "../vehicle_radar_multidrive/core_io.py": "177af29071f67bf6f2ce5c1ac7b77ed1a6b44e9c0f5caae254870a6c002cbe4f",
+    "../vehicle_radar_multidrive/estimator_core.py": "3c209bc0485fffe87a68d1b4da342ba71b7012171c0392e9801f4267c5efb5b4",
+    "../vehicle_radar_multidrive/inputs/fit/packets.jsonl.gz": "01dc674ce443f8cc97819e5ec4735c693bbd637d8a626fde5528b6566284a95e",
+    "../vehicle_radar_multidrive/inputs/fit/labels.json": "56c08e867ec78796f781cb74c36a6b3f1d41b88a648a913ee6b3f64071f70606",
+    "../vehicle_radar_multidrive/inputs/fit/windows.json": "b69947aec58a11cf81d1ca0420bb5a0ac0fee3d5b1395ec8220bb165cee9dc1a",
+    "../vehicle_radar_multidrive/prepared/fit/index.json": "b3693734b91144e01422173764cd7b1dd0a2c8ae7e60acf90325b3bcdc3ae87e",
+    "../vehicle_radar_multidrive/prepared/fit/data.npz": "ddf393a60ab845b045fd26e4a03218eb3eb36e4d5d4e40971cd5ef1735124d68",
+    "../vehicle_masked_history/masked_core.py": "220f03c0605c00fc4caee14d4a10ce9825d780216cc0be0455f3440a38b9e24a",
+    "../vehicle_night_training/night_index.json": "4b1224121adaa470c0e85ef4715033290c8b0021898aed856ae4a0741dadd6ed",
+    "../vehicle_night_training/night_fit.npz": "98e7664234a22dd2b64688f8e25721fe58fdd542ee6a8e65147cdb7242131d59",
+    "../vehicle_night_training/data_report.json": "3b7d7069976d5c9f3d0d242bbad3b10ed9aa3d84c337fa02b667e061cbf2a77e",
+    "../vehicle_night_training/protocol.json": "427f7b3f9bb12ce37503815d09725065c564368288cff440a98f2d75aa8f69b3",
+    "../vehicle_night_training/source/Urban03/radars.bag": "c82193ab3333aa5fda1f56b7c3b626b13291eba52b9b6947e3cde172972773a9",
+    "../vehicle_night_training/source/Urban03/reference.bag": "2cb396086bc3d3e17a94b06ba6c04df006fb09bcdfd7233f84b809d3b885d2b2",
+    "../vehicle_night_training/source/Urban04/radars.bag": "b5fc7afb2831669fc419c438afb78cc9b69cb6c528185353dc0ba8345d6a2f0e",
+    "../vehicle_night_training/source/Urban04/reference.bag": "b682fa141040436d7f3afd992fad8818e084cca0b902bb55f27128d03db78244"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "role": "development_only",
+  "records": [
+    "07_turning",
+    "04_crossTraffic",
+    "14_countryRoad"
+  ],
+  "previously_inspected_development_data": true,
+  "split": {
+    "train_fraction": 0.45,
+    "calibration_end_fraction": 0.7,
+    "purge_seconds": 1,
+    "stride": 5,
+    "order": "receipt_time"
+  },
+  "candidate": "Vehicle CAN WheelId.MEAN (id 0) speed",
+  "context": [
+    "rear_wheel_median",
+    "onboard_yaw_rate_esp",
+    "onboard_steering_angle",
+    "acceleration"
+  ],
+  "failure_domain": "All four inputs originate from the same vehicle CAN feedback; separate research signer keys do not establish independent physical acquisition",
+  "model": {
+    "type": "ridge contextual normal-residual regression",
+    "ridge": 1,
+    "calibration_quantile": 0.995,
+    "threshold_floor_mps": 0.05,
+    "raw_context_ood_margins": [
+      0.5,
+      0.05,
+      0.1,
+      1
+    ]
+  },
+  "max_age_us": 100000,
+  "baseline_agreement_threshold_mps": 1,
+  "statistical_scale_floor_mps": 0.02,
+  "policies": [
+    "unguarded",
+    "authenticated_only",
+    "fixed_agreement",
+    "global_learned",
+    "context_no_ood",
+    "context_learned",
+    "cusum",
+    "ewma"
+  ],
+  "cases": [
+    "nominal",
+    "candidate_bias",
+    "candidate_slow_drift",
+    "candidate_retimed_replay",
+    "coordinated_bias",
+    "missing_context",
+    "stale_context",
+    "stale_candidate",
+    "future_candidate",
+    "tampered_candidate",
+    "tampered_context",
+    "original_wire_replay"
+  ],
+  "attack": {
+    "onset_seconds_from_eval_start": 1,
+    "bias_mps": 3,
+    "drift_mps_per_second": 0.3,
+    "replay_delay_seconds": 1
+  },
+  "authentication": "Reuse existing durable HMAC guard for candidate and peer; bind the complete context payload to the peer envelope with an additional domain-separated HMAC; randomly generated research signing keys; no acquisition authenticity claim",
+  "reference": "Offline INS velocity translated to rear axle and linearly interpolated at feedback receipt timestamp, bracketing interval <=50ms. Never used to fit, calibrate, or grant the policy.",
+  "unscorable_reference": "Count and report accepted samples lacking a reference; do not equate unknown errors to zero",
+  "original_gates": {
+    "p95_discrepancy_mps_max": 0.5,
+    "clean_coverage_pct_min": 95,
+    "accepted_discrepancy_above_2_mps_max": 0,
+    "physical_gate_pass": null
+  },
+  "confirmation": false,
+  "production_policy_changed": false,
+  "physical_witness_enabled": false
+}

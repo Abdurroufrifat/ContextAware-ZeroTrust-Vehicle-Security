@@ -1,0 +1,20 @@
+{
+  "analysis_lock_sha256": "44490d8e044d98c0d8f284ef92b79eccbe3ebc814545a556777d249277639a9f",
+  "training_trace_sha256": "d0d44044c203644a4ba66b42b3eed0e91275dd1aa37ec74c4112d196e205d525",
+  "files_sha256": {
+    "models/Urban01/model.json": "ae3f7852daa9bd1439c4127d1fb3c3a66a784c55085d5ef8c0799141382ac334",
+    "models/Urban01/calibration.json": "0ad41a4147452bf3810943c4782b42d869305f7ddc50fc3bb54d2f3c5b42e8cb",
+    "models/Urban01/fit_export.npz": "255bef78dfe4fb6838cc44cca1e426fbcdad07c185eb1c3100cbb5f2068a3758",
+    "models/Urban03/model.json": "9d3852c11ee5b8be0995fb891a090fe105e8cf4d2ffc6205e8594dce527f7dfd",
+    "models/Urban03/calibration.json": "d9aabf9668bc1a1cedfdd3d3fa2bdd40c71206117384dc13e3755eeec111d01b",
+    "models/Urban03/fit_export.npz": "8104cd9be85636d6673705cb917bcddbf46bfdfe862ebba8b2e355bbc5d3f4e9",
+    "models/Urban04/model.json": "72801ed54d17545e8d39973cc6c7ff7102a0898dc6008f06decc426dd0fd39a4",
+    "models/Urban04/calibration.json": "bc673f6171c23ac6eab7adfc96a36950c55b72828a576cd1d283271f6d1d73f9",
+    "models/Urban04/fit_export.npz": "dc9a47823cab5d3257ede98b7020683d1b1a52f2a6aaacd20d95bc69d10ecf62",
+    "models/all_fit/model.json": "6e0b71b4b01bb60683e3d231dd2a489d5c1ca174f751a42a20a9815a299b5f29",
+    "models/all_fit/calibration.json": "6e81b3bf82bb02646ff60f4a4b6c3c84d2c04d81d3be5d2e4b1d0270cd4abbda",
+    "models/all_fit/fit_export.npz": "811da6ed69d27a7b81eeb4d35c518e7a0eba6d6ad6b0f1a5bcc63662e87fe016"
+  },
+  "all_four_locked_before_new_scoring": true,
+  "new_scores_created": false
+}

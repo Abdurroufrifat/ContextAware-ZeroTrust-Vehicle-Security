@@ -1,0 +1,49 @@
+# Copy to configs/hai.yaml, inspect your downloaded files, then edit paths/columns.
+dataset:
+  name: HAI
+  train_csvs:
+    - data/raw/hai_repo/hai-23.05/hai-train*.csv
+  test_csvs:
+    - data/raw/hai_repo/hai-23.05/hai-test*.csv
+  output_directory: data/processed/hai
+  label_column: attack
+  normal_values: [0, "0", "normal", "Normal"]
+  root_column: null
+  features: null  # Auto-select numeric telemetry; pin the final list before experiments.
+  window_size: 64
+  stride: 4
+  label_rule: any
+  validation_fraction: 0.20
+
+# Start with an explicit physical/control topology after inspecting your HAI version.
+# If omitted, the code uses a fully connected baseline and prints a warning.
+topology: {}
+
+model:
+  detection_mode: normal_only
+  d_model: 64
+  n_heads: 4
+  n_layers: 2
+  dropout: 0.15
+
+training:
+  seed: 7
+  epochs: 30
+  batch_size: 64
+  learning_rate: 0.0002
+  weight_decay: 0.0001
+  physics_weight: 0.05
+  reconstruction_weight: 0.05
+  root_weight: 0.25
+  mask_probability: 0.15
+  calibration_quantile: 0.995
+
+physics_invariants: []
+
+process_grounding:
+  require: false  # Set true only after explicit physical/control topology is configured.
+  invariant_threshold: 0.05
+  counterfactual_minimum: 0.0
+
+artifacts:
+  directory: artifacts/hai

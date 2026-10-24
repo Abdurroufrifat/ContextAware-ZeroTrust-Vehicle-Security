@@ -1,0 +1,110 @@
+{
+  "scope": "closed-loop numerical cyber-physical simulation; physical hardware validation excluded by user",
+  "profiles": {
+    "emergency_follow": {
+      "lead_speed": 16,
+      "ego_speed": 16,
+      "lead_position": 95,
+      "accelerations": [
+        0,
+        0,
+        -4,
+        0,
+        1
+      ]
+    },
+    "highway_braking": {
+      "lead_speed": 22,
+      "ego_speed": 20,
+      "lead_position": 100,
+      "accelerations": [
+        0,
+        0,
+        -4,
+        1,
+        0
+      ]
+    },
+    "stop_restart": {
+      "lead_speed": 8,
+      "ego_speed": 6,
+      "lead_position": 81,
+      "accelerations": [
+        -1,
+        0,
+        1.5,
+        -2,
+        1
+      ]
+    }
+  },
+  "seeds": [
+    601,
+    733,
+    887
+  ],
+  "cases": [
+    "nominal",
+    "speed_bias",
+    "candidate_bad_tag",
+    "scene_disinformation",
+    "scene_replay",
+    "scene_dropout",
+    "radar_disinformation",
+    "common_view_disinformation",
+    "actuator_tamper",
+    "untrusted_advisory",
+    "execution_break",
+    "context_change"
+  ],
+  "policies": [
+    "raw",
+    "sensor_auth",
+    "learned",
+    "proposed_midpoint",
+    "proposed_learned"
+  ],
+  "step_us": 10000,
+  "query_us": 100000,
+  "duration_s": 20,
+  "attack_start_us": 8000000,
+  "attack_end_us": 14000000,
+  "anchor_age_us": 90000,
+  "radar_gap_bound_um": 50000,
+  "radar_relative_bound_mmps": 100,
+  "ego_speed_bound_mmps": 500,
+  "scene_gap_bound_um": 1500,
+  "scene_lead_bound_mmps": 75,
+  "execution_bound_mmps2": 1000,
+  "actual_nominal_disturbance_mmps2": 500,
+  "lead_braking_mmps2": 4000,
+  "ego_guaranteed_braking_mmps2": 3000,
+  "minimum_gap_um": 2000000,
+  "model_source": "vehicle_command_scene_learning/models/forest.joblib; frozen before these scenarios and seeds",
+  "primary_metrics": [
+    "collision events",
+    "minimum gap",
+    "time below 2m gap",
+    "progress",
+    "nominal progress retention",
+    "fallback fraction",
+    "selected-speed MAE",
+    "actuator tamper acceptance",
+    "untrusted advisory acceptance"
+  ],
+  "inference": "descriptive paired scenarios and three seed clusters; no independent-sample population confidence intervals",
+  "limitations": [
+    "longitudinal two-vehicle numerical SUMO model",
+    "synthetic bounded sensor channels, not rendered perception",
+    "public test keys, no production security claim",
+    "all-source semantic corruption and actuator execution failures can violate model premises",
+    "operator explanation checks are technical, not a human participant study"
+  ],
+  "no_retraining": true,
+  "parallel_workers": 3,
+  "acceleration_refresh_us": 10000,
+  "actual_acceleration_saturation_mmps2": [
+    -4000,
+    2000
+  ]
+}

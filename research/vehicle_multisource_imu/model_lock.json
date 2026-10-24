@@ -1,0 +1,29 @@
+{
+  "analysis_lock_sha256": "8274c94797c22606f23bd1639e8febb1b3ba98e8f075cdb011b140de11ac3df0",
+  "data_lock_sha256": "006cd0fd0dd2d6ac2045b53302b19287d547d3cd9ec71e4944570308a36915f2",
+  "training_trace_sha256": "e1e04e6431a2da556b4a2d6920b35ccce6104d5f54e3dacb018768123f15b0b7",
+  "files_sha256": {
+    "models/Urban01/calibration.json": "0ad41a4147452bf3810943c4782b42d869305f7ddc50fc3bb54d2f3c5b42e8cb",
+    "models/Urban01/radar_imu.json": "5c16d7ffc276fe2317d88476b67188a2afe471ec1e682eb82200f1094d8655cf",
+    "models/Urban01/radar_imu_export.npz": "86ee18ac6526f11d6d38cee71ba96f55ede7bfd4a46223bfe0b31eec0771a87a",
+    "models/Urban01/imu_only.json": "93423bdadbc48381b40ea527a5c6a24bcd412a8c616803177fc0686a788b3393",
+    "models/Urban01/imu_only_export.npz": "5169d6e04efe6b8d1b5e6a681a640b8634976a77eef67436a31bbadd115ce9df",
+    "models/Urban03/calibration.json": "d9aabf9668bc1a1cedfdd3d3fa2bdd40c71206117384dc13e3755eeec111d01b",
+    "models/Urban03/radar_imu.json": "81b7c986fe966956eba4d0579b1be8cb2c7e79cd4c9c5498d0722d3c79322dae",
+    "models/Urban03/radar_imu_export.npz": "530ea9c37fc99dadeae9b6e241c9162708757960a39749c657a3f9b258ee3761",
+    "models/Urban03/imu_only.json": "7fe8f0bc3f2c458dcaee40ec53692e5e6c3924f4ba0832734b8c18138a9619c3",
+    "models/Urban03/imu_only_export.npz": "d55e98b7c4ae591ed37ef1767d39134bb02f0b2fcfe64fb391a814d6d203e0f3",
+    "models/Urban04/calibration.json": "bc673f6171c23ac6eab7adfc96a36950c55b72828a576cd1d283271f6d1d73f9",
+    "models/Urban04/radar_imu.json": "faa96a50ddae25ae2ab55919d10f6200d000b2c2057f1a727a35b887c5c5db71",
+    "models/Urban04/radar_imu_export.npz": "e661c1e4d77b72b7ce6eaf9695c4cfd3a8b7dc89a781c8ae478a0b29295cb563",
+    "models/Urban04/imu_only.json": "9fe6e1938e7f843cc96dea2e9f1dd99e4be6c28161a24367dac56aa24302812d",
+    "models/Urban04/imu_only_export.npz": "e7e0eea09a8edd8ce815bb7f6e9f8baa2c0cfb3a1e88ef475a14d98c4f966010",
+    "models/all_fit/calibration.json": "6e81b3bf82bb02646ff60f4a4b6c3c84d2c04d81d3be5d2e4b1d0270cd4abbda",
+    "models/all_fit/radar_imu.json": "9710b4746946852e68a37b146ef61aa87e85f6b27ee859e28f921981d8dcd2cb",
+    "models/all_fit/radar_imu_export.npz": "d9f6bf745846071c0242a707f63e8ebd7077802377da3dc55a9300eb89ffb2ee",
+    "models/all_fit/imu_only.json": "8dc7fc794c9e76841ca7639b338f265f253f888ebbaa1a374e4a3fb87cf1dfe9",
+    "models/all_fit/imu_only_export.npz": "3198adf2c0d0d793389c7b70663a35c170d360255ae953e14ca1d32bcb933474"
+  },
+  "all_eight_locked_before_new_scoring": true,
+  "new_scores_created": false
+}

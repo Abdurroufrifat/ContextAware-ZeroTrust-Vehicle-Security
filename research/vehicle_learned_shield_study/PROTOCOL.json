@@ -1,0 +1,61 @@
+{
+  "profiles": {
+    "slow": {
+      "lead_speed": 8,
+      "ego_speed": 6,
+      "lead_position": 95,
+      "description": "-1 from 0..4; +1.5 from 4..8; -1.5 from 8..12; +1 from 12..16; 0 thereafter"
+    },
+    "fast": {
+      "lead_speed": 20,
+      "ego_speed": 18,
+      "lead_position": 115,
+      "description": "0 from 0..4; -3 from 4..8; +1 from 8..12; +2 from 12..16; -1 thereafter"
+    },
+    "stop_go": {
+      "lead_speed": 12,
+      "ego_speed": 10,
+      "lead_position": 100,
+      "description": "-3 from 0..4; 0 from 4..8; +2 from 8..12; -2 from 12..16; +1 thereafter"
+    }
+  },
+  "seeds": [
+    101,
+    211
+  ],
+  "age_us": 90000,
+  "cases": [
+    "nominal",
+    "joint_minus3",
+    "joint_slow_drift",
+    "candidate_bad_tag",
+    "anchor_dropout",
+    "scene_bad_tag",
+    "scene_dropout",
+    "scene_common_compromise",
+    "context_change"
+  ],
+  "policies": [
+    "kinematic",
+    "learned_unshielded",
+    "learned_shielded"
+  ],
+  "training_seeds": [
+    17,
+    29
+  ],
+  "validation_seeds": [
+    43
+  ],
+  "training_policy": "kinematic",
+  "model_candidates": [
+    "ridge",
+    "random_forest",
+    "mlp_7",
+    "mlp_19",
+    "mlp_31"
+  ],
+  "selection_metric": "validation MAE after conditional interval projection; ties by model name",
+  "error_budget_mmps": 500,
+  "physical_vehicle_validation": false
+}

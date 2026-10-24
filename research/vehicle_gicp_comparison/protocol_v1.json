@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "development_only": true,
+  "purpose": "fixed-input published registration-backend comparison; not full AV defense reproduction",
+  "package": "small-gicp==1.0.1",
+  "paper": {
+    "title": "small_gicp: Efficient and parallel algorithms for point cloud registration",
+    "year": 2024,
+    "doi": "10.21105/joss.06948"
+  },
+  "variants": [
+    "ICP",
+    "PLANE_ICP",
+    "GICP"
+  ],
+  "native": {
+    "num_threads": 1,
+    "downsampling_resolution": 0.25,
+    "num_neighbors": 16,
+    "max_correspondence_distance": 1.5,
+    "max_iterations": 20,
+    "rotation_epsilon_rad": 0.0017453292519943296,
+    "translation_epsilon_m": 0.001,
+    "initial_pose": "identity; no CAN/INS prior"
+  },
+  "shared_quality": {
+    "minimum_input_points": 150,
+    "min_inliers": 100,
+    "min_overlap": 0.5,
+    "max_point_to_point_p95_m": 0.3,
+    "max_reference_planar_condition": 1000,
+    "max_speed_mps": 60,
+    "max_abs_yaw_radps": 2,
+    "interval_seconds": [
+      0.07,
+      0.13
+    ]
+  },
+  "inputs": "exact saved NPZ point sets and support timestamps from frozen streaming v1; preserve input hashes",
+  "scoring": "INS query-time and interval-midpoint offline only, no parameter fitting",
+  "timing": "method-only measured wall time, excludes raw decoding and upstream input assembly; no end-to-end success inference",
+  "full_replay_trigger": {
+    "variant": "GICP only, predesignated",
+    "p95_query_discrepancy_mps_max": 0.5,
+    "large_errors_above_2_mps": 0,
+    "min_acceptance_pct_of_nonempty_inputs": 95
+  },
+  "original_policy_gates": {
+    "coverage_target_pct": 95,
+    "maximum_evidence_age_us": 100000,
+    "candidate_agreement_mmps": 1000
+  },
+  "acquisition_age_certified": false,
+  "production_policy_changed": false,
+  "promotion_allowed": false,
+  "stop_rule": "Report all variants. Do not tune after outcomes. If trigger fails, do not spend resources on full raw replay."
+}

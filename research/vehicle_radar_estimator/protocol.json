@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "scope": "One fixed causal radar estimator study. Existing Urban01 fit/calibration are development data; no inference input from GNSS/OBD/reference labels. Prior studies remain immutable.",
+  "inputs": {
+    "fit": "Urban01/2023-11-23-15-38-43-Day",
+    "calibration": "Urban01/2023-11-23-18-24-14-Night"
+  },
+  "window_selection": "The same three fixed 90s blocks at fractions .2,.5,.8 per role; no label/speed-based window replacement. New model warmup is explicitly reported.",
+  "features": {
+    "grid_step_ns": 50000000,
+    "grid_length": 128,
+    "history_ns": 6350000000,
+    "source": "latest good radar bag record at or before each grid time, no interpolation or future radar, history restricted to the current block",
+    "maximum_grid_age_ns": 300000000,
+    "maximum_radar_header_delivery_ns": 250000000,
+    "channels": [
+      "signed raw speed /10",
+      "absolute raw speed /10",
+      "sample age /300ms",
+      "validity mask"
+    ],
+    "ready": "Complete 6.35s block history; all 128 past grid entries and current endpoint valid. Unsupported endpoints are not silently discarded: count warmup/missing costs; compare methods on identical supported endpoints."
+  },
+  "target": "Previously decoded latest-prior horizontal offline reference speed; fit role only trains all estimators. The reference is a supervised label, not a live feature or proof of physical authenticity.",
+  "models": [
+    "frozen_median",
+    "reference_median_affine",
+    "causal_savgol_affine",
+    "paper_inspired_cnn",
+    "causal_residual_tcn"
+  ],
+  "classical": "Refit median uses identical causal signed-median raw feature as old predictor; speed-bin-balanced affine fit on fit labels. SG uses 51 trailing 20Hz signed grid samples, degree2 polynomial evaluated at newest sample (causal endpoint); absolute filtered raw speed followed by the same fit-only balanced affine calibration. No filter-parameter search.",
+  "candidate": {
+    "architecture": "4-to-16 pointwise stem; five 16-channel causal kernel5 convolution blocks with dilations [1,2,4,8,16], ReLU and residual addition divided by sqrt(2); 16-to-1 endpoint head initialized to zero",
+    "output": "reference-median-affine anchor plus learned correction; final speed clipped at zero",
+    "loss": "speed-bin-balanced Huber loss delta0.2 m/s",
+    "optimizer": "AdamW lr0.001 weight_decay0.0001",
+    "epochs": 80,
+    "batch_size": 128,
+    "seeds": [
+      141,
+      142,
+      143
+    ],
+    "primary_prediction": "Arithmetic mean of all three final-epoch seed predictions, never best-seed selection"
+  },
+  "cnn_reconstruction": {
+    "architecture": "six same-padded 1D kernel7 convolutions with channels [1,8,16,32,16,8,1], batchnorm and GELU(tanh approximation); input signed radar history; only final endpoint output used",
+    "output": "10 times final network output; speed clipped only for inference",
+    "training": "Same fixed 80-epoch budget and three seeds, batch128, speed-bin-balanced endpoint MSE, RAdam lr0.001 weight_decay0.00001",
+    "fidelity": "Inspired reconstruction only. Original code/checkpoints and complete width/stride/padding details were unavailable. This is not an exact reproduction of DOI10.1109/TIV.2023.3287790, nor its 400-epoch training, dataset split, sequence loss, median postfilter or positioning filter. Do not claim to outperform the published paper."
+  },
+  "checkpoint_selection": "Final epoch only. No early stopping, calibration-driven checkpoint choice, architecture sweep, seed selection or post-result retries.",
+  "normalization": "Fixed scale constants above; no calibration/evaluation statistics are used. Label-bin weights are fit-only training weights, not an input context selected by attacked channels.",
+  "development_gate": {
+    "coverage_min_after_prefix": 0.95,
+    "candidate_p95_max_mps": 0.5,
+    "applies_to": "Every calibration block and calibration overall",
+    "candidate_rmse_max_fraction_of_reference_median": 0.85,
+    "do_not_collect_fresh_evaluation_unless_all_pass": true
+  },
+  "prospective_evaluation": {
+    "role": "evaluation_urban02_night",
+    "route": "Urban02/2023-11-23-17-53-52-Night",
+    "centers": [
+      0.2,
+      0.5,
+      0.8
+    ],
+    "duration_ns": 90000000000,
+    "measurement_payloads_currently_unopened": true,
+    "rule": "May open only after this new estimator passes its development gate with model/implementation/parameter locks. This is a distinct protocol, not a bypass of the earlier failed cadence-policy protocol. Same accuracy/coverage/relative-RMSE gates apply, with no tuning afterward."
+  },
+  "audit": "Export weights as JSON and reproduce all predictions with NumPy independently of PyTorch. Standard project environment needs no new package for audit. Torch is for training only.",
+  "limits": [
+    "No uniform physical error bound",
+    "Raw Doppler configured units/mounting angle and authenticated live clock/provenance remain unverified",
+    "Reference shares GNSS ancestry; offline supervision does not create a trusted online witness",
+    "Older opened Urban02 day/Urban03/Urban04 are not used to fit, choose checkpoints or claim fresh evaluation",
+    "One development recording and only 270s of fit blocks limit generalization",
+    "No neural policy promotion, vehicle control, GitHub push or manuscript"
+  ],
+  "input_sha256": {
+    "inputs/fit/windows.json": "29ee4abac366b6a0e76ab27bbfae7c007c9270a7ee43c269f4914bd0a02d7c74",
+    "inputs/fit/labels.json": "08d72796351632b4cc3ce0359a3833e1623c64f6658687b93c280a390921b8ce",
+    "inputs/fit/packets.jsonl.gz": "dcb9c38c16bdb5227131caa846375d15768de6fa6850d4385d1ee21b1552bd67",
+    "inputs/calibration/windows.json": "4897f77bd2ef6ea53fd022b917d14c56617525337c20c92aaec232fdbaa144da",
+    "inputs/calibration/labels.json": "7c8ee563677b678fdd417e65510ae94a7656a234d588cc2dabaeadd8c07e5f1f",
+    "inputs/calibration/packets.jsonl.gz": "5515122cf3e01c5bbc2e8a861fc8a389e136e11bd8536a82c669d26d25c01714"
+  }
+}

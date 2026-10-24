@@ -1,0 +1,48 @@
+{
+  "scope": "Retrospective descriptive audit of locked predictions; no fitted model or policy changes",
+  "models": [
+    "context_boosting",
+    "affine_median_matched",
+    "ridge_context",
+    "huber_context",
+    "magnitude_context",
+    "magnitude_context_anchor"
+  ],
+  "comparison_metrics": [
+    "mae_mps",
+    "rmse_mps",
+    "p95_mps"
+  ],
+  "families": {
+    "window": "window_id",
+    "recording": "route",
+    "route_group": "group"
+  },
+  "tie_tolerance": 1e-12,
+  "p95_limit_mps": 0.5,
+  "supported_rows": 27178,
+  "windows": 15,
+  "recordings": 5,
+  "named_route_groups": 3,
+  "omissions": 23,
+  "balanced_metrics": "equal_unit_mae=mean unitMAE; equal_unit_rmse=sqrt(mean unitMSE); mean_unit_p95=mean unitP95 (not a weighted quantile)",
+  "model_refitting": false,
+  "new_inference": false,
+  "promotion_allowed": false,
+  "omissions_change_main_cohort": false,
+  "p_values": false,
+  "population_confidence_intervals": false,
+  "input_sha256": {
+    "../vehicle_route_validation/membership.json": "2a4d8db446486cc6be0b1ce73fdf657f76e9d8b9bfaaa2a704af50a99471c65f",
+    "../vehicle_route_validation/support_costs.json": "39b7cf4bda03493e9b6c73a7a4c2b1bf1a19f21e9de64e506235d83b132e8863",
+    "../vehicle_route_validation/oof_predictions.npz": "6bf2bd6797972aed326ca989ad7cd6914fa2cc712f08744d5f4c57683ae608d1",
+    "../vehicle_route_validation/results.json": "5a6679b70fcf6ff01d68a22252fe001249f59ce8cc8c608de40c9ca9d156b366",
+    "../vehicle_matched_baselines/oof_predictions.npz": "3bb863c99e8f8f0eb7c62ebfd330625b7e07f595d4240e0839e93bf1b437ffb6",
+    "../vehicle_matched_baselines/results.json": "89d1006075ff4e1955a3caed3cc10b59effc68fd18ad5ab1f04e1f7d00d3955c",
+    "../vehicle_matched_baselines/training_trace.json": "1a0c734e998f8a1c1370d0acc55d1d8e514703f43e9d3123d801564f85108d1a",
+    "../vehicle_magnitude_ablation/oof_predictions.npz": "8397388a00259d634a30ab18bee8171fe1e8e26d7580d00c76ebe99175346dba",
+    "../vehicle_magnitude_ablation/results.json": "8b5ef9dcedc939b4339881d575f0f85814a2a89d95c08897c843210abf187729",
+    "../vehicle_magnitude_ablation/analysis_lock.json": "a05f8634af378b1f84c2a08c20552248bacfcf4414b8ddb475f2fe6c0c53d81c",
+    "prior_snapshot_manifest.json": "fa353c27360b994988510a7396c8a71ce965c8f2c6aa00c387844ef113c62270"
+  }
+}

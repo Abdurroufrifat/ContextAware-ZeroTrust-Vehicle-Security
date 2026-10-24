@@ -1,0 +1,23 @@
+{
+  "analysis_lock_sha256": "045a6abd28fbb5393c04a9fc7a0773a88651de018a0ebab7a74de32dfcea4862",
+  "training_trace_sha256": "e253610eadf81c26c734e876dd0ed6904524ef02c1e4e0e57a6ad2e682b78cb0",
+  "files_sha256": {
+    "models/all_fit/linear7_training.npz": "0ac1a28699fd486d39f2aa95bc299b8e3e5065dd7c5bc7371335457d3d59fc55",
+    "models/all_fit/nonlinear7.json": "d57ac46bac7a1b6745a5c64e8910f1941fdbbc768472b4e90cee93a044edb547",
+    "models/all_fit/linear7.json": "d99a54f5b3a7b7d24af9074b0d26695289072279799abb13434d9c31386d4f1b",
+    "models/all_fit/nonlinear7_training.npz": "4a98d353919f3b3a225829fe790ad76d61191258eacd8722db4da1637a094532",
+    "models/Urban01/linear7_training.npz": "e1b094827095d64d8857d9eb2318995a4e8cf8ed7f2bff62c0e817cdb3a8ff51",
+    "models/Urban01/nonlinear7.json": "a2bee5da591b00cff396db66fa40ef9ce2bff0020325d97d990917dcb96f31d1",
+    "models/Urban01/linear7.json": "0c1cd9ce6b776974de07d5183a85221e4c51bdf9c87b4b6959580bcb2c64cd8c",
+    "models/Urban01/nonlinear7_training.npz": "96dd810e48ca46de2f332e8b89ac2540e69e673d2c5b7edb7db7943b421d0e06",
+    "models/Urban04/linear7_training.npz": "0468dfcebe29abf3f568485f2b363e082a4712bde0c354077879ad6dcfd0c1c7",
+    "models/Urban04/nonlinear7.json": "ba5ed3a24304ab30e5b997908a83dd9dd082aceea08398270c62eef15c16c33d",
+    "models/Urban04/linear7.json": "78f87da979017c15396607397893931a7edf3945ea4f945473e85110ccd912cc",
+    "models/Urban04/nonlinear7_training.npz": "72574e23f964e55b732e961396a0d2b468323824049059bc09c94a855704d1bf",
+    "models/Urban03/linear7_training.npz": "9a67d3ad7bcd0e0bb0884634eb8d861fbea5a535df3d4ec6e87d9940ff6bdc9e",
+    "models/Urban03/nonlinear7.json": "bd68029b6ccd3788aa83f86a8819b87f941b3af5b30770230630f32938623019",
+    "models/Urban03/linear7.json": "df2033c5b5e0fa643da630f2f9ca42305e0936fb89510da34c979e8a18a145f0",
+    "models/Urban03/nonlinear7_training.npz": "830ad59f028c04800d33126e29c63915a0a111d0ad6d15638cd6e619f69a7edd"
+  },
+  "all_eight_locked_before_new_scores": true
+}

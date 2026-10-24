@@ -1,0 +1,16 @@
+{
+  "design_lock_sha256": "c7101bc93154c59fd46a7ba77041465e39ba698556e9d1cc4a70254c08f757b4",
+  "fit_prepared_sha256": "ddf393a60ab845b045fd26e4a03218eb3eb36e4d5d4e40971cd5ef1735124d68",
+  "classical_sha256": "663ca779a2a7c94d19c5eca7bdf085b620813e2ea6a74d1de0002ae556a826db",
+  "models_sha256": {
+    "models/causal_residual_tcn_141.json": "08e4e47916e72535ded936a709eca4fcebe0ddb7dfee1e4df0e1b3c70856b537",
+    "models/causal_residual_tcn_142.json": "f1f1b04dd6a3da07717a41abab525e44990e7c862920c3df57dc167a65949ffc",
+    "models/causal_residual_tcn_143.json": "a40bbcb4563e6e82cb5f5254f837ba100896cd919682b9d8f24e8a21de76b9df",
+    "models/paper_inspired_cnn_141.json": "20129dc58172dffc0bf95602e64a849ff0d8c7138ac2a2bba810068ea14838f3",
+    "models/paper_inspired_cnn_142.json": "971846b39fb10be3eda57158021271d9f511ccfe4b22e4565df7e1b41bd5fdf5",
+    "models/paper_inspired_cnn_143.json": "f2dc9a681eaf0f0871ea52b95c5767c344b96331e983a8d4722b1bb79ca8371a"
+  },
+  "training_trace_sha256": "e979da67b63c227659501e211387d69b8592e6d6da7b6db592950a672d42b677",
+  "primary": "causal_residual_tcn",
+  "selection": "Equal average of all three predeclared final-epoch seeds. No calibration labels loaded by training."
+}

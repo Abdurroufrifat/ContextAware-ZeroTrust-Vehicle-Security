@@ -1,0 +1,43 @@
+{
+  "version": 2,
+  "development_only": true,
+  "question": "Does equal-sensor evidence weighting reduce dense-sensor consensus errors without changing freshness or candidate agreement gates?",
+  "hypothesis": "Point-count dominance can choose moving-target consensus; equal sensor mass and stratified proposals reduce that bias. Scene ambiguity remains possible.",
+  "baseline_preserved": "protocol_v1.json and prior runtime/results",
+  "estimator": {
+    "minimum_detections": 30,
+    "minimum_sensors": 3,
+    "residual_threshold_mps": 0.25,
+    "hypotheses": 256,
+    "seed": 20261021,
+    "proposal": "sample 3 different sensor IDs uniformly, then one detection uniformly per ID",
+    "score": "mean inlier fraction across all observed sensors; tie lower weighted inlier residual",
+    "fit": "weighted least squares, each sensor has equal total mass before masking",
+    "minimum_balanced_inlier_fraction": 0.5,
+    "minimum_inlier_sensors": 3,
+    "maximum_matrix_condition": 1000,
+    "max_speed_mps": 60,
+    "max_abs_yaw_radps": 2,
+    "refit_iterations": 3
+  },
+  "timing_tracks": [
+    "raw_header_association",
+    "processed_corrected_time"
+  ],
+  "max_evidence_age_us": 100000,
+  "agreement_threshold_mmps": 1000,
+  "attacks": [
+    "nominal",
+    "coordinated_plus_3",
+    "coordinated_minus_3_clipped",
+    "coordinated_zero",
+    "coordinated_times_2",
+    "coordinated_radar_match"
+  ],
+  "attack_semantics": "Compromised authorized CAN candidate and peer sign fresh reports; preserve yaw,steering,acceleration; radar-match assumes attacker knows available radar estimate. No alteration of radar.",
+  "offline_INS": "scoring only; no estimation, fitting, attack crafting or parameter selection",
+  "promotion_allowed": false,
+  "production_policy_changed": false,
+  "acquisition_latency_certified": false,
+  "stopping_rule": "One frozen candidate, report all outcomes; do not tune after seeing results."
+}

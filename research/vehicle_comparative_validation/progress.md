@@ -1,0 +1,15 @@
+# Comparative validation ledger ? PLAN.md
+Ruling: user authorized all three extensions and delegated routine choices; execute inline in new folder, preserving frozen predecessor and unrelated dirty files. No commit/push/manuscript.
+Pre-flight: data profiles feed protocol/runner; baseline interval sets feed policy; policy outputs feed plant and verifier; all share explicit SI units.
+Task1 complete: public calibration/held-out source split, receipt-time ages and motion-innovation proxies extracted;13 core/data tests RED-to-GREEN. Data tails retained (receipt age up to56s, motion innovation up to9.14m/s); these are stress proxies, not sensor calibration.
+Task2 core implemented: interval-union S3E and finite-grid ZO-CBF; remaining policy integration/tests underway.
+Task3 implementation verified: frozen estimators and component ablations;27 new tests pass. Windows spawn imported an older generic common.py due inherited sys.path; failing real-spawn regression then namespaced cv_common.py fixes it. Anchor adapter now uses0.25m/s+5ms*4m/s^2 shared uncertainty (RED-to-GREEN).
+SUMO parity:1500 microsteps across3 new profiles matched speed/position exactly, including zero-speed contact. First pilot launch failed at worker import before any trials; retained logs.
+Review fixes: current/all-microstep headway checked after explicit dipping-headway RED; successful-refinement ablation now broad midpoint with identical unavailable/conflict fallback after matched-arm RED. New suite29 tests GREEN. Parity expanded to full20s/all5 lead segments with seeded commands to satisfy planned numerical coverage. Confirmation not yet started.
+
+Frozen after30passing tests,15pilot trials independently checked (3000decisions), full20s SUMO parity. All original package hashes matched. Confirmation grid1512; no policy retuning after freeze. Reference verifier continues read-only review.
+
+Final pre-report review repairs: experiment/result/checkpoint/trace identity binding; fixed heldout source parity; exact actuator mutation; independently derived reason; accepted-command signed history; full same-algorithm packet replay; qualified empty-set rejection; exact report coverage; evidence engine/cache binding. Independent15-trial pilot and fresh-state replay pass,38 tests pass plus2 seal publication/failure tests. Development viewer exercised2600 fixture cards. Publication order test injects final-manifest failure and confirms no completion marker is written. Final seal is atomic only after all gates.
+Numerical confirmation is running separately under immutable2910 bindings. Verification/report implementations now frozen separately; no confirmation-dependent tuning. Automatic pipeline will audit all1512 saved trials, replay all302400 decisions, build comparison/ablation/stress artifacts and actual2600-card viewer, verify all exports, preserve original hashes, then seal. Manuscript remains out of scope.
+
+Pre-consumption entry status scope fix: removed local hashlib shadowing; isolated fixture with final seal verifies status exit0. Prior evidence-lock snapshot retained; only root entry binding refreshed. Behavior lock and confirmation remain unchanged.

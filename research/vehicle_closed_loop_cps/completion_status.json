@@ -1,0 +1,41 @@
+{
+  "status": "COMPLETE_FOR_SIMULATION_SCOPE",
+  "simulation_project_complete": true,
+  "scope": "closed-loop cyber-physical simulation for autonomous-vehicle security",
+  "confirmation_trials": 540,
+  "policy_decisions": 108000,
+  "policies": 5,
+  "driving_profiles": 3,
+  "test_conditions": 12,
+  "fresh_rng_seeds": 3,
+  "verified_vehicle_transitions": 2158920,
+  "tests": {
+    "new_passed": 28,
+    "original_passed": 731,
+    "original_skipped": 4
+  },
+  "all_case_colliding_trials_per_108": {
+    "raw": 39,
+    "sensor_auth": 18,
+    "learned": 18,
+    "proposed_midpoint": 9,
+    "proposed_learned": 9
+  },
+  "proposed_learned_nominal_speed_mae_mps": 0.02249223897263781,
+  "proposed_midpoint_nominal_speed_mae_mps": 0.02539035175879386,
+  "learned_mae_lower_nominal_and_all_cases": true,
+  "proposed_changed_actuator_frames_accepted": 0,
+  "proposed_changed_actuator_frames_tested": 1080,
+  "proposed_untrusted_advisories_accepted": 0,
+  "proposed_untrusted_advisories_tested": 1080,
+  "remaining_collision_conditions": [
+    "common_view_disinformation",
+    "execution_break"
+  ],
+  "qualification": "Conditional numerical evidence; all-source semantic corruption and execution-bound violations are retained failures.",
+  "operator_explanations": "Implemented and technically checked; no participant study",
+  "physical_hardware_validation": "Excluded by user from completion requirements",
+  "publication_claim": "Simulation research package ready for manuscript preparation; editorial acceptance and first-ever originality are not certified",
+  "manuscript_written": false,
+  "final_verification": "All seven checks passed through COACT_CPS_SIMULATION.py verify"
+}

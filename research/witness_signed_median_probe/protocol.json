@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "scope": "One exploratory causal denoising comparison on previously inspected development data only",
+  "candidate_change": "abs(median(signed raw speed)) replaces median(abs(raw speed)); all accepted endpoint times, history lengths, label alignment and gates remain fixed",
+  "history_ns": 1000000000,
+  "minimum_history_samples": 10,
+  "model": "Same positive-slope affine least-squares fit on fit windows only, clipped at zero",
+  "fit_selection": "Original fit_0.10, fit_0.20, fit_0.30 windows; no new source payloads",
+  "coverage_target": 0.95,
+  "p95_label_disagreement_target_mps": 1.0,
+  "search": "One candidate, no threshold, window, filter or hyperparameter sweep",
+  "quality_fields_inspected": {"object_count": "constant 1 in all 1629 raw radar messages", "range": "constant 0", "FFT_real_imaginary_and_raw_IQ": "All four arrays are empty in every raw radar message"},
+  "independent_test": false,
+  "reason": "Earlier calibration and diagnostic labels were already inspected; any improvement is exploratory",
+  "witness_enabled": false,
+  "old_result": "Preserved unchanged; no production source, certificate issuer, policy threshold or decision permission is modified"
+}

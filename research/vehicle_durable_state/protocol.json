@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "scope": "Offline durable replay-state candidate, separate from unchanged base policy and all earlier benchmark results.",
+  "retrospective_development": true,
+  "fixed_grid": "All 36 previous profiles, 58 ingress cases, 20 capability cases; original memory policy and durable candidate.",
+  "expected_changes": {
+    "ingress": [
+      "restart_replay"
+    ],
+    "capability": [
+      "restart_token_reuse"
+    ]
+  },
+  "same_semantics_except_restart_replay": true,
+  "models_fitted": false,
+  "thresholds_changed": false,
+  "witness_enabled": false,
+  "reserved_final_opened": false,
+  "promotion_allowed": false,
+  "transaction": "Local shared SQLite, BEGIN IMMEDIATE, rollback journal, synchronous=EXTRA; commit before returning every policy result.",
+  "state": "Authenticated policy/key binding, sequence watermarks, used capability nonces, clock watermark, registered decisions.",
+  "trust": "Persistent database and its directory are trusted against deletion, rollback to valid older copies, cloning, substitution and split-brain. Every enforcement process must share the same provisioned local file. HMAC detects unsigned state corruption, not replay of valid old state.",
+  "nonclaims": [
+    "No independent physical witness",
+    "No coordinated signed-sensor compromise protection",
+    "No exactly-once external service action",
+    "No distributed/network-filesystem guarantee",
+    "No hardware power-loss certification",
+    "No published-method novelty claim"
+  ],
+  "sqlite_sources": [
+    "https://www.sqlite.org/lang_transaction.html",
+    "https://www.sqlite.org/pragma.html#pragma_synchronous",
+    "https://docs.python.org/3/library/sqlite3.html"
+  ],
+  "input_sha256": {
+    "src/coact_cps/vehicle/policy.py": "7b2e4ddd3fd21c4e98d58d425782e28e339a0f188063aa79e4f621a404636f9b",
+    "src/coact_cps/__init__.py": "3b5c614d243c18941f189c3b915d9f22117a5c1487af9039f6aa2d3d945ca51e",
+    "src/coact_cps/types.py": "a2c88fbc088095f5202b66f4697b041c3af7c040cbe059589da05082f7f454dc",
+    "src/coact_cps/vehicle/__init__.py": "7a1325e8a2a0791044347cda01e1b21b9aea3181426cbcc8b4bd01d87e774573",
+    "configs/vehicle_zero_trust_stage1.json": "1f6f14bcde80aea5cb78b7898b77c520961a8658d785438971d77370bed0be9b",
+    "tests/test_vehicle_zero_trust.py": "6fd903b1e9602678600281114315d1fd767d7e85a0a0c2b41d76546bd80394a9",
+    "research/vehicle_security_benchmark/benchmark_core.py": "a82ab414d35e5fd25f4a9a96acef9511c6f78e02b3d2f639f740b4563769abed",
+    "research/vehicle_security_benchmark/protocol.json": "fd3d929d8bfdd6dc5f0a069dfe15f9d878865461edbd2001018cfaedf66ef01c",
+    "research/vehicle_security_benchmark/analysis_lock.json": "fb9a83927fd222fbe6442fcbe680d8e5f4756dec0c228ce1f20753754d99186e",
+    "research/vehicle_security_benchmark/run_benchmark.py": "709b66c548bf1fb6fa1be90cef1d553dc2bcbaa9e056df8825057e989891ec13",
+    "research/vehicle_security_benchmark/ingress_trials.jsonl": "968234d977b1c6696733beb701a14a97e4568fbffb715792968c3809b586f9f8",
+    "research/vehicle_security_benchmark/capability_trials.jsonl": "604b45ce090cfe6758e1acfd5f743f74c6bb3a41639d15d2397bddad0b47f1aa",
+    "research/vehicle_security_benchmark/case_catalog.json": "b83e3932b686d6ffec7ac2115d1c8b01eff2c11a4aa602a35befceea4a9aac56",
+    "research/vehicle_security_benchmark/results.json": "4660cf29f2a0a0fcc191c10e90f5d965ab4ece1071fc2c240cf1bd56ac67b520"
+  }
+}

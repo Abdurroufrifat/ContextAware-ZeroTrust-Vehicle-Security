@@ -1,0 +1,18 @@
+{
+  "candidate": "Median of four valid nonnegative wheel speeds, latest timestamp <= query, age <=100000 us inclusive; no interpolation, radius scaling, lag fitting, or offset tuning",
+  "id": "external-civic-proxy-transfer-v1",
+  "missing": "Missing/invalid wheel abstains; invalid GNSS remains in request denominator and accepted-unscorable count; malformed timestamps/shape stop whole run without dropping recording",
+  "physical_witness_enabled": false,
+  "policies": "Unmodified conditional_core, monitor_core and density_core; all 14 existing cases and 11 policy variants; same 5-second prefix, 5-to-15-second attack interval and original thresholds",
+  "production_policy_changed": false,
+  "promotion_allowed": false,
+  "protected_source": "Original wheel copy with existing synthetic uncertainty treatment, explicitly assumed, not independent or physically protected",
+  "query": "Every ublox GNSS log timestamp; speed column 2; preserve invalid-reference rows as unscorable",
+  "real_source_protection_established": false,
+  "reference": "Receiver reported ublox GNSS ground speed, not independently certified truth. Shared logger/timebase; GNSS quality/status fields unavailable in these arrays. Never copy GNSS into the assumed anchor.",
+  "scope": "New public dataset proxy transfer only; not final physical validation",
+  "selection_before_payload": true,
+  "split": "All routes on earliest date development; 18 other routes across 9 dates evaluation; no iid row inference or significance claims",
+  "statistics": "Per-recording and pooled metrics, every phase, all failures; no confidence intervals from dependent rows",
+  "timestamps": "Boot seconds rounded to nearest integer microsecond using Python round; log timestamps are not authenticated acquisition/receipt times"
+}

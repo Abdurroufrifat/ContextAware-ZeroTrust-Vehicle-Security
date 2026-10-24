@@ -1,0 +1,13 @@
+{
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "processor": "Intel64 Family 6 Model 191 Stepping 5, GenuineIntel",
+  "sqlite": "3.49.1",
+  "numpy": "2.5.3",
+  "scikit_learn": "1.9.0",
+  "joblib": "1.6.0",
+  "paired_benchmark_workers": 1,
+  "equivalence_validation_workers": 3,
+  "equivalence_timings_excluded_from_paired_comparison": true,
+  "package_versions_unchanged_by_task": true
+}

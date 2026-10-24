@@ -1,0 +1,16 @@
+# Comparative Validation Implementation Plan
+> For agentic workers: use superpowers:executing-plans inline; one fresh final reviewer. User explicitly delegates routine choices and requests action without repeated approval pauses.
+Goal: complete all three user-authorized validation extensions without altering prior evidence.
+Architecture: public-profile extraction; interval-union baselines; configurable packet-only policy; common numerical plant with SUMO parity; resumable frozen experiment; independent verifier and report.
+Tech stack: existing Python3.12, NumPy, scikit-learn forest, SUMO1.27.1; no new packages.
+Spec: DESIGN.md.
+Global constraints: preserve original540 trials and all frozen code; no retraining, external publication, manuscript or physical actuation. Work only within D:\CO-ACT-CPS.
+Review focus: q=1 counting and missing domains; disconnected set propagation; command clamping at zero; unchanged source/adversary access across methods; data proxies mislabelled as calibrated errors; checkpoint integrity and complete scenario grid.
+
+- [ ] Task1 public_profile.py: tests test_data_profile.py for nonmonotone/duplicate receipt stamps, causal command age, fixed-source split and innovation formula; observe RED; implement extraction from easy/medium/hard CSV; freeze calibration.json/public_sequences.json and source hashes. Data proxies explicitly labelled.
+- [ ] Task2 baseline_core.py: tests test_baselines.py for disjoint union retention, temporal prediction/measurement agreement, empty/sparse observations, saturation and exhaustive integer CBF optimum; observe RED; implement scalar S3E update and relaxed reconstruction/ZO-CBF adaptation. Document source equation mapping in BASELINE_CONTRACT.md.
+- [ ] Task3 policy.py: tests test_policy.py for strict no-truth input, ablation routing and authenticated/bypassed actuation; observe RED; implement full pipeline reuse and new baseline adapters. no_refinement versus no_learning is the refinement comparison.
+- [ ] Task4 runner.py and plant.py: tests for right-endpoint zero contact, public-age provenance and resume-without-overwrite; observe RED; implement new1512-trial grid and atomic checkpoints. Independently test new plant against SUMO in parity_check.py. Run development pilot across methods/cases; archive mechanics failures, no performance tuning.
+- [ ] Task5 review and freeze: read skill requesting-code-review; fresh reviewer of new source, protocol, tests and data proxy claims. Fix critical issues; freeze115 original input bindings plus new source/protocol/data/route hashes. Execute1512 once, resume unfinished IDs only.
+- [ ] Task6 verify_study.py and reporting: independently reconstruct dynamics and baseline calculations, compare strict packet-only policy replay, manual frozen-tree outputs and aggregate counters. report.py writes method_effects.csv, paired_baseline_results.json, seed_cluster_summary.json, RESULTS.md and operator/report viewer. Verify all outputs, appropriate new and original tests, old manifests unchanged.
+- [ ] Task7 final package: source/data/result hashes, one verification entry, completion assessment distinguishing supported results from superiority/novelty limits. No success claim based only on source review. Report actual outcomes even when proposed method loses.

@@ -1,0 +1,9 @@
+{
+  "status": "PUBLICATION_EXPORT_CHECKED",
+  "python_files_syntax_checked": 1129,
+  "focused_tests_passed": 35,
+  "test_scope": "lifecycle kernel, both certificate versions and both packet policy versions",
+  "external_input_test_excluded": "harness import requires separately derived public_sequences.json",
+  "new_vehicle_experiments": 0,
+  "credential_pattern_findings": []
+}

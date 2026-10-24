@@ -1,0 +1,90 @@
+{
+  "profiles": {
+    "ramp_mix": {
+      "lead_speed": 10,
+      "ego_speed": 8,
+      "lead_position": 105,
+      "accelerations": [
+        1.5,
+        -2.5,
+        0,
+        1,
+        -1
+      ]
+    },
+    "fast_brake": {
+      "lead_speed": 22,
+      "ego_speed": 16,
+      "lead_position": 125,
+      "accelerations": [
+        -1,
+        -3,
+        1.5,
+        0,
+        1
+      ]
+    },
+    "crawl_restart": {
+      "lead_speed": 6,
+      "ego_speed": 4,
+      "lead_position": 90,
+      "accelerations": [
+        -2,
+        0,
+        1.5,
+        -1,
+        2
+      ]
+    }
+  },
+  "segments_seconds": 4,
+  "seeds": [
+    307,
+    419,
+    523
+  ],
+  "ages_us": [
+    90000
+  ],
+  "cases": [
+    "nominal",
+    "joint_minus3",
+    "joint_slow_drift",
+    "candidate_bad_tag",
+    "scene_dropout",
+    "scene_common_compromise",
+    "forged_history",
+    "execution_break",
+    "context_change"
+  ],
+  "policies": [
+    "kinematic",
+    "refined_midpoint",
+    "refined_learned"
+  ],
+  "training_seeds": [
+    17,
+    29
+  ],
+  "validation_seeds": [
+    43
+  ],
+  "exclude_training_cases": [
+    "scene_common_compromise",
+    "forged_history",
+    "execution_break"
+  ],
+  "training_filter": "Authentic scene+command, original scene point available, refined interval available. Keep candidate/anchor corruptions; independent scene/command premises required.",
+  "models": [
+    "ridge",
+    "forest",
+    "mlp_7",
+    "mlp_19",
+    "mlp_31"
+  ],
+  "error_budget_mmps": 500,
+  "step_us": 10000,
+  "model_selection_metric": "validation projected MAE; no fresh test data used",
+  "earlier_learned_experiment": "Informs this development hypothesis; all earlier failed results preserved",
+  "physical_vehicle_validation": false
+}

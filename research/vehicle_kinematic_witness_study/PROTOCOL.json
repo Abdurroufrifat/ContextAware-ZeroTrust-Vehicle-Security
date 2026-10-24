@@ -1,0 +1,57 @@
+{
+  "duration_s": 20,
+  "step_s": 0.01,
+  "query_us": 100000,
+  "ages_us": [
+    50000,
+    90000
+  ],
+  "clock_us": 5000,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "policies": [
+    "temporal",
+    "kinematic"
+  ],
+  "cases": [
+    "nominal",
+    "candidate_minus3",
+    "candidate_bad_tag",
+    "anchor_dropout",
+    "joint_minus3",
+    "forged_history",
+    "execution_break",
+    "context_change",
+    "joint_slow_drift",
+    "scene_bad_tag",
+    "scene_dropout",
+    "scene_common_compromise"
+  ],
+  "attack_start_us": 8000000,
+  "attack_end_us": 14000000,
+  "uncertainty_mmps": 250,
+  "execution_bound_mmps2": 1000,
+  "execution_noise_mmps2": 500,
+  "candidate_anchor_noise_mmps": 100,
+  "expected_trials": 144,
+  "expected_queries": 28800,
+  "temporal_initial_contract": {
+    "time_us": 1010000,
+    "low_mmps": 9750,
+    "high_mmps": 10250
+  },
+  "drift_step_mmps": 50,
+  "drift_cap_mmps": 3000,
+  "scene": {
+    "gap_noise_um": 1000,
+    "gap_error_bound_um": 1500,
+    "lead_noise_mmps": 50,
+    "lead_error_bound_mmps": 75,
+    "max_pair_age_us": 100000,
+    "query_aligned_clock_assumed": true,
+    "scene_is_one_domain": true
+  }
+}

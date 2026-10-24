@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "development_only": true,
+  "records": [
+    "07_turning",
+    "04_crossTraffic",
+    "14_countryRoad"
+  ],
+  "decoder": {
+    "model": 161,
+    "return_modes": [
+      55,
+      56
+    ],
+    "bytes": 1206,
+    "source": "pinned UniBwTAS Velodyne rawdata.cc/h and VLS128.yaml",
+    "rpm": 600,
+    "decline_unsupported": true,
+    "geometry_validation_tolerance_m": 0.025,
+    "timestamp_validation_tolerance_ns": 50
+  },
+  "motion": {
+    "assumption": "locally static scene, planar rigid motion; no hard error certificate",
+    "current_window_ms": 20,
+    "previous_window_ms": [
+      100,
+      120
+    ],
+    "range_m": [
+      1.5,
+      60
+    ],
+    "voxel_m": 0.25,
+    "max_points": 2000,
+    "min_points": 150,
+    "normal_neighbors": 16,
+    "max_abs_normal_z": 0.95,
+    "min_normal_planarity": 0.3,
+    "max_correspondence_m": 1.5,
+    "trim_fraction": 0.7,
+    "huber_m": 0.1,
+    "iterations": 15,
+    "min_correspondences": 100,
+    "min_overlap": 0.5,
+    "max_condition": 1000,
+    "max_residual_p95_m": 0.3,
+    "max_speed_mps": 60,
+    "max_abs_yaw_radps": 2
+  },
+  "timing": {
+    "original_headers_preserved": true,
+    "no_future_receipts_or_firings": true,
+    "velocity_timestamp": "midpoint of observation-interval centers; lower support midpoint separately reported",
+    "support": "current points age 0..20ms; previous points age100..120ms; derived interval velocity, not an instantaneous measurement",
+    "max_report_age_us": 100000,
+    "compute_latency_included": true,
+    "acquisition_age_certified": false,
+    "recording_driver_build_attested": false
+  },
+  "evaluation": {
+    "queries": 283,
+    "reference": "INS only after estimates; report both query-time discrepancy and estimated interval-time discrepancy",
+    "no_INS_or_CAN_in_motion": true,
+    "no_after_results_tuning": true,
+    "policies_unchanged": true
+  },
+  "production_policy_changed": false,
+  "promotion_allowed": false,
+  "reserved_payloads_access_allowed": false
+}

@@ -1,0 +1,30 @@
+{
+  "id": "can-corroboration-v1",
+  "scope": "Descriptive CAN channel agreement; scene-0001 is development only; no held-out confirmation or policy deployment",
+  "timestamp_unit": "integer absolute microseconds; preserve native common clock",
+  "wheel_timestamp_semantics": "CAN receipt time; physical measurement timestamp unavailable",
+  "pairing": "latest wheel record at or before each pose; no interpolation, future lookup, time normalization, fitted offsets or residual filtering",
+  "max_receipt_age_us_inclusive": 100000,
+  "wheel_radius_m_fixed": 0.305,
+  "wheel_speed": "median of absolute RPM * (2*pi*0.305)/60 over all four wheels",
+  "pose_speed": "hypot(vel[0],vel[1]); vel must contain three finite numeric components; localization comparator, not certified truth",
+  "invalid_numeric": "reject booleans, strings, missing, NaN, infinity; negative native wheel RPM allowed",
+  "invalid_clocks": "reject entire scene on duplicate, noninteger, negative or nonincreasing timestamps; never sort or deduplicate",
+  "status_precedence": ["invalid_pose", "no_past_wheel", "stale_receipt", "invalid_latest_wheel", "valid"],
+  "invalid_latest": "reject newest eligible wheel record; never fall back to an older valid record",
+  "denominator": "retain every readable pose record, including missing/invalid wheel streams; report unknown pose denominators separately",
+  "quantile": "linear interpolation at (n-1)*q",
+  "diagnostic_gates": {"coverage_percent_min": 95.0, "p95_abs_disagreement_mps_max": 0.5, "disagreement_gt_2_mps_max_count": 0},
+  "caveat": "agreement coverage is not policy availability; discrepancy is not physical error; CAN channels may share dependencies",
+  "independent_source_trust_established": false,
+  "physical_witness_enabled": false,
+  "promotion_allowed": false,
+  "production_policy_changed": false,
+  "cohort": "all matching pose/zoe files in exact directory; retain missing, duplicate and invalid scenes; scene inventory does not establish full dataset completeness or independent logs",
+  "protected": "do not open/hash/score Urban02 NIGHT, RAV4 or vehicle_final_evaluation payloads",
+  "sources": [
+    "https://github.com/nutonomy/nuscenes-devkit/blob/master/python-sdk/nuscenes/can_bus/README.md",
+    "https://www.nuscenes.org/tutorials/can_bus_tutorial.html"
+  ],
+  "source_access_date": "2026-10-20"
+}

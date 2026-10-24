@@ -1,0 +1,13 @@
+{
+  "id":"matched-scene-comparison-v1",
+  "scope":"Post-result descriptive audit of completed conditional and monitoring experiments; no new attacks, threshold selection, source promotion or raw-event re-evaluation",
+  "inputs":"Only completed result metadata and the two hash-checked scene_metrics.jsonl.gz files. Verify code locks, source completion flags, shared baseline identities, all paired scene names and counters. Do not open native CAN files, event ledgers or reserved payloads.",
+  "pairs":[["legacy_agreement","cusum_unprotected"],["legacy_agreement","ewma_unprotected"],["conditional_bounded_candidate","conditional_anchor_only"],["conditional_bounded_candidate","cusum_protected"],["conditional_bounded_candidate","ewma_protected"]],
+  "outcomes":"For each unchanged case and all/before/during/after/unavailable phase, recompute original gates per scene and count both_pass,candidate_only,comparator_only,both_fail. Every paired scene remains in the denominator; zero-request phases are failures and separately counted. Report candidate-minus-comparator percentage-point difference over all matched scenes.",
+  "statistics":"Descriptive paired discordance counts only. Scenes may share drives, vehicles and recording dependencies. No independence assumption, p-values, confidence intervals, statistical significance or population generalization is claimed. Do not reconstruct pooled P95 by averaging scene P95s.",
+  "calibration":"Retain every supplied model. Count valid, short, zero-sd and positive subnormal-sd models; report min/median/max positive sd. Subnormal means below Python binary64 minimum normal value and is a diagnostic, never a new variance floor. Preserve all numerical_failure request counts.",
+  "gates_unchanged":{"p95_reference_disagreement_mps_max":0.5,"coverage_percent_min":95,"accepted_disagreement_gt2_count_max":0,"receipt_age_us_max_inclusive":100000,"legacy_difference_mps_max_inclusive":1},
+  "verification":"Independent gate recalculation, paired-outcome Counter reduction and calibration summary from the saved per-scene evidence. Source hash checks and count validation are metadata checks, not a new reconstruction of underlying raw speed/attack events.",
+  "remaining_gaps":["native reproduction of recent complete AV security methods with compatible inputs","real independently calibrated protected source and rollback-resistant evidence","separately fixed untouched evaluation; existing development scenes are already seen"],
+  "physical_witness_enabled":false,"real_source_protection_established":false,"production_policy_changed":false,"promotion_allowed":false
+}

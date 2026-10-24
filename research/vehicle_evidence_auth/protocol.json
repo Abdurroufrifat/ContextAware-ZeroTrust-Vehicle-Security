@@ -1,0 +1,20 @@
+{
+  "id": "authenticated-report-boundary-v1",
+  "scope": "Research-only report authentication component; not deployed vehicle security or evidence of independent sensor truth",
+  "algorithm": "HMAC-SHA256 with a caller-provisioned per-source secret of at least32bytes and constant-time tag comparison",
+  "wire": "exact body/tag envelope; ordered scalar JSON array prefixed by COACTCPS-EVIDENCE-HMAC-SHA256-v1 and a zero byte; strict ASCII identifiers; integer speed_mmps and absolute microseconds; no optional self-asserted trust fields",
+  "body_fields": ["schema", "source_id", "key_id", "vehicle_id", "session_id", "capture_id", "channel", "seq", "measured_us", "speed_mmps"],
+  "context": "vehicle/session/capture are provisioned outside the message; per-source/key allowlist grants reporting only on a specified channel; revoked keys refused",
+  "freshness": "trusted receiver supplies now/receipt times; signed measurement <= receipt <= now; both ages <=100000us inclusive; real nuScenes wheel measurement timestamps remain unknown",
+  "replay": "strictly increasing sequence per source/channel within the provisioned vehicle/session/capture; key rotation does not reset counter; persist accepted clock/sequence in a SQLite BEGIN IMMEDIATE transaction",
+  "state": "explicit new-state creation only; refuse missing state, changed context and overwriting existing state; local storage assumed protected; no external rollback anchor",
+  "rejection": "malformed, unknown/revoked key, bad tag, context/channel mismatch, future/stale timestamps, receiver clock rollback and replay/reorder do not advance counters",
+  "threat_limits": ["compromised signer or key can authenticate false measurements", "HMAC verifiers share the signing secret and can forge reports", "retimed content signed by a key holder can lie about measurement time", "old database snapshots can restore replay eligibility without an external monotonic anchor", "no hardware attestation, key lifecycle service, encryption, protected endpoint or sensor calibration is supplied"],
+  "project_evidence": "all real physical-evidence prerequisites remain not_established; never label unsigned historical CAN messages as authenticated by wrapping them in new signatures",
+  "existing_numerical_gates": "P95<=0.5m/s, coverage>=95%, accepted discrepancy>2m/s count0, receipt age100ms and peer agreement1m/s stay unchanged",
+  "production_policy_changed": false,
+  "physical_witness_enabled": false,
+  "project_promotion_allowed": false,
+  "sources": ["https://www.rfc-editor.org/info/rfc2104/", "https://www.rfc-editor.org/info/rfc4868/", "https://docs.python.org/3/library/hmac.html", "https://csrc.nist.gov/pubs/sp/800/207/final"],
+  "source_access_date": "2026-10-20"
+}

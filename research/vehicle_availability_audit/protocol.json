@@ -1,0 +1,45 @@
+{
+  "scope": "Diagnose all original endpoint rejections and evaluate a single fixed-rate latest-attempt request schedule on the same expanded development recording",
+  "period_ns": 50000000,
+  "estimate_ttl_ns": 100000000,
+  "request_bounds": "First observed radar endpoint plus integer multiples of50ms, inclusive while <= last observed endpoint; no post-recording extrapolation",
+  "service_rule": "Use latest raw endpoint at or before request. Reject if no prior endpoint, older than100ms, unready, or quality-withheld, in that fixed order. Never search backward for an older accepted value. No forward fill beyondTTL; no future radar or reference enters serving decision",
+  "implementation": "Reuse checksum-protected previously computed frozen TCN mean and quality mask at actual endpoint; do not resample the model at an artificial current timestamp. No inference latency simulated",
+  "reference": "Re-align existing publisher-verified reference at each actual request time, latest-prior status3 age<=100ms; missing truth explicit",
+  "diagnostic_priority": [
+    "startup",
+    "no_valid_history",
+    "no_prior_history",
+    "current_sample_invalid",
+    "history_before_start",
+    "history_stale",
+    "anchor_count",
+    "ready"
+  ],
+  "gates": {
+    "usable_fraction_overall_and_each300s_segment_min": 0.95,
+    "accepted_reference_coverage_overall_and_each300s_segment_min": 0.95,
+    "accepted_p95_overall_and_each300s_segment_max_mps": 0.5,
+    "accepted_errors_above2mps_max": 0
+  },
+  "quality_ttl_not_tuned_after_scores": true,
+  "assumptions": "Bag timestamps stand in for availability time; model execution time, transport latency, clock authenticity and deployed TTL suitability unmeasured. Single grid phase andTTL; no sweep or best-case schedule selection. Regular scheduled-request fraction is not continuous uptime proof",
+  "same_recording_development_only": true,
+  "models_refitted": false,
+  "quality_rule_changed": false,
+  "reserved_final_unopened": true,
+  "input_sha256": {
+    "../vehicle_continuous_radar/protocol.json": "2a63694ffe05c52e5107da87f830bfe569bcd2c3e788ae97031d55fee7fc8962",
+    "../vehicle_continuous_radar/analysis_lock.json": "79dd76ae439ae52148d603d496c77459ade152a3034fcbb3170ed67e9f27f6df",
+    "../vehicle_continuous_radar/continuous_core.py": "32c3ac01f7bd2a4755d50fbdfd7ba0f4d267966a20a20489dc807a0cf8d861fd",
+    "../vehicle_continuous_radar/estimator_core.py": "3c209bc0485fffe87a68d1b4da342ba71b7012171c0392e9801f4267c5efb5b4",
+    "../vehicle_continuous_radar/quality_core.py": "38fe34a8730217565c96d171a1f24045fc22ad6d9a57a209734454ca4eceab24",
+    "../vehicle_continuous_radar/frame_index.json": "d92bbd4d80867225bbd375b4374158bf75ccdb8eb1a0e2b59f6f17aafaed9369",
+    "../vehicle_continuous_radar/predictions.npz": "0907e32bf66205deb923bd4dcdecc9bd2b3d80ce63bc0f67f53dc56f3a575196",
+    "../vehicle_continuous_radar/quality_masks.npz": "7b411a3e3cfd8604961c24c4b7cd369bd6ca8236e6c19eae74ada30121f53447",
+    "../vehicle_continuous_radar/results.json": "4620ccb13166816d20b5a5aeae0a73cde7d8ae0207bc060d0caaf9bc5583de75",
+    "../vehicle_continuous_radar/source/radars.bag": "347d3713c91cfe42b221e052769fc4d6edf2623415f61bfe728cf7fb97ecb398",
+    "../vehicle_reference_check/run_reference.py": "e89147c09eb381ef9884b3995df8eda90a8bf70a7f77a3f5e352b73635f42f8d",
+    "../vehicle_reference_check/reference_bags/calibration.bag": "78beed33a83e42cbe639f7c8af984c6c4c9283d79e511622000a69c930cdac08"
+  }
+}

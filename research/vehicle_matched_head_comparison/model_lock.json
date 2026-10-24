@@ -1,0 +1,23 @@
+{
+  "analysis_lock_sha256": "2221d7789c0a205deece95c5d828e1c0ccdc3f9d2c2b822d8f1464a9339562b3",
+  "training_trace_sha256": "239509531221ed522c70146606d63d775cf8c94426528875e898e832a8836d82",
+  "files_sha256": {
+    "models/Urban01/huber7.json": "8056f5d818d555dfc5010f85cb736dede3b5e32f60c5c5b39abf6fe1cde3613c",
+    "models/Urban01/huber7_training.npz": "2e93e93d716d69397f4e34892e7d47f9bee77a17b860f3746958a0aecb928aa8",
+    "models/Urban01/extra_trees7_training.npz": "3af1bcc9585e20f263dc0969eebbc21b1f05c43812878534855b3f680c29dbe9",
+    "models/Urban01/extra_trees7.json": "aba4f4b783bb21b53007a5d51f234cd98f334e37b7bce438ddd5ff0a173e3173",
+    "models/Urban03/huber7.json": "318e113f71377cd09e372c20f32ae27d8d5a2e5c8ef6be32e0569001d2440d9e",
+    "models/Urban03/huber7_training.npz": "0305ae7f7389932d0a158c549c4e354a3599baf0fda874c18f7ac045a45ae426",
+    "models/Urban03/extra_trees7_training.npz": "3353f4da167b026027818b0a4baf6390b327dcc0e608b9d4e8914641f5503ba7",
+    "models/Urban03/extra_trees7.json": "58a4956bf3235989d7c0f62511303b8c300505cf7f565ac84bae907418d6effa",
+    "models/all_fit/huber7.json": "60f85f5b9ab52a5c2080af396bddab7210b9ee48db78a62a047c2bd214a9bcb2",
+    "models/all_fit/huber7_training.npz": "626a2088fc513c8f2307fcfd9f5ed8f0da7982b990cc1e1428b62af6ee3a2aec",
+    "models/all_fit/extra_trees7_training.npz": "6cbfe90f406db5edce507ac0c6ea537c263f14164434982ec9796c7ac8ea1f19",
+    "models/all_fit/extra_trees7.json": "32adc9ea156793dcde43aa0d33da34f5fc491c3c6f6f6c124aa6ba81e074d5cf",
+    "models/Urban04/huber7.json": "384920afafa03d0062e90728b52ed32118548bcbe41e57a4bc278288082c0246",
+    "models/Urban04/huber7_training.npz": "9503d2b01a29115349d034b6e429fc4c7d4d9bf21d1919edeb8d3fe15390fb20",
+    "models/Urban04/extra_trees7_training.npz": "b7018e74ea7cfe59421b7e1e87c471879c5cf0d3543da74b15b0b1828a7c4f2c",
+    "models/Urban04/extra_trees7.json": "65dea6bc2e89a5ed8c541e8dbd4050559cc4df93d46954af92f0d9ec7a179a7a"
+  },
+  "all_eight_locked_before_scoring": true
+}

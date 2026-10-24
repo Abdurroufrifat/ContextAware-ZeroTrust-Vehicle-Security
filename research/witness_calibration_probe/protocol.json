@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "scope": "Development-only feasibility probe; no final validation, attack evaluation, certificate issuance or production policy changes",
+  "dataset_doi": "10.20383/103.01089",
+  "route": "Urban01/2023-11-23-15-38-43-Day",
+  "time_reference": "ROS bag record time, integer nanoseconds; offline availability proxy, not authenticated live clock",
+  "selection": "One radar chunk containing each target fraction of indexed route duration; no speed-based reselection",
+  "window_fractions": {"fit": [0.1, 0.2, 0.3], "calibration": [0.45, 0.55, 0.65], "diagnostic": [0.75, 0.85, 0.95]},
+  "imu_selection": "Every IMU chunk whose indexed times overlap selected radar chunk, with 250 ms preceding margin",
+  "predictor": "Nonnegative clipped affine least-squares conversion of trailing 1000 ms median absolute raw radar speed; one fit only, no search",
+  "radar_min_samples": 10,
+  "radar_window_ns": 1000000000,
+  "radar_max_delivery_ns": 250000000,
+  "obd_max_age_ns": 100000000,
+  "obd_units": ["kph"],
+  "obd_conversion": "kph / 3.6; assumed benign offline fitting/comparison label only, never witness predictor input",
+  "minimum_fit_label_span_mps": 3.0,
+  "provisional_quality_targets": {"minimum_pair_coverage": 0.95, "maximum_p95_absolute_label_disagreement_mps": 1.0},
+  "targets_interpretation": "Engineering feasibility targets, not paper-derived accuracy claims, formal bounds, or independent test guarantees",
+  "clock_invalid": "Exclude nonfinite speed, future header stamp or header older than max delivery; do not interpolate future samples",
+  "limitations": ["Radar unit setting unknown", "OBD label is not independent ground truth", "All windows are from one development drive", "Recorded availability is not live causal latency verification", "Postprocessed reference not used as witness", "No parameter or threshold promotion"]
+}

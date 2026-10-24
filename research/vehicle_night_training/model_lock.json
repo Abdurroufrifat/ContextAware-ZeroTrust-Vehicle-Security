@@ -1,0 +1,20 @@
+{
+  "analysis_lock_sha256": "c47333978d2e3ea57b0ec908c7ed642a2d1eae23a2cd98a3e217f0cb2e572a92",
+  "data_lock_sha256": "407574b2135a8f959e1ca0059e42709dba1739fdd7b4df6fc66d4ceff4392ae1",
+  "models_sha256": {
+    "models/day_only/causal_residual_tcn_141.json": "e3b264a21712dd8c2a6dd6dd6f89b51d71a668b395ebb8febbb05a2921dcf97a",
+    "models/day_only/causal_residual_tcn_142.json": "5becca5288326321ba673d03d3fdbf4dddb9aef0f8155e86bf0c1601f13856e0",
+    "models/day_only/causal_residual_tcn_143.json": "ff107c2c8e74afaa03e6f0920ad13945ed7881fa58bccc22b214b81de460940b",
+    "models/day_only/masked_cnn_4ch_141.json": "b11810ca769fbf0ccc3c565a855ee463c064b437bef74e5d51f69c78928d677e",
+    "models/day_only/masked_cnn_4ch_142.json": "c363d67c1c70655d0cd19cae62a8b3c5837d9610c3d102d42b87428eb4400611",
+    "models/day_only/masked_cnn_4ch_143.json": "a7d2743c375dc5f2ca697aed9a4dc74425fef67336ffab7a22094452e296ebce",
+    "models/day_plus_night/causal_residual_tcn_141.json": "192b252943e989ba4805014f5b16f6f2cdf2a3ba8bf2b3257fdc7f97c4087ea1",
+    "models/day_plus_night/causal_residual_tcn_142.json": "dd762d2089436737a346c4670328b8d707a6b8939be944f23fbf58d3edf3a572",
+    "models/day_plus_night/causal_residual_tcn_143.json": "4e13dadd950312e5abc25a74932cc5a6349d54efe97d4f76fe5e43af20e1e144",
+    "models/day_plus_night/masked_cnn_4ch_141.json": "0dcbe10631a67d1c9572c28b602cf882456f5f07030cbcd117b0e15219b8cd54",
+    "models/day_plus_night/masked_cnn_4ch_142.json": "0334ea340f420578d75f478c4051b29d509621b55e7b87421a0961f7d96c4ac8",
+    "models/day_plus_night/masked_cnn_4ch_143.json": "8d7258bb5ef0cc8cfcc2ad1384ce5311953c9c4293dabe80e4d8b02e91b94791"
+  },
+  "training_trace_sha256": "164a41022d0a38ca9d91bd6f4cfc96a169c7dbb54debf629fa8361f35edf794d",
+  "selection": "all three final checkpoints equally averaged; primary day_plus_night"
+}

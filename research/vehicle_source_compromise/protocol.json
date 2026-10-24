@@ -1,0 +1,72 @@
+{
+  "scope": "Retrospective offline post-estimator policy-input compromise on reused Urban01 NIGHT development. Not raw sensor tampering, a real takeover, or hardware/signed provenance validation.",
+  "cases": [
+    "nominal",
+    "radar_plus3",
+    "peer_plus3",
+    "radar_peer_plus3",
+    "fusion_peer_plus3",
+    "all_peer_plus3",
+    "dropout",
+    "dropout_radar_plus3",
+    "dropout_radar_peer_plus3"
+  ],
+  "methods": [
+    "radar_only",
+    "radar_imu_parent__deadband__withhold",
+    "radar_imu_parent__deadband__fallback",
+    "nonlinear7__deadband__withhold",
+    "nonlinear7__deadband__fallback",
+    "linear7__deadband__withhold",
+    "linear7__deadband__fallback",
+    "huber7__deadband__withhold",
+    "huber7__deadband__fallback",
+    "extra_trees7__deadband__withhold",
+    "extra_trees7__deadband__fallback"
+  ],
+  "offset_mps": 3.0,
+  "attack_interval": "Endpoint time >= first+(last-first)*2//5 and < first+(last-first)*3//5. Requests consume latest available endpoint causally; no request-time overwriting.",
+  "controls": "Byte-identical predictions, clocks, quality, binding and deadband from original nominal/dropout archives; both controls must reproduce every historical metric cell. Dropout source reconstruction and feature inference are reused by hash, not rerun.",
+  "boundary": "Radar cases alter radar-only speed estimate after estimation. Fusion cases alter each fused estimate after correction. Peer cases alter the shared neural peer. No raw feature effect is inferred; common compromise requires authority over the indicated policy inputs. Source quality and clocks remain nominal/previously captured, modeling undetected authorized-output compromise.",
+  "cases_explained": {
+    "nominal": "No change.",
+    "radar_plus3": "Radar estimate +3; honest peer and fused outputs.",
+    "peer_plus3": "Peer +3; honest radar and fused outputs.",
+    "radar_peer_plus3": "Radar and shared peer +3; fused outputs unchanged.",
+    "fusion_peer_plus3": "All five fused output interfaces and peer +3; radar unchanged.",
+    "all_peer_plus3": "Radar, all fused output interfaces and peer +3.",
+    "dropout": "Previously captured IMU dropout, no new compromise.",
+    "dropout_radar_plus3": "Previously captured IMU dropout; radar +3, honest peer.",
+    "dropout_radar_peer_plus3": "Previously captured IMU dropout; radar and peer +3."
+  },
+  "no_truth_for_attack": true,
+  "frozen_gates": {
+    "availability_minimum": 0.95,
+    "p95_maximum_mps": 0.5,
+    "accepted_error_above_2_allowed": 0,
+    "peer_max_difference_mps": 1.0,
+    "source_ttl_ns": 100000000
+  },
+  "no_offset_or_case_search": true,
+  "model_inference_rerun": false,
+  "production_policy_changed": false,
+  "reserved_final_opened": false,
+  "promotion_allowed": false,
+  "input_sha256": {
+    "vehicle_radar_fallback/fallback_core.py": "d0b1a856cacea365ab263fa2542ca613c6c018f9571d938a19086004cf265d61",
+    "vehicle_radar_fallback/verify_fallback.py": "2f1ee89397d32a50ec7de0b735dc558b71eb2135db770b2dea8ea54001b288b1",
+    "vehicle_nonlinear_correction/nonlinear_core.py": "19431ae7e1443da18ef8865d67f35d612ef78e3545f3394e600cfc55bf9998e4",
+    "vehicle_availability_audit/request_reference.json": "7624bd1de84f3efa29129b7792a9b485fe4753f68ebef683ce93fb39ef0d545c",
+    "vehicle_masked_history/frame_index.json": "95dccff40807e1382a4ed93f828e5f2ad1fc80b649babd3853fa0c00e4122103",
+    "vehicle_multisource_imu/development_replay.npz": "2f565dc8a7349ee55ecc21e442a594c35ceae4103e2f90329df27ba10ce316fc",
+    "vehicle_night_training/predictions.npz": "3c7fa65f86eb1ff680cd3c600a548468e6b9c9b8a50c41622db2aeae6ee1deda",
+    "vehicle_night_training/decisions.npz": "8d6c585ffff8e87e675457d951e5d4f59e1b9fa20f55a97284d14741a70ed0b6",
+    "vehicle_matched_head_comparison/results.json": "cc272357887357a2246664a69cf0c914a7aa72d832bbebbe37ebd4a629216234",
+    "vehicle_sensor_faults/replays/nominal.npz": "c2ac5e3b0c8bf3cdb2ad551cf5fc657ec2091633690cdd2abc6c138ea3b53526",
+    "vehicle_deadband_guard/replays/nominal__deadband.npz": "e035b7cadbe21104338767438cbade979392e89034c777f9aff811003ecd3e53",
+    "vehicle_matched_head_comparison/replays/nominal.npz": "a982f54819eabec8c3209ec58f17d09d1b618629c75028f573de5a68e75c2117",
+    "vehicle_sensor_faults/replays/dropout.npz": "8e3949f965c4216897f7c30c443dc43239b5a04bc74b18c7411a0f82ef59311b",
+    "vehicle_deadband_guard/replays/dropout__deadband.npz": "c007f50b89a129b703bd43429ef20ffbd2dffe41e153c771feb5227fb4039df7",
+    "vehicle_matched_head_comparison/replays/dropout.npz": "c45e75f2ff6583bb4fc44ff900dbb06a76f5a46c732b352cb101fe73d2209887"
+  }
+}

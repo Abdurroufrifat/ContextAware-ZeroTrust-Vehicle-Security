@@ -1,0 +1,7 @@
+{
+  "analysis_lock_sha256": "500e0e1bfd409510177c428eeccffd93f4b9d29c69e0eed01160fcbb5170bbbf",
+  "model_sha256": "485389d1bb4ea0bfa2817c5b1eb63890df43955c8942e96ffbe995830fb8a2b7",
+  "training_trace_sha256": "04ac45e3acd28ffe265c16847523c0afd85587109efae0d26af2e5ba88e0a17a",
+  "fit_export_check_sha256": "ce1d86015a8e835471a008136a32f4a6fd6969d0107d94162189b25a7d523ad6",
+  "selection": "one final200-tree model; no selection or retries"
+}

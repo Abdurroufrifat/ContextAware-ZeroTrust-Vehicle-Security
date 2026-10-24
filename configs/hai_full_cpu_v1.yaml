@@ -1,0 +1,51 @@
+# Stronger CPU development run on all prepared HAI windows.
+# Still not a publication model until authenticated physical/control topology is added.
+dataset:
+  name: HAI-23.05-full-CPU-v1
+  train_csvs:
+    - data/staged/hai-23.05/hai-train*.csv
+  test_csvs:
+    - data/staged/hai-23.05/hai-test*.csv
+  output_directory: data/processed/hai
+  label_column: attack
+  normal_values: [0, "0", "normal", "Normal"]
+  root_column: null
+  features: null
+  window_size: 64
+  stride: 64
+  label_rule: any
+  validation_fraction: 0.20
+
+topology: {}
+
+model:
+  detection_mode: normal_only
+  d_model: 32
+  n_heads: 4
+  n_layers: 1
+  dropout: 0.15
+  score_top_k: 5
+
+training:
+  seed: 7
+  epochs: 8
+  batch_size: 32
+  learning_rate: 0.00015
+  weight_decay: 0.0001
+  physics_weight: 0.0
+  reconstruction_weight: 0.05
+  root_weight: 0.25
+  mask_probability: 0.15
+  calibration_quantile: 0.99
+  node_scale_quantile: 0.99
+  lower_reference_probability: 0.05
+
+physics_invariants: []
+
+process_grounding:
+  require: false
+  invariant_threshold: 0.05
+  counterfactual_minimum: 0.0
+
+artifacts:
+  directory: artifacts/hai_full_cpu_v1

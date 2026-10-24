@@ -1,0 +1,10 @@
+{
+  "sha256": "b32b56ec1fc1890c334fb083d8e3a36bf0812bc7be16419990513ae1f406dcd8",
+  "created_utc": "2026-10-21T04:52:18.634584+00:00",
+  "before_new_pair_outcomes": true,
+  "implementation_hashes": {
+    "quality_core.py": "9f9634d0bdf5acab2ff9c3d22c31b689c59c80d2b6f00b706bf3cf3b687d0d5e",
+    "collect_pairs.py": "7f34fc926ddf08bfd7b53dd40e4bdf534491064bcfb4af453ce1794b0fcdedc9",
+    "calibrate_quality.py": "26004f06b0e5c853dbf14c9a2e10919ca979db99f5a727c23a236dcf789bf827"
+  }
+}

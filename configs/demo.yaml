@@ -1,0 +1,21 @@
+dataset:
+  kind: synthetic-development-only
+  window_size: 32
+  stride: 3
+
+model:
+  detection_mode: normal_only
+  d_model: 32
+  n_heads: 4
+  n_layers: 1
+  dropout: 0.15
+
+training:
+  seed: 7
+  epochs: 5
+  batch_size: 64
+  learning_rate: 0.0005
+
+generator:
+  mode: template
+  model_id: Qwen/Qwen3-4B-Instruct-2507

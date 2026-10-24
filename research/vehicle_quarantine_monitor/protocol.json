@@ -1,0 +1,45 @@
+{
+  "cases": [
+    "nominal",
+    "radar_plus3",
+    "peer_plus3",
+    "radar_peer_plus3",
+    "fusion_peer_plus3",
+    "all_peer_plus3",
+    "dropout",
+    "dropout_radar_plus3",
+    "dropout_radar_peer_plus3"
+  ],
+  "comparison_gap_ns": 100000000,
+  "expected_local_checks": 3696660,
+  "expected_local_metric_cells": 2178,
+  "known_failure_modes": [
+    "First eligible value is unverified; a false startup value is admitted.",
+    "Before a latch, gaps longer than100ms reanchor and can conceal a change.",
+    "Subthreshold drift can accumulate to arbitrary error.",
+    "Legitimate abrupt changes can trigger prolonged denial.",
+    "No authenticated source independence or physical truth is established."
+  ],
+  "methods": [
+    "radar_only",
+    "radar_imu_parent__deadband__withhold",
+    "radar_imu_parent__deadband__fallback",
+    "nonlinear7__deadband__withhold",
+    "nonlinear7__deadband__fallback",
+    "linear7__deadband__withhold",
+    "linear7__deadband__fallback",
+    "huber7__deadband__withhold",
+    "huber7__deadband__fallback",
+    "extra_trees7__deadband__withhold",
+    "extra_trees7__deadband__fallback"
+  ],
+  "original_accuracy_and_availability_gates_changed": false,
+  "production_policy_changed": false,
+  "promotion_allowed": false,
+  "quarantine": "If a proposed accepted speed differs by more than1m/s from the previous monitor-accepted speed within100ms, deny it and latch forever within this recording. No reset on case phase, source switch, clock gap, restored values or reference. State fresh only at the beginning of each offline replay.",
+  "reserved_final_opened": false,
+  "scope": "Offline post-selector jump monitor on the frozen source-compromise matrix. This package is locally self-tested; actual prior replays must be evaluated on the user Windows project.",
+  "selection": "A fixed engineering heuristic using the numerical value of the existing peer tolerance; not fitted, a physical acceleration bound, or an optimized threshold. No threshold search or retuning after local outcomes.",
+  "step_limit_mps": 1.0,
+  "synthetic_fixtures_are_real_vehicle_results": false
+}

@@ -1,0 +1,35 @@
+{
+  "design": "Bounded extension of saved-reference evaluation to the newly frozen nonlinear primary and matched linear control. No fitting or production changes.",
+  "methods": [
+    "original_context",
+    "parent_radar_imu",
+    "signed6_previous",
+    "linear7",
+    "nonlinear7"
+  ],
+  "comparison": "Exact (window_id, integer epoch nanoseconds) joins to saved OBD reference records; no nearest match or interpolation. Verify against old reference_pairs and original target/age. Retain all missing and empty populations.",
+  "cohorts": "All 27178 fit rows and 40678 ready full-development rows; report pooled/group/recording/window fit, pooled/window full. All models share all-matched rows; full also shares the nonlinear accepted matched mask. Held rows remain ungated.",
+  "diagnostic_p95_limit_mps": 0.5,
+  "prespecified_focus": [
+    "fit/evaluation_urban04_0/all_matched",
+    "full/calibration_0/nonlinear_accepted_matched"
+  ],
+  "interpretation": "Previously inspected saved comparisons. OBD is an alternate recorded signal with partial coverage, not certified ground truth or an independent threat witness. No new final evaluation or causal proof. No label replacement, offset fitting or post-result model choice.",
+  "new_model_fitted": false,
+  "labels_changed": false,
+  "thresholds_changed": false,
+  "reserved_final_opened": false,
+  "promotion_allowed": false,
+  "input_sha256": {
+    "vehicle_remaining_failure_audit/row_diagnostics.npz": "a8a5e65e86c17aa8339ff030c1f487ed073b65b56c7671788e585cc15fc96950",
+    "vehicle_frame_reference_audit/reference_pairs.npz": "7cd7866fba21389393f0b82cc6fe844e7824660c6c9251fb4a1ec095af0ce797",
+    "vehicle_reference_check/matched_endpoints.json": "67cdce47fdfc49b335317f1eded9169782a4d292d344e3e7b42a453fbd01642e",
+    "vehicle_route_validation/membership.json": "2a4d8db446486cc6be0b1ce73fdf657f76e9d8b9bfaaa2a704af50a99471c65f",
+    "vehicle_nonlinear_correction/oof_predictions.npz": "0f5fd1e29c33b6f037b8435260e1ba7bbb950e39b3016a790c8ebb1d1ed0f22c",
+    "vehicle_nonlinear_correction/development_replay.npz": "7080051e54f6b711ab26bb2df9ee2086c695428031c1da8349baa925fa396b0a",
+    "vehicle_nonlinear_correction/model_lock.json": "e9eb73a7af346055f80a61e1459107dcb0ac1af2326f595b3b406bee6d9b3353",
+    "vehicle_nonlinear_correction/results.json": "501576e0e74df75fec71a1194d0cdfd91ce7b4cc444042f588c78726d7eea78a",
+    "vehicle_signed_axis_correction/development_replay.npz": "bbf0724f4788d1f53288e1a0671345392ffbb1ac5480ff6632ac47c6b2c926c6",
+    "vehicle_multisource_imu/development_replay.npz": "2f565dc8a7349ee55ecc21e442a594c35ceae4103e2f90329df27ba10ce316fc"
+  }
+}

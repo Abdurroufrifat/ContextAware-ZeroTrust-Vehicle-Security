@@ -1,0 +1,127 @@
+{
+  "study_id": "evidence-lifecycle-confirmation-v2",
+  "duration_s": 20,
+  "step_us": 10000,
+  "query_us": 100000,
+  "attack_start_us": 5000000,
+  "attack_end_us": 11000000,
+  "profiles": {
+    "arterial": {
+      "lead_speed": 13,
+      "ego_speed": 12,
+      "gap": 85,
+      "accelerations": [
+        0.5,
+        -2,
+        -3,
+        1,
+        0
+      ]
+    },
+    "expressway": {
+      "lead_speed": 22,
+      "ego_speed": 21,
+      "gap": 190,
+      "accelerations": [
+        0,
+        -3,
+        1,
+        -4,
+        2
+      ]
+    },
+    "queue": {
+      "lead_speed": 7,
+      "ego_speed": 6,
+      "gap": 45,
+      "accelerations": [
+        -1,
+        1,
+        -2,
+        1,
+        0
+      ]
+    }
+  },
+  "seeds": [
+    2311,
+    2467,
+    2609,
+    2777,
+    2909,
+    3041
+  ],
+  "methods": [
+    "joint",
+    "robust_current",
+    "nominal_authority",
+    "no_learning",
+    "always_brake"
+  ],
+  "primary_cases": [
+    "nominal",
+    "scene_disinformation",
+    "shared_disinformation",
+    "execution_break",
+    "combined_context_execution",
+    "slow_range_drift",
+    "initial_false_context",
+    "authority_exceed",
+    "adaptive_candidate",
+    "burst_loss",
+    "public_motion_innovation",
+    "actuator_packet_loss"
+  ],
+  "stress_cases": [],
+  "stress_methods": [],
+  "expected_trials": 1080,
+  "expected_decisions": 216000,
+  "parallel_workers": 3,
+  "initial_ego_interval_mps": [
+    0,
+    30
+  ],
+  "s3e_attack_budget": 1,
+  "source_error_bounds": {
+    "candidate_mps": 0.101,
+    "anchor_mps": 0.25,
+    "clock_us": 5000,
+    "scene_gap_m": 0.0015,
+    "scene_lead_mps": 0.075,
+    "radar_gap_m": 0.05,
+    "radar_relative_mps": 0.1,
+    "execution_mps2": 2.5
+  },
+  "public_input_policy": {
+    "source": "DOI10.5281/zenodo.12536536",
+    "calibration": "easy run only",
+    "stress_runs": [
+      "heldout_medium",
+      "heldout_hard"
+    ],
+    "run_selection": "seed index parity",
+    "offset": "(seed*37) modulo source sequence length",
+    "window": "200 successive100ms rows; wrap only at recording boundary; retain missing/large ages and all innovation tails",
+    "age_quantization": "ceil to10ms; no age clipping; missing when requested state predates simulation history",
+    "innovation_transfer": "Add the recorded velocity second difference in m/s to candidate and delayed anchor during attack window; no sensor calibration or hard-bound claim"
+  },
+  "no_retraining": true,
+  "paired_inference": "six fresh shared seed clusters, three fixed profiles; seed-cluster descriptive uncertainty; no query-independent inference",
+  "scope": "Joint history/authority/lifetime numerical confirmation; initial_false_context,authority_exceed,public_motion_innovation are declared negative controls. Nominal_authority is a deliberately weaker-bound ablation, not a fair robust baseline.",
+  "execution_envelopes": {
+    "joint": 2.5,
+    "robust_current": 2.5,
+    "nominal_authority": 1.0,
+    "no_learning": 2.5,
+    "always_brake": 2.5
+  },
+  "negative_controls": [
+    "initial_false_context",
+    "authority_exceed",
+    "public_motion_innovation"
+  ],
+  "cadence_and_delivery": "100ms controller callbacks and actor watchdog; exact-time packet delivery; broken cadence requires fresh qualified bootstrap session",
+  "watchdog_enforcement": "Every10ms plant command is obtained from actor watchdog; missing delivered frames explicitly cause backup without a new certificate. No hidden fallback bypass.",
+  "frozen_nominal_proposal_execution_assumption": 1.0,
+  "authority_ablation_note": "nominal_authority intentionally usesE=1; robust arms useE=2.5. The frozen full estimator proposes a nominal point only; its scene/command premises are not inherited as safety authorization."
+}

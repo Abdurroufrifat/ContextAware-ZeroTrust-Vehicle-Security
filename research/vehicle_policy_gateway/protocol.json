@@ -1,0 +1,18 @@
+{
+  "id": "offline-authenticated-policy-gateway-v1",
+  "scope": "Offline research integration of existing HMAC/context/receipt/measurement/replay checks with a fixed integer error-budget selector; no native historical record is signed and no real source trust is established",
+  "input": "Immutable JSON wire strings/bytes in candidate and anchor roles. Parse into private snapshots before verification. Roles, distinct declared domains, uncertainty and calibration interval are provisioned by trusted receiver configuration, never read from self-asserted trust fields in a message.",
+  "authorization": "Exactly one candidate and one anchor policy, matching provisioned guard source/channel rules. Each source/key must already pass the existing guard. Swapped roles are rejected before consuming that source's sequence. Bad candidate authentication may fall back only to a separately authenticated eligible anchor.",
+  "anchor_eligibility": "Explicit research_assumption=true; measurement and receiver now both within inclusive configured calibration interval; uncertainty integer0..500mm/s. Configuration is an illustrative simulation premise, not an origin, calibration, independence or attestation certificate.",
+  "selector": "normal context: if candidate and anchor authenticate and abs(candidate_mmps-anchor_mmps)+anchor_uncertainty_mmps<=500, output candidate; otherwise eligible anchor. elevated context: eligible anchor only. lockdown: abstain without authenticating/consuming incoming reports. Unknown risk or unsupported operation denies.",
+  "units": "New signed envelopes use integer mm/s. The500mm/s budget equals the existing0.5m/s gate. The declared uncertainty must cover source and representation errors; this component supplies no measured calibration. Existing historical CAN values and earlier experiment decisions are not quantized or changed.",
+  "context": "Existing guard binds vehicle/session/capture and authorized channel; trusted receiver supplies immutable wire, receipt/now times and normal/elevated/lockdown risk state. There is no risk classifier or external context-attestation service here.",
+  "state": "Existing guard commits each authenticated report independently. Authentication consumes sequence even if later policy abstains; invalid messages do not. No cache, multi-source transaction or automatic state reset. The older local-database snapshot rollback limitation remains.",
+  "failure_controls": "Compromised anchor/signing key can authenticate a false value and defeat the conditional research selector; duplicate keys or declared domains cannot constitute independent sources; no inference from valid MAC to sensor truth.",
+  "physical_action": "Only operation=research_speed is supported; all physical/vehicle operations are unavailable in this adapter. physical_speed_authorized,measurement_truth_established,physical_witness_enabled and promotion_allowed are always false, independent of configuration.",
+  "existing_gates": "Prior P95<=0.5m/s, coverage>=95%, accepted proxy disagreement>2m/s count0,100msage and1m/slegacy agreement remain unchanged. No improved full-cohort outcomes are claimed for this new wire-format component.",
+  "real_source_protection_established": false,
+  "production_policy_changed": false,
+  "promotion_allowed": false,
+  "candidate_interval": "An authenticated candidate must also be within its configured source-policy interval to be used in normal context; otherwise use eligible anchor. Authentication sequence has already committed."
+}

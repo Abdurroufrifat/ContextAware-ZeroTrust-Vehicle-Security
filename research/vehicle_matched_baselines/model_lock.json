@@ -1,0 +1,15 @@
+{
+  "analysis_lock_sha256": "7ac069ad281247e1ed2c199a9bcb8082bf897c09c18b63c1c42dc2a45fcee1a3",
+  "training_trace_sha256": "1a0c734e998f8a1c1370d0acc55d1d8e514703f43e9d3123d801564f85108d1a",
+  "files_sha256": {
+    "folds/Urban01/models.json": "39a3cecca5d53ca00432a1fef13845fc30e1e3bef3985b23daaf30b7be2f8e33",
+    "folds/Urban01/fit_export.npz": "19f1eb587ae2b92b2c477b61462f5bee2669175b7ef8fac1c67170ea3832d81b",
+    "folds/Urban03/models.json": "85f0ef1f5d1c55875a8b497054079e4f316c2870760fb9b7ccc4c2e2d5fec7a1",
+    "folds/Urban03/fit_export.npz": "a83359c4aba5ee7d047b74d125f2f59d2e11a7bf0f5ae0a19de4f991d256ae0b",
+    "folds/Urban04/models.json": "38598659fa1d6c53c062b42f981b642e3a6e8f7c35adf22a63d316375fb9495e",
+    "folds/Urban04/fit_export.npz": "c677d5281ff3965ee429a9bd9ae35cea1c4022b15d54c8d04400e19c2d1cdcfa"
+  },
+  "all_nine_models_locked_before_new_held_scoring": true,
+  "new_held_scores_created": false,
+  "existing_hgb_held_scores_already_inspected": true
+}

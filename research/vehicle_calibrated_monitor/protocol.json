@@ -1,0 +1,73 @@
+{
+  "scope": "Retrospective source-specific empirical monitor with two fixed recovery rules. Reused development outcomes were already observed in earlier experiments. No statistical independence or physical trust guarantee.",
+  "cases": [
+    "nominal",
+    "radar_plus3",
+    "peer_plus3",
+    "radar_peer_plus3",
+    "fusion_peer_plus3",
+    "all_peer_plus3",
+    "dropout",
+    "dropout_radar_plus3",
+    "dropout_radar_peer_plus3"
+  ],
+  "methods": [
+    "radar_only",
+    "radar_imu_parent__deadband__withhold",
+    "radar_imu_parent__deadband__fallback",
+    "nonlinear7__deadband__withhold",
+    "nonlinear7__deadband__fallback",
+    "linear7__deadband__withhold",
+    "linear7__deadband__fallback",
+    "huber7__deadband__withhold",
+    "huber7__deadband__fallback",
+    "extra_trees7__deadband__withhold",
+    "extra_trees7__deadband__fallback"
+  ],
+  "variants": [
+    "baseline",
+    "latch",
+    "return3"
+  ],
+  "max_pair_lag_ns": 100000000,
+  "calibration": "Per-source maximum absolute prediction change over EVERY same-recording fitting pair with 0<endpoint-time difference<=100ms. Includes all27178 rows/five fitting recordings using frozen OOF predictions. No truth, development or fault values used for thresholds; no margins or quantile/threshold search. Report leave-group-out exceedances without retuning.",
+  "clock_basis": "Both calibration and source monitors use actual endpoint timestamps, never request-index approximations. Original request freshness/eligibility preserved; limits do not compare different source banks.",
+  "source_banks": "Continuously consume each originally eligible source candidate even when not selected. Separate radar bank and five alternate fusion banks. Withholding keeps fusion only; fallback prefers permitted fusion, else independently eligible/permitted radar. Quarantine cannot revive a rejected source.",
+  "recovery": "Compare latch versus return3. return3 requires three consecutively eligible distinct fresh endpoints with values within that source limit of its frozen last-accepted pre-alarm anchor; gaps>100ms or disagreement reset confirmation. No case-phase reset or truth access. This is a heuristic and can rearm poisoned content when it resembles an old anchor.",
+  "gap_and_startup": "First eligible value is unverified. An unquarantined source gap>100ms reanchors; both are explicit vulnerabilities. No independent recovery witness exists.",
+  "synthetic_cases": [
+    "abrupt_return",
+    "persistent_step",
+    "slow_bias",
+    "startup_bias",
+    "gap_hidden_bias",
+    "benign_fast_change",
+    "anchor_collision"
+  ],
+  "models_refitted": false,
+  "accuracy_or_availability_thresholds_changed": false,
+  "production_policy_changed": false,
+  "reserved_final_opened": false,
+  "promotion_allowed": false,
+  "input_sha256": {
+    "research/vehicle_availability_audit/request_reference.json": "7624bd1de84f3efa29129b7792a9b485fe4753f68ebef683ce93fb39ef0d545c",
+    "research/vehicle_masked_history/frame_index.json": "95dccff40807e1382a4ed93f828e5f2ad1fc80b649babd3853fa0c00e4122103",
+    "research/vehicle_matched_head_comparison/held_predictions.npz": "3aae20cbca8f04e4ee9a95a65fb2637bf6a7ae54a2a039c244cf08f2bc84a985",
+    "research/vehicle_multisource_imu/oof_predictions.npz": "541e4b36943956a75596922d83940a4138f46c3c469b74d04658bb879807fc1d",
+    "research/vehicle_nonlinear_correction/oof_predictions.npz": "0f5fd1e29c33b6f037b8435260e1ba7bbb950e39b3016a790c8ebb1d1ed0f22c",
+    "research/vehicle_route_validation/membership.json": "2a4d8db446486cc6be0b1ce73fdf657f76e9d8b9bfaaa2a704af50a99471c65f",
+    "research/vehicle_signed_axis_correction/oof_predictions.npz": "267d59786e750e0289c4f6164ad5298b342a083b5d64dc578c8039e52e6ebae7",
+    "research/vehicle_source_compromise/protocol.json": "e49bb98580296dafeed0d8bdb2346883b56e421771d3f051f9eea06b42e0080d",
+    "research/vehicle_source_compromise/replays/all_peer_plus3.npz": "63871b09ce5eb0e999a7ec37a24c07d11b3a3c8472277b6046670f495b463743",
+    "research/vehicle_source_compromise/replays/dropout.npz": "edc5e924d1f37a10b15feb02598c0230d324a0ca9f9f719275138808e95b00e3",
+    "research/vehicle_source_compromise/replays/dropout_radar_peer_plus3.npz": "4a55e452421b5a8f73f07ed0dfc7199fe6a50ab9a09db67b7e14665017226c1c",
+    "research/vehicle_source_compromise/replays/dropout_radar_plus3.npz": "8b8bf456f626efb977cf4c9ac6d15eae884c5679f7759e69722a6ba88d00163d",
+    "research/vehicle_source_compromise/replays/fusion_peer_plus3.npz": "c62762c0d100c9754d550b7f20011359b4e0b6e1b5124f4fedb26319d385ba9a",
+    "research/vehicle_source_compromise/replays/nominal.npz": "e74004fc0b38fb73b3d551d63f63f7fb4adcd376c487f72c561e4305d775a3b7",
+    "research/vehicle_source_compromise/replays/peer_plus3.npz": "ecda541d0f3e3b5ec9a67fc02db0906cf90ded9f8444d920ed53ec09d33e299c",
+    "research/vehicle_source_compromise/replays/radar_peer_plus3.npz": "e8f3bc6d2e9c9e06b1c39c9bda4daddad3fc427a927201dcb93139019cf2ac08",
+    "research/vehicle_source_compromise/replays/radar_plus3.npz": "dcb667c45709cb7e3554c987785e649661d9a2ddff113e85eab64d13e1a853a0",
+    "research/vehicle_source_compromise/results.json": "03e2ae873a940d44aef1835d7d1ad781f0371d2d1d840f43b5ccaf0a8698f2f7",
+    "research/vehicle_source_compromise/sha256.json": "87b77ecec99fa4a9944df45205a586337f4320fca40c66515ea17a2ca884735d"
+  }
+}

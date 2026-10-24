@@ -1,0 +1,78 @@
+{
+  "scope": "Bounded missing-history estimator experiment on same development recording; no final-test use",
+  "fit_population": "Exactly16169 already frozen complete-history samples from9 fit blocks across3 development recordings; labels and affine anchor unchanged",
+  "features": {
+    "grid_ticks": 128,
+    "period_ns": 50000000,
+    "maximum_tick_age_ns": 300000000,
+    "maximum_radar_header_delivery_ns": 250000000,
+    "channels": [
+      "signed valid speed/10 else0",
+      "absolute valid speed/10 else0",
+      "valid sample age/300ms else1",
+      "validity mask1 or0"
+    ],
+    "ready": "Current endpoint valid and present at exact timestamp; at least16 valid ticks; at least10 actual valid anchor samples in trailing1s restricted to recording/block start",
+    "same_context": "One continuous start for full Urban01 night; do not reset history at reporting segments"
+  },
+  "training": {
+    "conditions": [
+      "clean_control",
+      "masked_training"
+    ],
+    "epochs": 10,
+    "seeds": [
+      141,
+      142,
+      143
+    ],
+    "batch_size": 128,
+    "initialization": "Same corresponding frozen multi-drive final model for every condition. CNN first layer expands1to4 channels by zero-initializing added-channel weights; all original dense outputs reproduced before training",
+    "optimizers": "TCN AdamW lr.001 decay.0001 Huber.2; CNN RAdam lr.001 decay.00001 MSE; same fit-only speed-bin weights as frozen baseline",
+    "masking": "Independent RNG seed+100000; per sample1/4 unchanged,1/4 missing prefix length uniform1..112 ticks,1/2 missing internal span length uniformly from4,8,16,32 with last tick preserved. Invalid values0, age1, mask0. This is feature corruption; anchor unchanged. It is not a physically injected sensor attack or full raw dropout simulation",
+    "selection": "Equal average of all3 final-epoch seeds; report both conditions; no early stopping, best seed, threshold sweep or result-based retries"
+  },
+  "quality_rule": "Unchanged absolute difference betweenTCN ensemble and4-channel CNN ensemble<=1m/s; finite nonnegative values and ready; only research usability flag",
+  "request_replay": "Exactly previous20Hz global grid, latest raw attempt,100ms TTL, reject immediately on newer unready/quality-rejected event. Use previous separately aligned request reference targets",
+  "gates": {
+    "request_usable_fraction_each_segment_and_overall_min": 0.95,
+    "request_reference_coverage_each_segment_and_overall_min": 0.95,
+    "request_accepted_p95_each_segment_and_overall_max_mps": 0.5,
+    "accepted_request_errors_above2_max": 0,
+    "previous_supported90s_block_retention_min": 0.95,
+    "previous_supported90s_block_accepted_p95_max_mps": 0.5
+  },
+  "limitations": [
+    "Same already inspected recording; no independent final validation",
+    "Correlated same-radar models are not independent witnesses",
+    "Extra training and CNN channel expansion are shared by clean control; old baseline remains an additional fixed comparison",
+    "Service timestamps and100ms TTL are offline assumptions; no runtime latency or authenticity qualification",
+    "Feature corruption is not an adversarial security evaluation"
+  ],
+  "reserved_final_unopened": true,
+  "input_sha256": {
+    "../vehicle_radar_multidrive/prepared/fit/data.npz": "ddf393a60ab845b045fd26e4a03218eb3eb36e4d5d4e40971cd5ef1735124d68",
+    "../vehicle_radar_multidrive/classical_models.json": "663ca779a2a7c94d19c5eca7bdf085b620813e2ea6a74d1de0002ae556a826db",
+    "../vehicle_radar_multidrive/model_lock.json": "3c0169abce98ae8670cba08d6a9a6fc5f79d8e61ea7f83e1258168e75e30783f",
+    "../vehicle_radar_multidrive/models_torch.py": "49c9cef5f4b2836cc90bdc305f73ecb63148dc219fc83c258cfb831b3a9f3bc1",
+    "../vehicle_radar_multidrive/estimator_core.py": "3c209bc0485fffe87a68d1b4da342ba71b7012171c0392e9801f4267c5efb5b4",
+    "../vehicle_radar_multidrive/prepared/calibration/index.json": "b9aba0fb81ac2aa8d3e38e8e397a39b4d14923af70f29de71e024d2add2b14f8",
+    "../vehicle_radar_multidrive/models/causal_residual_tcn_141.json": "08e4e47916e72535ded936a709eca4fcebe0ddb7dfee1e4df0e1b3c70856b537",
+    "../vehicle_radar_multidrive/models/causal_residual_tcn_142.json": "f1f1b04dd6a3da07717a41abab525e44990e7c862920c3df57dc167a65949ffc",
+    "../vehicle_radar_multidrive/models/causal_residual_tcn_143.json": "a40bbcb4563e6e82cb5f5254f837ba100896cd919682b9d8f24e8a21de76b9df",
+    "../vehicle_radar_multidrive/models/paper_inspired_cnn_141.json": "20129dc58172dffc0bf95602e64a849ff0d8c7138ac2a2bba810068ea14838f3",
+    "../vehicle_radar_multidrive/models/paper_inspired_cnn_142.json": "971846b39fb10be3eda57158021271d9f511ccfe4b22e4565df7e1b41bd5fdf5",
+    "../vehicle_radar_multidrive/models/paper_inspired_cnn_143.json": "f2dc9a681eaf0f0871ea52b95c5767c344b96331e983a8d4722b1bb79ca8371a",
+    "../vehicle_continuous_radar/source/radars.bag": "347d3713c91cfe42b221e052769fc4d6edf2623415f61bfe728cf7fb97ecb398",
+    "../vehicle_continuous_radar/continuous_core.py": "32c3ac01f7bd2a4755d50fbdfd7ba0f4d267966a20a20489dc807a0cf8d861fd",
+    "../vehicle_continuous_radar/core_io.py": "177af29071f67bf6f2ce5c1ac7b77ed1a6b44e9c0f5caae254870a6c002cbe4f",
+    "../vehicle_continuous_radar/estimator_core.py": "3c209bc0485fffe87a68d1b4da342ba71b7012171c0392e9801f4267c5efb5b4",
+    "../vehicle_continuous_radar/quality_core.py": "38fe34a8730217565c96d171a1f24045fc22ad6d9a57a209734454ca4eceab24",
+    "../vehicle_continuous_radar/frame_index.json": "d92bbd4d80867225bbd375b4374158bf75ccdb8eb1a0e2b59f6f17aafaed9369",
+    "../vehicle_continuous_radar/reference_targets.json": "d372d7572d574a6f1718da4b4e274bcc33077923eb035308db7207240cbaa6b9",
+    "../vehicle_continuous_radar/results.json": "4620ccb13166816d20b5a5aeae0a73cde7d8ae0207bc060d0caaf9bc5583de75",
+    "../vehicle_availability_audit/availability_core.py": "2a161d5266e20419eae2a078de695e509a50cb4c5d99b28787e677a4fdc2b31c",
+    "../vehicle_availability_audit/request_reference.json": "7624bd1de84f3efa29129b7792a9b485fe4753f68ebef683ce93fb39ef0d545c",
+    "../vehicle_availability_audit/results.json": "aa699232ebbf25c3e48cb0369f3624263947435195d2fe90c5781d2919f09035"
+  }
+}

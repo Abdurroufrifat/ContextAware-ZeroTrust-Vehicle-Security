@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "scope": "Retrospective synthesis of existing frozen predictions, with established algorithms and explicitly unmatched recent paper screening.",
+  "cohort_rows": 27178,
+  "group_names": [
+    "Urban01",
+    "Urban03",
+    "Urban04"
+  ],
+  "recordings": 5,
+  "windows": 15,
+  "models": [
+    "affine_median_matched",
+    "ridge_context",
+    "huber_context",
+    "original_context",
+    "uncorrected_radar_imu",
+    "signed_axis_corrected"
+  ],
+  "primary": "signed_axis_corrected",
+  "reference_comparator": "original_context",
+  "resampling": "Enumerate all 3^3=27 ordered route-label draws with replacement; concatenate every row of each selected group. There are 10 distinct route-count mixtures. Preserve paired predictions and labels; report extrema, not a confidence interval or inference probability.",
+  "sensitivity_not_statistical_inference": true,
+  "quantile": "NumPy linear interpolation, matching preceding audit; explicitly repeated rows, not weighted-quantile approximation.",
+  "accuracy_gate_p95_mps": 0.5,
+  "all_rows_unfiltered": true,
+  "new_fitting": false,
+  "threshold_changes": false,
+  "reserved_final_opened": false,
+  "witness_enabled": false,
+  "promotion_allowed": false,
+  "already_inspected_development": true,
+  "equal_input_budget": false,
+  "published_system_reproduction": false,
+  "input_sha256": {
+    "research/vehicle_matched_baselines/oof_predictions.npz": "3bb863c99e8f8f0eb7c62ebfd330625b7e07f595d4240e0839e93bf1b437ffb6",
+    "research/vehicle_matched_baselines/protocol.json": "f09da615533daccd4aa9a66fa32cd9934f6d4ec4d54de35b08542a404e092f76",
+    "research/vehicle_matched_baselines/results.json": "89d1006075ff4e1955a3caed3cc10b59effc68fd18ad5ab1f04e1f7d00d3955c",
+    "research/vehicle_matched_baselines/training_trace.json": "1a0c734e998f8a1c1370d0acc55d1d8e514703f43e9d3123d801564f85108d1a",
+    "research/vehicle_route_validation/membership.json": "2a4d8db446486cc6be0b1ce73fdf657f76e9d8b9bfaaa2a704af50a99471c65f",
+    "research/vehicle_route_validation/oof_predictions.npz": "6bf2bd6797972aed326ca989ad7cd6914fa2cc712f08744d5f4c57683ae608d1",
+    "research/vehicle_signed_axis_correction/oof_predictions.npz": "267d59786e750e0289c4f6164ad5298b342a083b5d64dc578c8039e52e6ebae7",
+    "research/vehicle_signed_axis_correction/protocol.json": "9497a287b621ff1ddb58d66e309c5e8975ba4e50921240f8af9dd2c5e4ae5a71",
+    "research/vehicle_signed_axis_correction/results.json": "fbc7f2fe73772f1f65c30d6c791797b70a0936321506bf55c66b96d439dab289",
+    "research/vehicle_multisource_imu/protocol.json": "50639f61b8e46590683c016e5363275477c3b32ccdcc286573a1c49b421c7da9"
+  }
+}

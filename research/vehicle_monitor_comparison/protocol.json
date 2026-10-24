@@ -1,0 +1,44 @@
+{
+  "id": "classical-monitor-comparison-v2-numerics",
+  "scope": "Retrospective classical monitoring baseline adaptations; not native reproduction of a full published autonomous-vehicle security framework",
+  "tracks": {
+    "unprotected": "residual=reported wheel minus reported localization; compare against historical legacy_agreement, with the same unprotected scalar information",
+    "protected": "residual=reported wheel minus simulated protected-copy center; compare against historical conditional_anchor_only and conditional_bounded_candidate, with the same protected scalar information and eligibility"
+  },
+  "calibration": "Per scene and track, collect finite eligible residuals in first [0,5)s; at first query >=5s freeze arithmetic mean and sample standard deviation (n-1). Need n>=2 and sd>0; no variance floor, fitting after onset or outcome-based search. This assumes a known clean prefix on an already seen development cohort, not held-out confirmation.",
+  "warmup": "No calibrated monitor during [0,5)s: unprotected wrapper uses unchanged legacy agreement; protected wrapper outputs eligible center. Prefix decisions never use future fitted parameters.",
+  "cusum": {
+    "k_standard_deviations": 0.5,
+    "h_standard_deviations": 5,
+    "recurrence": "hi=max(0,hi+z-0.5);lo=max(0,lo-z-0.5);z=(residual-mean)/sd; alarm iff max(hi,lo)>5; initial hi=lo=0"
+  },
+  "ewma": {
+    "lambda": 0.3,
+    "L": 3,
+    "recurrence": "v=0.3*z+0.7*v;initial v=0;alarm iff abs(v)>3*sqrt(0.3/1.7)",
+    "limits": "asymptotic, not time-varying start-up limits; no normality/independence or false-alarm guarantee asserted for autocorrelated CAN residuals"
+  },
+  "state": "reset only at scene/case start; continue updating after alarm without latch/reset; invalid/stale observations pause state, no time-gap decay or automatic reanchor",
+  "after_calibration_wrappers": "Unprotected: valid fresh candidate and current valid monitored residual with no alarm ->candidate, otherwise abstain. Protected: if source eligible, valid monitored residual and no alarm ->candidate, otherwise center; ineligible source ->abstain. Invalid calibration is explicit: unprotected abstains; protected falls back. These wrappers are project-specific, not claimed native NIST speed policies.",
+  "cases": "All fourteen unchanged cases from conditional-protected-copy-v1, with fixed [5,15)s attacks and all negative controls retained. No parameter tuning from these outcomes.",
+  "metrics": "All original request denominators and before/during/after/unavailable partitions; original proxy disagreement and wheel-trace diagnostics; monitor counts distinguish warmup, invalid calibration, missing observation, unavailable time, monitored and alarm. Alarm rates use monitored observations only. First during-alarm elapsed time is descriptive, not a ground-truth malicious-attack detection guarantee.",
+  "historical": "Freeze supplied full previous summary and its provenance as historical summary evidence. Attach its results only when baseline snapshot matches; do not claim to re-verify its full raw ledgers here. On a scene-0001 pilot use the prior independently verified pilot summary instead.",
+  "gates_unchanged": {
+    "p95_reference_disagreement_mps_max": 0.5,
+    "coverage_percent_min": 95,
+    "accepted_disagreement_gt2_max_count": 0,
+    "receipt_age_us_max_inclusive": 100000,
+    "legacy_peer_difference_mps_max_inclusive": 1
+  },
+  "reference": "Unmodified localization is an evaluation proxy, not independent physical truth. The unprotected track observes its attackable reported version; original reference is not used by the protected track selector or source construction.",
+  "evidence": "Hash baseline inventory, all imported code, new implementation, tests, sources and protocol before outcomes; verify baseline raw pairing; independent reconstruction of every monitor event and scalar outcome; refuse changed frozen inputs and output overlap",
+  "conditional_simulation_only": true,
+  "real_source_protection_established": false,
+  "native_recent_av_method_reproduction_complete": false,
+  "physical_witness_enabled": false,
+  "production_policy_changed": false,
+  "promotion_allowed": false,
+  "numerical_failure": "Version2: finite positive sd is never floored. If standardized residual or either monitoring update is unrepresentable in binary64, reject the update atomically for both detectors of that input track, retain last finite states, record numerical_failure and disable that track until scene/case end. U abstains; P uses eligible source center or abstains. No alarm/detection is invented; all request denominators remain. Ordinary finite recurrences and constants are unchanged.",
+  "independent_calibration": "Version2 verifier uses 80-digit Decimal arithmetic and exact constant-input check to prevent subnormal squared deviations underflowing to zero; primary stdlib sample stdev unchanged.",
+  "previous_run_preservation": "Default new output local_batch_numeric_fix; existing local_batch and its partial ledgers/input lock are never overwritten. Original source files archived in version1_source."
+}

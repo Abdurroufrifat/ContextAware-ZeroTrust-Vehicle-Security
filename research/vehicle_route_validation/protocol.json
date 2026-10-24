@@ -1,0 +1,49 @@
+{
+  "scope": "Retrospective named-route validation; no untouched holdout or promotion claim",
+  "groups": [
+    "Urban01",
+    "Urban03",
+    "Urban04"
+  ],
+  "routes": [
+    "Urban01/2023-11-23-15-38-43-Day",
+    "Urban03/2023-11-03-09-42-41-Day",
+    "Urban04/2023-11-01-12-16-16-Day",
+    "Urban03/2023-11-23-19-12-16-Night",
+    "Urban04/2023-11-23-19-36-42-Night"
+  ],
+  "model": {
+    "loss": "absolute_error",
+    "learning_rate": 0.05,
+    "max_iter": 200,
+    "max_leaf_nodes": 15,
+    "max_depth": 4,
+    "min_samples_leaf": 40,
+    "l2_regularization": 1.0,
+    "max_features": 1.0,
+    "max_bins": 255,
+    "categorical_features": null,
+    "early_stopping": false,
+    "random_state": 20261019
+  },
+  "fold_preprocessing": "Anchor and bin weights fit only on training-group DAY labels; fresh learner; no prior learned weights or anchor",
+  "mask_seed": 20261019,
+  "score_rule": "all27178 supported original rows exactly once; no learned quality filter; all groups,recordings,windows retained",
+  "diagnostic_p95_limit_mps": 0.5,
+  "all_fold_models_frozen_before_any_held_score": true,
+  "no_result_based_retry": true,
+  "reserved_final_opened": false,
+  "urban01_night_development_labels_used": false,
+  "input_sha256": {
+    "../vehicle_radar_multidrive/prepared/fit/data.npz": "ddf393a60ab845b045fd26e4a03218eb3eb36e4d5d4e40971cd5ef1735124d68",
+    "../vehicle_radar_multidrive/prepared/fit/index.json": "b3693734b91144e01422173764cd7b1dd0a2c8ae7e60acf90325b3bcdc3ae87e",
+    "../vehicle_radar_multidrive/inputs/fit/windows.json": "b69947aec58a11cf81d1ca0420bb5a0ac0fee3d5b1395ec8220bb165cee9dc1a",
+    "../vehicle_night_training/night_fit.npz": "98e7664234a22dd2b64688f8e25721fe58fdd542ee6a8e65147cdb7242131d59",
+    "../vehicle_night_training/night_index.json": "4b1224121adaa470c0e85ef4715033290c8b0021898aed856ae4a0741dadd6ed",
+    "../vehicle_context_boosting/context_core.py": "4eda0558f8c34329fd913a52c1a7f54878002c189d33ed251dcdfe8ca40b0da1",
+    "../vehicle_context_boosting/train_context.py": "cfcb96fedbf683c480e9ebc1a672b92487d72b45e2786251793ba76b2b2847a0",
+    "../vehicle_context_boosting/protocol.json": "f09158fc58ad5e1f71670befeaf4fefdcf5d5356ec96f362d5df3d0689f4024d",
+    "../vehicle_radar_multidrive/estimator_core.py": "3c209bc0485fffe87a68d1b4da342ba71b7012171c0392e9801f4267c5efb5b4",
+    "../vehicle_masked_history/masked_core.py": "220f03c0605c00fc4caee14d4a10ce9825d780216cc0be0455f3440a38b9e24a"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "analysis_lock_sha256": "a05f8634af378b1f84c2a08c20552248bacfcf4414b8ddb475f2fe6c0c53d81c",
+  "training_trace_sha256": "a513923bfdf277c6bd3c7826873eccdaf375dae09ab0d75ecc8f2f4b1935c8f7",
+  "files_sha256": {
+    "folds/Urban01/calibrations.json": "3fa02e123f112ac43ca3f2c8d173a10d49043e9f201a3c8d924d35848c6b493f",
+    "folds/Urban01/magnitude_context.json": "e49134a1c306f9960148ac254127a934de0eb2a8a10e2bb3744c8e86be6fb9f8",
+    "folds/Urban01/magnitude_context_anchor.json": "ee7a8403343c28bf89a12e5ddbf0cdbf141a12bebb2b000939dcefc3c7731498",
+    "folds/Urban01/fit_export.npz": "67d5a756043893bbb4c437b9f06da10262686763781376dcfcac15506b1ee47d",
+    "folds/Urban03/calibrations.json": "561ec7d1117e2497759bf761a2b841e4535124b0668fc2bb1f754e7054ec2618",
+    "folds/Urban03/magnitude_context.json": "57e92d27ca366da65513b0b144a54f034709b3bb3949bfd81b375851bd30fb72",
+    "folds/Urban03/magnitude_context_anchor.json": "39ce9e59d525c68d31d699e22232c33a46275c17ad1a3e184e348d149111ed67",
+    "folds/Urban03/fit_export.npz": "3a349632ba41c8774b63a2fb9e52c4c98fe8b1ef34c7e9c0099254bb58af6940",
+    "folds/Urban04/calibrations.json": "f088e31068b43ac0186b6d6b5d34a45876d55d4952d6dabc99a3747ac5341895",
+    "folds/Urban04/magnitude_context.json": "3c1b5decf5843d8f6b9f2ba9969bd9266b08fc032bd647f6b388c2e862480588",
+    "folds/Urban04/magnitude_context_anchor.json": "9be93718b6c4671d645c09a650d91d5cdce5dd549da1fd5946412fb6fe6454c6",
+    "folds/Urban04/fit_export.npz": "eef522a40bd5d94bc48a629fcb82aaca7f2b430ec64da67a7dce09c49eaa18d0"
+  },
+  "all_six_models_locked_before_new_held_scoring": true,
+  "new_held_scores_created": false,
+  "prior_original_held_scores_already_inspected": true
+}

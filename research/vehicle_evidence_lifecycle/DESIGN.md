@@ -1,0 +1,15 @@
+# Evidence lifetime and execution authority
+
+User delegated implementation; work remains inside CO-ACT-CPS. Preserve all frozen540,1512 and52 development results, source files and manifests. No commit, public release, manuscript, real vehicle operation or protected data access.
+
+Candidate contribution: a joint, auditable command-authorization contract linking history-qualified context, an explicit actuator error envelope and command lifetime. Generic secure estimation, safety filters, provenance, self-triggered control and proof-carrying control already exist; none is claimed new by itself.
+
+Threat contract: first context packet pair is honest and bounded at bootstrap; ego state inclusion holds under declared sensor attack budget and bounded process error; lead acceleration is in[-4,2]; actual ego acceleration is clip(command/1000+error,-4,2), |error|<=E<4. Later scene/radar context may be coherently false. No true plant state, attack label or future information enters policies. No refresh of a safety context solely because two potentially shared sources agree. Keep the propagated context tube and report source conflict or unqualified refresh.
+
+Discrete model:10ms right-endpoint nonnegative-speed integrator. For a held command, worst ego acceleration is clip(u+E,-4,2), worst lead braking is-4. Backup braking authority is b=4-E>0. Compute minimum gap over held microsteps and full backup stopping distances. A nonnegative margin certifies gap>=2 under these assumptions. Choose maximal integer command no greater than the untrusted nominal proposal with at least100ms certified hold. Also derive maximum certified hold, capped1s; a signed sidecar binds the state bounds, execution envelope, observation digest, context, sequence, command and expiry. Gate recomputes the certificate and verifies binding, not only signature.
+
+History propagation uses conservative ego/lead speed and gap intervals. Ego intervals can tighten using a secure set estimator whose inclusion premises are explicit; later unqualified range/lead observations never shrink the context tube. Initial honesty cannot be inferred from authentication. Coherently false bootstrap and lost braking authority are negative controls; label loss of guarantee and retain their outcomes.
+
+Finite-grid conditional proof and an indistinguishability counterexample belong in PROPERTIES.md. A claim of immunity to all jointly compromised references is impossible without extra trustworthy information. No additional privileged sensor, brake bypass or ground-truth input is introduced.
+
+Implementation: isolated pure core; signed packet policy using frozen learned proposal and secure speed sets; compact common numerical benchmark with published-method adaptations and ablations; independent arithmetic/replay audits; development pilot then frozen fresh confirmation. Measure contacts, availability, progress, uncertainty, intervention/certificate lifetime, and explanation fidelity. Compare with always-brake to expose trivial stopping. Match execution envelopes across robust baselines. No tuning on new confirmation outcomes.

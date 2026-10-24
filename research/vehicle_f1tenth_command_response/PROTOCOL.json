@@ -1,0 +1,45 @@
+{
+  "source_doi": "10.5281/zenodo.12536536",
+  "license": "cc-by-4.0",
+  "files": [
+    {
+      "id": "982ab565-8dfd-4ab6-9680-bc098b039bc3",
+      "key": "ex-easy-perception-r2_2023-06-12-20-46-30.bag",
+      "size": 88607811,
+      "checksum": "md5:013b0a6f87f452dd3c37b193728fbac0",
+      "links": {
+        "self": "https://zenodo.org/api/records/12536536/files/ex-easy-perception-r2_2023-06-12-20-46-30.bag/content"
+      }
+    },
+    {
+      "id": "3cec758e-ccbe-4937-90c2-a0089b8504d3",
+      "key": "ex-medium-perception-r1_2023-06-12-17-45-21.bag",
+      "size": 137204365,
+      "checksum": "md5:0b557e6c063b611d9be0c1a5caf00878",
+      "links": {
+        "self": "https://zenodo.org/api/records/12536536/files/ex-medium-perception-r1_2023-06-12-17-45-21.bag/content"
+      }
+    },
+    {
+      "id": "e134a10b-5967-476b-8902-e8ee447a401f",
+      "key": "ReadMe.md",
+      "size": 3539,
+      "checksum": "md5:72cf6a860fda076df1858aad3cd1e7a4",
+      "links": {
+        "self": "https://zenodo.org/api/records/12536536/files/ReadMe.md/content"
+      }
+    },
+    {
+      "id": "59aa8e65-1ad0-4077-8674-dcb31f7c6efe",
+      "key": "ex-hard-r2_2023-06-12-19-59-52.bag",
+      "size": 84985680,
+      "checksum": "md5:1f0e930d8d0bf2106fac9d34a94b9c21",
+      "links": {
+        "self": "https://zenodo.org/api/records/12536536/files/ex-hard-r2_2023-06-12-19-59-52.bag/content"
+      }
+    }
+  ],
+  "selection": "fixed easy/medium/hard representative runs before sample inspection; no fitting or optimized lag",
+  "timestamp": "bag receipt ns; header stamps retained independently",
+  "threshold_ns": 100000000
+}

@@ -1,0 +1,50 @@
+{
+  "scope": "Retrospective frozen-prediction dual-reference diagnostic, not independent physical truth or model selection. New comparator outcomes already exist; no refit, residual filtering, offset, time shifts or final data.",
+  "methods": [
+    "original_context",
+    "parent_radar_imu",
+    "signed6_previous",
+    "linear7",
+    "nonlinear7",
+    "huber7",
+    "extra_trees7"
+  ],
+  "matching": "Reuse exact (window_id, integer nanosecond endpoint) source joins; independently rebuild from original source records and check target/age and saved row identities. No nearest-time/interpolation/imputation.",
+  "populations": "Every fitting group/recording/window plus pooled; full all matched, fixed historical HGB-accepted common matched cohort, and each model own admitted matched endpoints with separate denominators. Empty and missing comparisons remain explicit.",
+  "admission": "Existing endpoint source/peer/clock checks; IMU models use fixed nominal deadband history+endpoint freshness. New Huber/ExtraTrees masks computed from frozen predictions, same peer/source/currentIMU state and inclusive1m/s. No reference error used for admission. These are endpoint eligibilities, not request-time availability or live capability grants.",
+  "focus": [
+    "fit/evaluation_urban04_0",
+    "full/calibration_0"
+  ],
+  "diagnostic_limit_mps": 0.5,
+  "interpretation": "Two recorded references may share ancestry and errors. Keep primary unchanged; OBD is not certified independent truth or physical witness. Common-cohort rankings distinguished from each-model-admitted results. Earlier HGB discrepancy remains retained even if another frozen model has different outcome.",
+  "models_refitted": false,
+  "labels_changed": false,
+  "thresholds_changed": false,
+  "reserved_final_opened": false,
+  "production_policy_changed": false,
+  "promotion_allowed": false,
+  "input_sha256": {
+    "vehicle_nonlinear_reference/reference_core.py": "1975b08aa27fb1b3fe8369c7ed929ef927ba67823ee81d133dd3a96091871853",
+    "vehicle_nonlinear_reference/verify_reference.py": "29181d8fc39cda774313b456360dc72c0189f2216852c559334341ba9c2090b3",
+    "vehicle_nonlinear_reference/results.json": "8c2647a9168c79825695963a643d8846a3f8e4d52b2c8b22a9c72e954b1a917e",
+    "vehicle_nonlinear_reference/row_identity.npz": "3ea6d860259deb8adac6d81114e089c6dd8a45bb34d22b8f2a9d0a16e0fec276",
+    "vehicle_frame_reference_audit/reference_pairs.npz": "7cd7866fba21389393f0b82cc6fe844e7824660c6c9251fb4a1ec095af0ce797",
+    "vehicle_reference_check/matched_endpoints.json": "67cdce47fdfc49b335317f1eded9169782a4d292d344e3e7b42a453fbd01642e",
+    "vehicle_remaining_failure_audit/row_diagnostics.npz": "a8a5e65e86c17aa8339ff030c1f487ed073b65b56c7671788e585cc15fc96950",
+    "vehicle_route_validation/membership.json": "2a4d8db446486cc6be0b1ce73fdf657f76e9d8b9bfaaa2a704af50a99471c65f",
+    "vehicle_nonlinear_correction/oof_predictions.npz": "0f5fd1e29c33b6f037b8435260e1ba7bbb950e39b3016a790c8ebb1d1ed0f22c",
+    "vehicle_nonlinear_correction/development_replay.npz": "7080051e54f6b711ab26bb2df9ee2086c695428031c1da8349baa925fa396b0a",
+    "vehicle_signed_axis_correction/development_replay.npz": "bbf0724f4788d1f53288e1a0671345392ffbb1ac5480ff6632ac47c6b2c926c6",
+    "vehicle_multisource_imu/development_replay.npz": "2f565dc8a7349ee55ecc21e442a594c35ceae4103e2f90329df27ba10ce316fc",
+    "vehicle_matched_head_comparison/held_predictions.npz": "3aae20cbca8f04e4ee9a95a65fb2637bf6a7ae54a2a039c244cf08f2bc84a985",
+    "vehicle_matched_head_comparison/replays/nominal.npz": "a982f54819eabec8c3209ec58f17d09d1b618629c75028f573de5a68e75c2117",
+    "vehicle_matched_head_comparison/model_lock.json": "95e78a900986982ceacd9d41e20805660bd916b425159f902afea3354349fc35",
+    "vehicle_matched_head_comparison/training_trace.json": "239509531221ed522c70146606d63d775cf8c94426528875e898e832a8836d82",
+    "vehicle_masked_history/frame_index.json": "95dccff40807e1382a4ed93f828e5f2ad1fc80b649babd3853fa0c00e4122103",
+    "vehicle_sensor_faults/replays/nominal.npz": "c2ac5e3b0c8bf3cdb2ad551cf5fc657ec2091633690cdd2abc6c138ea3b53526",
+    "vehicle_deadband_guard/replays/nominal__deadband.npz": "e035b7cadbe21104338767438cbade979392e89034c777f9aff811003ecd3e53",
+    "vehicle_night_training/decisions.npz": "8d6c585ffff8e87e675457d951e5d4f59e1b9fa20f55a97284d14741a70ed0b6",
+    "vehicle_night_training/predictions.npz": "3c7fa65f86eb1ff680cd3c600a548468e6b9c9b8a50c41622db2aeae6ee1deda"
+  }
+}

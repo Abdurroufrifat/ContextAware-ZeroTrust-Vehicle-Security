@@ -1,0 +1,121 @@
+{
+  "study_id": "cv-20261024-v1",
+  "duration_s": 20,
+  "step_us": 10000,
+  "query_us": 100000,
+  "attack_start_us": 5000000,
+  "attack_end_us": 11000000,
+  "profiles": {
+    "urban_cutback": {
+      "lead_speed": 14,
+      "ego_speed": 13,
+      "gap": 29,
+      "accelerations": [
+        1,
+        -2,
+        -4,
+        2,
+        0
+      ]
+    },
+    "highway_recovery": {
+      "lead_speed": 20,
+      "ego_speed": 19,
+      "gap": 43,
+      "accelerations": [
+        0,
+        -3,
+        1,
+        -4,
+        2
+      ]
+    },
+    "stop_release": {
+      "lead_speed": 8,
+      "ego_speed": 7,
+      "gap": 23,
+      "accelerations": [
+        -2,
+        2,
+        -3,
+        2,
+        0
+      ]
+    }
+  },
+  "seeds": [
+    1103,
+    1229,
+    1361,
+    1499,
+    1621,
+    1753
+  ],
+  "methods": [
+    "full",
+    "no_learning",
+    "no_refinement",
+    "no_fusion",
+    "no_brake",
+    "no_actuator_auth",
+    "s3e_brake",
+    "ssf_zocbf"
+  ],
+  "primary_cases": [
+    "nominal",
+    "candidate_drift",
+    "scene_disinformation",
+    "radar_disinformation",
+    "scene_dropout",
+    "actuator_tamper",
+    "adaptive_candidate",
+    "shared_disinformation"
+  ],
+  "stress_cases": [
+    "public_anchor_age",
+    "public_motion_innovation",
+    "burst_loss",
+    "lower_braking",
+    "execution_break"
+  ],
+  "stress_methods": [
+    "full",
+    "no_learning",
+    "s3e_brake",
+    "ssf_zocbf"
+  ],
+  "expected_trials": 1512,
+  "expected_decisions": 302400,
+  "parallel_workers": 3,
+  "initial_ego_interval_mps": [
+    0,
+    30
+  ],
+  "s3e_attack_budget": 1,
+  "source_error_bounds": {
+    "candidate_mps": 0.101,
+    "anchor_mps": 0.25,
+    "clock_us": 5000,
+    "scene_gap_m": 0.0015,
+    "scene_lead_mps": 0.075,
+    "radar_gap_m": 0.05,
+    "radar_relative_mps": 0.1,
+    "execution_mps2": 1
+  },
+  "public_input_policy": {
+    "source": "DOI10.5281/zenodo.12536536",
+    "calibration": "easy run only",
+    "stress_runs": [
+      "heldout_medium",
+      "heldout_hard"
+    ],
+    "run_selection": "seed index parity",
+    "offset": "(seed*37) modulo source sequence length",
+    "window": "200 successive100ms rows; wrap only at recording boundary; retain missing/large ages and all innovation tails",
+    "age_quantization": "ceil to10ms; no age clipping; missing when requested state predates simulation history",
+    "innovation_transfer": "Add the recorded velocity second difference in m/s to candidate and delayed anchor during attack window; no sensor calibration or hard-bound claim"
+  },
+  "no_retraining": true,
+  "paired_inference": "six shared seed clusters; descriptive scenario-level effects; no independent query-level population inference",
+  "scope": "New common numerical plant; fresh SUMO parity before confirmation; scalar published-method adaptations, not native full-framework reproductions"
+}

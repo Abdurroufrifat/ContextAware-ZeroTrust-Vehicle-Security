@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "scope": "Deterministic offline software attack benchmark of the existing vehicle policy; no dataset-to-physical-IMU mapping, no new model or threshold.",
+  "design_status": "Fixed before this benchmark execution; designed after observing earlier policy tests. Not an independently preregistered or held-out evaluation.",
+  "profile_grid": {
+    "speed_mps": [
+      0,
+      1,
+      5,
+      12,
+      25,
+      50
+    ],
+    "acceleration_mps2": [
+      -2,
+      0,
+      2
+    ],
+    "yaw_rate_rps": [
+      -0.1,
+      0.1
+    ]
+  },
+  "comparators": [
+    "acl_only",
+    "authenticated_context_only",
+    "full_policy"
+  ],
+  "comparators_kind": "Engineering ablations of this implementation, not published-method baselines.",
+  "source_contract": "Production PolicyConfig: 500ms collector TTL, 50ms intersource skew, 250ms capability lease. These application defaults are separate from the 100ms speed-model source-clock budget and provide no physical safety bound.",
+  "threats": "Unauthenticated source changes, signed faulty/compromised collectors, replay, clock anomalies, missing/malformed evidence, scope changes, capability lifecycle abuse. HMAC keys are deterministic public test fixtures only.",
+  "denominators": "Every profile x every listed case x every comparator is retained. Any ALLOW or RESTRICT is an access grant. Capability consumption is scored separately. No IID inference, p-value, physical attack detection rate, human evaluation, or latency guarantee.",
+  "known_limitations": [
+    "Common signed GNSS and wheel speed shifts preserve pairwise agreement and may grant.",
+    "Replay and used-token state are process-local; restarting with the same keys loses that history.",
+    "Synthetic clean profiles do not estimate real-drive availability.",
+    "Successful cryptographic verification does not authenticate physical measurements."
+  ],
+  "promotion_allowed": false,
+  "witness_enabled": false,
+  "reserved_final_opened": false,
+  "input_sha256": {
+    "src/coact_cps/vehicle/policy.py": "7b2e4ddd3fd21c4e98d58d425782e28e339a0f188063aa79e4f621a404636f9b",
+    "src/coact_cps/__init__.py": "3b5c614d243c18941f189c3b915d9f22117a5c1487af9039f6aa2d3d945ca51e",
+    "src/coact_cps/types.py": "a2c88fbc088095f5202b66f4697b041c3af7c040cbe059589da05082f7f454dc",
+    "src/coact_cps/vehicle/__init__.py": "7a1325e8a2a0791044347cda01e1b21b9aea3181426cbcc8b4bd01d87e774573",
+    "configs/vehicle_zero_trust_stage1.json": "1f6f14bcde80aea5cb78b7898b77c520961a8658d785438971d77370bed0be9b"
+  }
+}

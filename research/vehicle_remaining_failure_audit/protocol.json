@@ -1,0 +1,40 @@
+{
+  "scope": "Frozen-output failure localization only; all15 supported fit windows and3 old development blocks plus outside-block control",
+  "models": [
+    "original_context",
+    "uncorrected_radar_imu",
+    "signed_axis_corrected"
+  ],
+  "speed_boundaries_mps": [
+    1.0,
+    5.0,
+    10.0
+  ],
+  "time_bucket_ns": 20000000000,
+  "run_gap_ns": 150000000,
+  "diagnostic_limit_mps": 0.5,
+  "training_support": "Coordinatewise min/max of original axes on exact parent training IDs; descriptive only, no rejecting rule",
+  "cohorts": "Fit all27178 supported rows; full all40678 ready endpoints; corrected-accepted and all-three-common masks explicitly reported",
+  "new_model_fitted": false,
+  "thresholds_changed": false,
+  "promotion_allowed": false,
+  "root_cause_established": false,
+  "input_sha256": {
+    "../vehicle_signed_axis_correction/protocol.json": "9497a287b621ff1ddb58d66e309c5e8975ba4e50921240f8af9dd2c5e4ae5a71",
+    "../vehicle_signed_axis_correction/analysis_lock.json": "d89e5344b0f8a1de8f6f1be2651af621d51dca68677db939ce482f78b72ccee2",
+    "../vehicle_signed_axis_correction/data_lock.json": "1770a9d0c65eb7dffcef5515efc731e428a430b2d0fa1dc2eab7d05deca0d66b",
+    "../vehicle_signed_axis_correction/head_lock.json": "51eac31b78cb807d18aaeb952ed15524c0ff66e0d99b0070c8c28024ed118529",
+    "../vehicle_signed_axis_correction/training_trace.json": "50fc29d9afe243b499e5ad4de7cda25488199900d35871abe8fa2d19c761d946",
+    "../vehicle_signed_axis_correction/feature_cache.npz": "463b89b43332e8e39e2de778d8c1cce260e244e399b249f15d4361829f0743cf",
+    "../vehicle_signed_axis_correction/results.json": "fbc7f2fe73772f1f65c30d6c791797b70a0936321506bf55c66b96d439dab289",
+    "../vehicle_signed_axis_correction/oof_predictions.npz": "267d59786e750e0289c4f6164ad5298b342a083b5d64dc578c8039e52e6ebae7",
+    "../vehicle_signed_axis_correction/development_replay.npz": "bbf0724f4788d1f53288e1a0671345392ffbb1ac5480ff6632ac47c6b2c926c6",
+    "../vehicle_trace_audit/row_traces.npz": "b9e49b3e7445f07d189ed2b61e10f21147fc7a5c6e3ca0f6c1ddc19b74629abf",
+    "../vehicle_route_validation/membership.json": "2a4d8db446486cc6be0b1ce73fdf657f76e9d8b9bfaaa2a704af50a99471c65f",
+    "../vehicle_masked_history/frame_index.json": "95dccff40807e1382a4ed93f828e5f2ad1fc80b649babd3853fa0c00e4122103",
+    "../vehicle_radar_multidrive/prepared/calibration/index.json": "b9aba0fb81ac2aa8d3e38e8e397a39b4d14923af70f29de71e024d2add2b14f8",
+    "../vehicle_continuous_radar/reference_targets.json": "d372d7572d574a6f1718da4b4e274bcc33077923eb035308db7207240cbaa6b9",
+    "prior_snapshot_manifest.json": "fb29fb00e47d433393f42dbd43f84a44a045442aeb26471e59923bd83ce3eb0b"
+  },
+  "implementation_revision": "Before any result was generated, corrected lookup integration to use header_age_ns/arrival_age_ns; added2 real-source fixtures. Initial lock and traceback retained."
+}

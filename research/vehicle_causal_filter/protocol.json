@@ -1,0 +1,62 @@
+{
+  "scope": "One resettable causal Kalman comparison, not further neural training. Same already inspected development recording",
+  "primary": "masked_training; original and clean_control reported without best-case selection",
+  "filter": {
+    "state": [
+      "speed m/s",
+      "acceleration m/s^2"
+    ],
+    "transition": "F=[[1,dt],[0,1]]",
+    "measurement": "H=[1,0]; frozen TCN ensemble speed only",
+    "process_covariance": "q*[[dt^3/3,dt^2/2],[dt^2/2,dt]], continuous white-jerk model assumption",
+    "initial_covariance": "diag([R,1]); state=[first accepted speed,0]",
+    "update": "Ordinary linear prediction/correction; Joseph covariance update, symmetrized. Clip output speed at zero only",
+    "measurement_noise": "Shared R=max(1e-4,(1.4826*median(abs(e-median(e))))^2), e=unchanged original TCN fit prediction minus fit target,16169samples. Do not subtract fitted bias",
+    "state_reset": "Every source quality rejection, additional postfilter peer rejection, or inter-event gap>100ms. First accepted packet after reset emitted directly without hidden warmup",
+    "guard": "Original quality acceptance AND absolute filtered speed minus same CNN mean<=1m/s. No previously rejected endpoint becomes accepted"
+  },
+  "process_jerk_density": 1.0,
+  "reset_gap_ns": 100000000,
+  "requests": "Same20Hz integer grid, latest raw attempt,100ms TTL, no future inference or fallback to an older accepted attempt",
+  "gates": {
+    "usable_fraction_min": 0.95,
+    "reference_coverage_min": 0.95,
+    "accepted_p95_max_mps": 0.5,
+    "above2mps_max": 0,
+    "scope": "Every300s segment including last partial, whole recording and earlier supported90s blocks with >=95% retention"
+  },
+  "diagnosis": "Exploratory diagnosis of known failures motivates one fixed filter. Highly correlated residuals violate an independent white-noise interpretation; no optimality, covariance calibration or physical-bound claim",
+  "no_parameter_sweep_or_retries_after_scores": true,
+  "reserved_final_unopened": true,
+  "baseline_reference": {
+    "title": "An Introduction to the Kalman Filter",
+    "authors": [
+      "Greg Welch",
+      "Gary Bishop"
+    ],
+    "report": "UNC TR95-041, February8,2001 version",
+    "url": "https://www.cs.cmu.edu/~motionplanning/papers/sbp_papers/kalman/welch_intro_kalman.pdf",
+    "scope": "General discrete Kalman recursion; state, shared noise rule, reset and rejection policy are this project design. Not a reproduction of a vehicle-specific published method"
+  },
+  "input_sha256": {
+    "../vehicle_radar_multidrive/prepared/fit/data.npz": "ddf393a60ab845b045fd26e4a03218eb3eb36e4d5d4e40971cd5ef1735124d68",
+    "../vehicle_radar_multidrive/fit_predictions.npz": "fd2d3e74a077be49ea783f5ef7e2f5bdfcdc4417eeba91cccfe98f9a24d3c3b6",
+    "../vehicle_radar_multidrive/prepared/calibration/index.json": "b9aba0fb81ac2aa8d3e38e8e397a39b4d14923af70f29de71e024d2add2b14f8",
+    "../vehicle_masked_history/masked_core.py": "220f03c0605c00fc4caee14d4a10ce9825d780216cc0be0455f3440a38b9e24a",
+    "../vehicle_masked_history/score_masked.py": "a6054365a86bb04d15aabb9d26390f7095c486f922cd1662fe834d06da9d3adf",
+    "../vehicle_masked_history/frame_index.json": "95dccff40807e1382a4ed93f828e5f2ad1fc80b649babd3853fa0c00e4122103",
+    "../vehicle_masked_history/predictions.npz": "bc68640de16ec2c546aaf44de75455740f04a11204bc4e179acf8487313ca430",
+    "../vehicle_masked_history/decisions.npz": "c3722a725d2d8f87f219a7d6b4f576fe6661bc19ba3c79bfa372d69c156c4ae4",
+    "../vehicle_masked_history/results.json": "1859779b4b14e45bd691c7f5d7d475de1219e217da1b184c773f17473b23f550",
+    "../vehicle_masked_history/model_lock.json": "eb17f31821591a4178703ed490828290cf222248896ce54b2a3354cd56959305",
+    "../vehicle_continuous_radar/continuous_core.py": "32c3ac01f7bd2a4755d50fbdfd7ba0f4d267966a20a20489dc807a0cf8d861fd",
+    "../vehicle_continuous_radar/estimator_core.py": "3c209bc0485fffe87a68d1b4da342ba71b7012171c0392e9801f4267c5efb5b4",
+    "../vehicle_continuous_radar/quality_core.py": "38fe34a8730217565c96d171a1f24045fc22ad6d9a57a209734454ca4eceab24",
+    "../vehicle_continuous_radar/frame_index.json": "d92bbd4d80867225bbd375b4374158bf75ccdb8eb1a0e2b59f6f17aafaed9369",
+    "../vehicle_continuous_radar/predictions.npz": "0907e32bf66205deb923bd4dcdecc9bd2b3d80ce63bc0f67f53dc56f3a575196",
+    "../vehicle_continuous_radar/quality_masks.npz": "7b411a3e3cfd8604961c24c4b7cd369bd6ca8236e6c19eae74ada30121f53447",
+    "../vehicle_continuous_radar/reference_targets.json": "d372d7572d574a6f1718da4b4e274bcc33077923eb035308db7207240cbaa6b9",
+    "../vehicle_availability_audit/availability_core.py": "2a161d5266e20419eae2a078de695e509a50cb4c5d99b28787e677a4fdc2b31c",
+    "../vehicle_availability_audit/request_reference.json": "7624bd1de84f3efa29129b7792a9b485fe4753f68ebef683ce93fb39ef0d545c"
+  }
+}

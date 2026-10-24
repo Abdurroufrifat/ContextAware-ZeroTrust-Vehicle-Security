@@ -1,0 +1,47 @@
+# Copy to configs/swat.yaml, inspect your authorized SWaT files, then edit paths/columns.
+dataset:
+  name: SWaT
+  train_csvs:
+    - data/raw/swat/normal/*.csv
+  test_csvs:
+    - data/raw/swat/attack/*.csv
+  output_directory: data/processed/swat
+  label_column: Normal/Attack
+  normal_values: ["Normal", "normal", 0, "0"]
+  root_column: null
+  features: null  # Auto-select numeric telemetry; pin the final list before experiments.
+  window_size: 64
+  stride: 4
+  label_rule: any
+  validation_fraction: 0.20
+
+topology: {}
+
+model:
+  detection_mode: normal_only
+  d_model: 64
+  n_heads: 4
+  n_layers: 2
+  dropout: 0.15
+
+training:
+  seed: 7
+  epochs: 30
+  batch_size: 64
+  learning_rate: 0.0002
+  weight_decay: 0.0001
+  physics_weight: 0.05
+  reconstruction_weight: 0.05
+  root_weight: 0.25
+  mask_probability: 0.15
+  calibration_quantile: 0.995
+
+physics_invariants: []
+
+process_grounding:
+  require: false  # Set true only after explicit physical/control topology is configured.
+  invariant_threshold: 0.05
+  counterfactual_minimum: 0.0
+
+artifacts:
+  directory: artifacts/swat

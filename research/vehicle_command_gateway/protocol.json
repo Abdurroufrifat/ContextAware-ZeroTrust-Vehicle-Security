@@ -1,0 +1,48 @@
+{
+  "id": "signed-command-history-gateway-v1",
+  "cases": [
+    "normal",
+    "candidate_plus3",
+    "candidate_missing",
+    "candidate_bad_tag",
+    "anchor_bad_tag",
+    "command_bad_tag",
+    "command_unknown_key",
+    "command_revoked_key",
+    "command_context_mismatch",
+    "command_missing",
+    "command_gap",
+    "command_old_issue",
+    "anchor_stale",
+    "anchor_clock_window",
+    "unknown_execution_bound",
+    "command_replay",
+    "report_replay",
+    "restart_replay",
+    "database_snapshot_rollback",
+    "signed_joint_source_bias",
+    "signed_command_history_bias",
+    "execution_bound_violated"
+  ],
+  "contexts": [
+    "normal",
+    "elevated",
+    "lockdown"
+  ],
+  "nominal_age_us": [
+    50000,
+    100000
+  ],
+  "anchor_clock_uncertainty_us": [
+    0,
+    1000
+  ],
+  "queries_per_condition": 16,
+  "candidate_mmps": 10500,
+  "anchor_mmps": 10000,
+  "uncertainty_mmps": 250,
+  "execution_error_mmps2": 1000,
+  "physical_validation_established": false,
+  "specific_novelty_established": false,
+  "promotion_allowed": false
+}

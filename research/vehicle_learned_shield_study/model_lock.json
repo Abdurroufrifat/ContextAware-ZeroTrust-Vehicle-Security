@@ -1,0 +1,11 @@
+{
+  "research\\vehicle_learned_shield_study\\PROTOCOL.json": "786715ff694b5b186e2d270f3c7cfcbe119192857ae86aeec9e2399895f28eff",
+  "research\\vehicle_learned_shield_study\\learned_core.py": "02f3ac62aea6cf2b3a243726011aea3c598a87bb8212eb35ee1d2a1386e2a312",
+  "research\\vehicle_learned_shield_study\\train_models.py": "45a3188c782e921d828d10891f92ecb4ceed428e97b4f34c99a426af4a7e2138",
+  "research\\vehicle_learned_shield_study\\model_selection.json": "5034b9db55fafe275ff6c178dea105359900ebe27b2be3059f4e4585bcef00f8",
+  "research\\vehicle_learned_shield_study\\models\\mlp_19.joblib": "7fc64647fec9c6fd0fb83536efeb615aa07d66432e2b0e5a6a9454529f5c7b37",
+  "research\\vehicle_learned_shield_study\\models\\mlp_31.joblib": "abaf0f96cb5224cb35cdbd487dd1791499f78297476646ab3344083e8d99349e",
+  "research\\vehicle_learned_shield_study\\models\\mlp_7.joblib": "e995c8799fb1fb24565fe8b4d97c9b09bf97d825d61f2489af8fcb2122048885",
+  "research\\vehicle_learned_shield_study\\models\\random_forest.joblib": "d55fcf410097005cf6101d639bf0d9d9b7d9ea9531be728535c81e27fadfde7c",
+  "research\\vehicle_learned_shield_study\\models\\ridge.joblib": "763414143ce8237efdf5a99f924ad6211a80b20870225c6f0d5dd1b06f4fcad9"
+}
